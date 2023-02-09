@@ -13,7 +13,8 @@ namespace someapp.QuickJob
     {
         public class job_info
         {
-           // public string job_name { get; set; }
+            public string id { get; set; }
+            public string job_name { get; set; }
            // public string job_description { get; set; }
             public double job_distance { get; set; }
             public string start_ICAO { get; set; }
@@ -21,14 +22,47 @@ namespace someapp.QuickJob
             //public int weight { get; set; }
         }
 
+
+
+
+
         public List<job_info> jobs = new List<job_info>();
+        public List<string> job_names_airport = new List<string>();
+        public string selectedAirportJobName;
         Random random = new Random();
+        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
+
+        private static Random randomm = new Random();
+
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[randomm.Next(s.Length)]).ToArray());
+        }
+
+        private void generateJobNameAirport()
+        {
+            job_names_airport.Add("Commercial Airline Services");
+            job_names_airport.Add("Private Jet Charters");
+            job_names_airport.Add("Executive and VIP Transportation");
+            job_names_airport.Add("Aerial Pollution Monitoring and Control");
+
+            int randomJobNameIndex = random.Next(0, 3);
+
+            selectedAirportJobName = job_names_airport[randomJobNameIndex].ToString();
+
+
+
+        }
 
 
         //Improve it then
         public void generateJobAirport(string startICAO, int distance, float startLat, float startLon)
         {
-            MessageBox.Show("Searching");
+
+            if (debug_Tools.debugMsg)
+                MessageBox.Show("Searching");
 
             string fileName = "db/airports.csv";
 
@@ -46,20 +80,22 @@ namespace someapp.QuickJob
 
                 if (calculatedDistance < distance * 1852 && columns[1] != startICAO)
                 {
+                    generateJobNameAirport();
 
                     job_info job = new job_info
                     {
+                        id = RandomString(12),
+                        job_name = selectedAirportJobName,
                         job_distance = calculatedDistance,
                         start_ICAO = startICAO,
                         end_ICAO = columns[1]
                     };
-
+ 
                     jobs.Add(job);
                 }
-
-
             }
-            MessageBox.Show("Found");
+            if (debug_Tools.debugMsg)
+                MessageBox.Show("Found");
 
 
 

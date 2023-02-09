@@ -108,6 +108,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Debug\debug_params.cs" />
     <Compile Include="QuickJob\quick_job_utils.cs" />
     <Compile Include="QuickJob\quick_job_window.xaml.cs">
       <DependentUpon>quick_job_window.xaml</DependentUpon>
@@ -152,7 +153,6 @@
       <DependentUpon>create_account_summary.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreateAccount\create_account_utils.cs" />
-    <Compile Include="Debug\debug_params.cs" />
     <Compile Include="MainMenu\main_menu.xaml.cs">
       <DependentUpon>main_menu.xaml</DependentUpon>
     </Compile>
