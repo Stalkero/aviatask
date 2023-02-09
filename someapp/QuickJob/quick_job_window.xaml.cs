@@ -60,7 +60,7 @@ namespace someapp.QuickJob
                 PilotDetails pilot = JsonConvert.DeserializeObject<PilotDetails>(decryptedText);
                 
 
-                job_Utils.generateJobAirport(pilot.ICAO,500,pilot.LatDec,pilot.LongDec);
+                job_Utils.generateJobAirport(pilot.ICAO,100,pilot.LatDec,pilot.LongDec);
 
 
                 int jobID = 0;

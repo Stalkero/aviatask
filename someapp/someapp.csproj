@@ -196,7 +196,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\airports.csv" />
     <None Include="Resources\psd\quickjob_btn.psd" />
   </ItemGroup>
   <ItemGroup>

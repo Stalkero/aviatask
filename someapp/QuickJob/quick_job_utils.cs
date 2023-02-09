@@ -75,11 +75,13 @@ namespace someapp.QuickJob
                 var endLoc = new GeoCoordinate(double.Parse(columns[15]), double.Parse(columns[16]));
                 var calculatedDistance = startLoc.GetDistanceTo(endLoc);
 
-               // MessageBox.Show($"{columns[1]} {calculatedDistance.ToString()}");
 
 
-                if (calculatedDistance < distance * 1852 && columns[1] != startICAO)
+                if (calculatedDistance > 0 && calculatedDistance < distance * 1852 && columns[1] != startICAO)
                 {
+                    if (debug_Tools.debugMsg)
+                      MessageBox.Show(calculatedDistance.ToString());
+
                     generateJobNameAirport();
 
                     job_info job = new job_info
