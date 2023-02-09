@@ -1,0 +1,35 @@
+﻿<ui:UiWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:someapp"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" x:Class="someapp.MainWindow"
+        mc:Ignorable="d"
+        ui:Title="Pilot Tool: Log in" Height="326" Width="454" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        ExtendsContentIntoTitleBar="True"
+        WindowBackdropType="Mica" 
+        AllowDrop="True"
+        WindowStyle="None" Background="{x:Null}">
+    <Grid 
+        x:Name="window_Main"
+        AllowDrop="True">
+
+        <ui:TitleBar
+            ShowMaximize="False"
+            Title="Pilot tool: Log in"
+            UseSnapLayout="True">
+        </ui:TitleBar>
+
+        <ui:TextBox x:Name="textbox_username" HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" MinWidth="221"  TextAlignment="Center" KeyUp="textbox_username_KeyUp" />
+        <TextBlock HorizontalAlignment="Center" Margin="0,47,0,0" TextWrapping="Wrap" Text="Login to pilot account" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,79,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Foreground="#FFADADAD" Width="194" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,140,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Foreground="#FFADADAD" Width="194" TextAlignment="Center"/>
+        <ui:PasswordBox x:Name="passwordbox_password" HorizontalAlignment="Center" Margin="0,163,0,0" VerticalAlignment="Top" Width="221" MinWidth="221" KeyDown="passwordbox_password_KeyDown" />
+        <ui:Button x:Name="button_login" Content="Login" HorizontalAlignment="Center" Margin="0,211,0,0" VerticalAlignment="Top" Width="116" Click="button_login_Click" Appearance="Primary"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,264,0,0" TextWrapping="Wrap" Text="Login without password to create an account" VerticalAlignment="Top" Foreground="#FFADADAD"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,285,0,0" TextWrapping="Wrap" Text="Username above will be used to account creation" VerticalAlignment="Top" Foreground="#FFADADAD"/>
+
+    </Grid>
+
+</ui:UiWindow>
