@@ -70,6 +70,3 @@ namespace someapp.QuickJob
         }
     }
 }
-
-
-//test commit
