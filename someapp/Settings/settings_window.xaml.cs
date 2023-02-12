@@ -24,6 +24,8 @@ namespace someapp.Settings_window
         public string pName { get; set; }
         public string pSurname { get; set; }
 
+
+
         public settings(string username,string name,string surname)
         {
             InitializeComponent();
@@ -46,6 +48,15 @@ namespace someapp.Settings_window
         {
             settings_profile _Profile = new settings_profile(pUsername);
             _Profile.Show();
+
+            this.Close();
+
+        }
+
+        private void btn_generation_options_Click(object sender, RoutedEventArgs e)
+        {
+            settings_generation generationWnd = new settings_generation(pUsername,pName,pSurname);
+            generationWnd.Show();
 
             this.Close();
 

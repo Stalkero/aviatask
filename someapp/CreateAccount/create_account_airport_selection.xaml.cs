@@ -22,20 +22,7 @@ namespace someapp
     /// </summary>
     public partial class create_account_airport_selection
     {
-        public struct PilotDetails
-        {
-            public string Username { get; set; }
-            public string Password { get; set; }
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public string Country { get; set; }
-            public string Type { get; set; }
-            public string ICAO { get; set; }
-            public float LatDec { get; set; }
-            public float LongDec { get; set; }
-        }
-
-        PilotDetails pilot = new PilotDetails();
+        account_classes.PilotDetails pilot = new account_classes.PilotDetails();
         create_account_utils __utils = new create_account_utils();
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 

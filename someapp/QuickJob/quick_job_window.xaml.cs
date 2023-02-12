@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using someapp.CreateAccount;
+using someapp.Settings;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -48,19 +49,24 @@ namespace someapp.QuickJob
 
             string path = $"profiles/{username}";
 
-            if (Directory.Exists(path) && File.Exists(path + "/profile.json"))
+            if (File.Exists(path + "/profile.json") && File.Exists(path + "/quickjob_settings.json"))
             {
                 string profileFilePath = $"profiles/{username}/profile.json";
-                string profileFileDecrytpedPath = $"profiles/{username}/profileDecrypted.json";
+                string quickJobGenFilePath = $"profiles/{username}/quickjob_settings.json";
 
-                string encryptedText = File.ReadAllText(profileFilePath);
-                string decryptedText = create_account_utils.DecryptText(encryptedText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+                string encryptedTextProfile = File.ReadAllText(profileFilePath);
+                string decryptedTextProfile = create_account_utils.DecryptText(encryptedTextProfile, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+
+                string encryptedTextJobGen = File.ReadAllText(quickJobGenFilePath);
+                string decryptedTextJobGen = create_account_utils.DecryptText(encryptedTextJobGen, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
 
-                PilotDetails pilot = JsonConvert.DeserializeObject<PilotDetails>(decryptedText);
-                
+                account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<account_classes.PilotDetails>(decryptedTextProfile);
+                settings_generation_classes.quick_job_generation quickJobSettings = JsonConvert.DeserializeObject<settings_generation_classes.quick_job_generation>(decryptedTextJobGen);
 
-                job_Utils.generateJobAirport(pilot.ICAO,100,pilot.LatDec,pilot.LongDec);
+
+                for (int i = 0; i < quickJobSettings.AirportPeopleIterations; i++)
+                    job_Utils.generateJobAirportPeopleTransport(pilot.ICAO, int.Parse(quickJobSettings.maxDistance.ToString()), pilot.LatDec, pilot.LongDec);
 
 
                 int jobID = 0;
@@ -104,6 +110,12 @@ namespace someapp.QuickJob
             textbox_jobName.Text = job_Utils.jobs[jobIndex].job_name;
             textbox_distanceNM.Text = $"{Math.Round((job_Utils.jobs[jobIndex].job_distance / 1852)),2} nm";
             textbox_distanceKM.Text = $"{Math.Round((job_Utils.jobs[jobIndex].job_distance / 1000),2)} km";
+            textBox_jobDesc.Text = job_Utils.jobs[jobIndex].description;
+            
+            if (job_Utils.jobs[jobIndex].type == "peopleTransport")
+            {
+                textbox_weight.Text = $"PAX {job_Utils.jobs[jobIndex].weight}";
+            }
 
             
 

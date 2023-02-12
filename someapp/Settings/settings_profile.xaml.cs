@@ -23,19 +23,6 @@ namespace someapp.Settings
     /// </summary>
     public partial class settings_profile
     {
-        public struct PilotDetails
-        {
-            public string Username { get; set; }
-            public string Password { get; set; }
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public string Country { get; set; }
-            public string Type { get; set; }
-            public string ICAO { get; set; }
-            public float LatDec { get; set; }
-            public float LongDec { get; set; }
-        }
-
 
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
         public string pICAO { get; set; }
@@ -49,18 +36,15 @@ namespace someapp.Settings
 
             string path = $"profiles/{username}";
 
-
-
             if (Directory.Exists(path) && File.Exists(path + "/profile.json"))
             {
                 string profileFilePath = $"profiles/{username}/profile.json";
-                string profileFileDecrytpedPath = $"profiles/{username}/profileDecrypted.json";
 
                 string encryptedText = File.ReadAllText(profileFilePath);
                 string decryptedText = create_account_utils.DecryptText(encryptedText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
 
-                PilotDetails pilot = JsonConvert.DeserializeObject<PilotDetails>(decryptedText);
+                account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<account_classes.PilotDetails>(decryptedText);
 
                 textbox_Username.Text = pilot.Username;
                 textbox_Name.Text = pilot.Name;
@@ -78,7 +62,7 @@ namespace someapp.Settings
         private void button_Save_Click(object sender, RoutedEventArgs e)
         {
 
-            PilotDetails pilotSave = new PilotDetails();
+            account_classes.PilotDetails pilotSave = new account_classes.PilotDetails();
 
             pilotSave.Username = textbox_Username.Text;
             pilotSave.Name = textbox_Name.Text;
@@ -87,6 +71,8 @@ namespace someapp.Settings
             pilotSave.Country = combo_Country.Text;
             pilotSave.Type= combo_Type.Text;
             pilotSave.ICAO= pICAO;
+            pilotSave.LatDec = platDec;
+            pilotSave.LongDec = plongDec;
 
             string toJson = JsonConvert.SerializeObject(pilotSave);
             string path = $"profiles/{pilotSave.Username}";

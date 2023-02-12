@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using someapp.Settings;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,21 +22,9 @@ namespace someapp.CreateAccount
     /// </summary>
     public partial class create_account_summary
     {
-        public struct PilotDetails
-        {
-            public string Username { get; set; }
-            public string Password { get; set; }
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public string Country { get; set; }
-            public string Type { get; set; }
-            public string ICAO { get; set; }
 
-            public float LatDec { get; set; }
-            public float LongDec { get; set; }
-        }
 
-        PilotDetails pilot = new PilotDetails();
+        account_classes.PilotDetails pilot = new account_classes.PilotDetails();
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
         public create_account_summary(string Username, string Password, string Name, string Surname, string Country, string Type, string ICAO, float Lat, float Lon)
@@ -46,7 +35,6 @@ namespace someapp.CreateAccount
 
             if (debug_Tools.debugMsg)
                 MessageBox.Show($"Summary   Username: {Username} Password: {Password} Name: {Name} Surname: {Surname} Country: {Country} Type: {Type} ICAO: {ICAO}");
-
 
             pilot.Name = Name;
             pilot.Surname = Surname;
@@ -74,27 +62,32 @@ namespace someapp.CreateAccount
 
         private void button_RegisterPilot_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            //Default quick job generation settings
+            settings_generation_classes.quick_job_generation job_Generationn = new settings_generation_classes.quick_job_generation();
+            job_Generationn.maxDistance = 150;
+            job_Generationn.AirportPeopleIterations = 3;
+
 
 
             //Create here some saving mechanism
-            string toJson = JsonConvert.SerializeObject(pilot);
+            string toJsonAccount = JsonConvert.SerializeObject(pilot);
+            string toJsonQuickJobGenerationSettings = JsonConvert.SerializeObject(job_Generationn);
+
             string path = $"profiles/{pilot.Username}";
-
-
-
 
             if (Directory.Exists(path))
             {
 
-                string encryptedMsg = create_account_utils.EncryptText(toJson, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+                string encryptedAccount = create_account_utils.EncryptText(toJsonAccount, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+                string encryptedQuickJobGenerationSettings = create_account_utils.EncryptText(toJsonQuickJobGenerationSettings, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
 
-                File.WriteAllText(path + "/profile.json", encryptedMsg); 
+                File.WriteAllText(path + "/profile.json", encryptedAccount); 
+                File.WriteAllText(path + "/quickjob_settings.json", encryptedQuickJobGenerationSettings); 
 
                 if (debug_Tools.debugMsg)
                     MessageBox.Show(path);
-
 
                 MessageBox.Show("Account Created. You can now login");
                 MainWindow mainWindow = new MainWindow();   
@@ -102,18 +95,16 @@ namespace someapp.CreateAccount
                 mainWindow.Show();
                 this.Close();
 
-
-
-
-
             }
             else
             {
                 Directory.CreateDirectory(path);
 
-                string encryptedMsg = create_account_utils.EncryptText(toJson, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+                string encryptedAccount = create_account_utils.EncryptText(toJsonAccount, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+                string encryptedQuickJobGenerationSettings = create_account_utils.EncryptText(toJsonQuickJobGenerationSettings, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
-                File.WriteAllText(path + "/profile.json", encryptedMsg);
+                File.WriteAllText(path + "/profile.json", encryptedAccount);
+                File.WriteAllText(path + "/quickjob_settings.json", encryptedQuickJobGenerationSettings);
 
                 if (debug_Tools.debugMsg)
                     MessageBox.Show(path);

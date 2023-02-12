@@ -1,4 +1,5 @@
-﻿using System;
+﻿using someapp.CreateAccount;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +20,6 @@ namespace someapp
     /// </summary>
     public partial class create_account
     {
-
-        public struct pilot_info
-        {
-            public string username { get; set; }
-            public string name { get; set; }
-            public string surname { get; set; }
-            public string password { set; get; }
-            public string aircraft_type { set; get; }
-            public string country { set; get; }
-        }
-
-
-
         public create_account(string username)
         {
             InitializeComponent();
@@ -44,19 +32,19 @@ namespace someapp
             if (texbox_pilotUsername.Text != "" && texbox_pilotName.Text != "" && texbox_pilotPassword.Password.ToString() != "" && texbox_pilotSurname.Text != "" && combo_aircraftType.Text != "" && combo_Country.Text != "")
             {
                 debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
-                pilot_info pilot = new pilot_info();
+                account_classes.PilotDetails pilot = new account_classes.PilotDetails();
 
-                pilot.username = texbox_pilotUsername.Text;
-                pilot.password = texbox_pilotPassword.Password.ToString();
-                pilot.name = texbox_pilotName.Text;
-                pilot.surname = texbox_pilotSurname.Text;
-                pilot.country = combo_Country.Text;
-                pilot.aircraft_type = combo_aircraftType.Text;
+                pilot.Username = texbox_pilotUsername.Text;
+                pilot.Password = texbox_pilotPassword.Password.ToString();
+                pilot.Name = texbox_pilotName.Text;
+                pilot.Surname = texbox_pilotSurname.Text;
+                pilot.Country = combo_Country.Text;
+                pilot.Type = combo_aircraftType.Text;
 
                 if (debug_Tools.debugMsg)
-                    MessageBox.Show($"Username: {pilot.username} Password: {pilot.password} Name: {pilot.name} Surname: {pilot.surname} Country: {pilot.country} Type: {pilot.aircraft_type}");
+                    MessageBox.Show($"Username: {pilot.Username} Password: {pilot.Password} Name: {pilot.Name} Surname: {pilot.Surname} Country: {pilot.Country} Type: {pilot.Type}");
 
-                create_account_airport_selection airport_Selection = new create_account_airport_selection(pilot.username, pilot.password, pilot.name,pilot.surname,pilot.aircraft_type,pilot.country);
+                create_account_airport_selection airport_Selection = new create_account_airport_selection(pilot.Username, pilot.Password, pilot.Name,pilot.Surname,pilot.Type,pilot.Country);
 
                 airport_Selection.Show();
                 this.Close();
@@ -81,19 +69,19 @@ namespace someapp
                 if (texbox_pilotUsername.Text != "" && texbox_pilotName.Text != "" && texbox_pilotPassword.Password.ToString() != "" && texbox_pilotSurname.Text != "" && combo_aircraftType.Text != "" && combo_Country.Text != "")
                 {
                     debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
-                    pilot_info pilot = new pilot_info();
+                    account_classes.PilotDetails pilot = new account_classes.PilotDetails();
 
-                    pilot.username = texbox_pilotUsername.Text;
-                    pilot.password = texbox_pilotPassword.Password.ToString();
-                    pilot.name = texbox_pilotName.Text;
-                    pilot.surname = texbox_pilotSurname.Text;
-                    pilot.country = combo_Country.Text;
-                    pilot.aircraft_type = combo_aircraftType.Text;
+                    pilot.Username = texbox_pilotUsername.Text;
+                    pilot.Password = texbox_pilotPassword.Password.ToString();
+                    pilot.Name = texbox_pilotName.Text;
+                    pilot.Surname = texbox_pilotSurname.Text;
+                    pilot.Country = combo_Country.Text;
+                    pilot.Type = combo_aircraftType.Text;
 
                     if (debug_Tools.debugMsg)
-                        MessageBox.Show($"Username: {pilot.username} Password: {pilot.password} Name: {pilot.name} Surname: {pilot.surname} Country: {pilot.country} Type: {pilot.aircraft_type}");
+                        MessageBox.Show($"Username: {pilot.Username} Password: {pilot.Password} Name: {pilot.Name} Surname: {pilot.Surname} Country: {pilot.Country} Type: {pilot.Type}");
 
-                    create_account_airport_selection airport_Selection = new create_account_airport_selection(pilot.username, pilot.password, pilot.name, pilot.surname, pilot.aircraft_type, pilot.country);
+                    create_account_airport_selection airport_Selection = new create_account_airport_selection(pilot.Username, pilot.Password, pilot.Name, pilot.Surname, pilot.Type, pilot.Country);
 
                     airport_Selection.Show();
                     this.Close();

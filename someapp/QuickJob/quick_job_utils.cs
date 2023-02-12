@@ -11,25 +11,11 @@ namespace someapp.QuickJob
 {
     internal class quick_job_utils
     {
-        public class job_info
-        {
-            public string id { get; set; }
-            public string job_name { get; set; }
-           // public string job_description { get; set; }
-            public double job_distance { get; set; }
-            public string start_ICAO { get; set; }
-            public string end_ICAO { get; set; }
-            //public int weight { get; set; }
-        }
-
-
-
-
-
-        public List<job_info> jobs = new List<job_info>();
-        public List<string> job_names_airport = new List<string>();
+        public List<quick_job_classes.job_info> jobs = new List<quick_job_classes.job_info>();
+        public List<string> job_names_generate_aiport = new List<string>();
         public string selectedAirportJobName;
         Random random = new Random();
+        Random random2 = new Random();
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
         private static Random randomm = new Random();
@@ -43,22 +29,17 @@ namespace someapp.QuickJob
 
         private void generateJobNameAirport()
         {
-            job_names_airport.Add("Commercial Airline Services");
-            job_names_airport.Add("Private Jet Charters");
-            job_names_airport.Add("Executive and VIP Transportation");
-            job_names_airport.Add("Aerial Pollution Monitoring and Control");
+            job_names_generate_aiport.Add("Commercial Airline Services");
+            job_names_generate_aiport.Add("Private Jet Charters");
+            job_names_generate_aiport.Add("Executive and VIP Transportation");
 
             int randomJobNameIndex = random.Next(0, 3);
 
-            selectedAirportJobName = job_names_airport[randomJobNameIndex].ToString();
-
-
-
+            selectedAirportJobName = job_names_generate_aiport[randomJobNameIndex].ToString();
         }
 
-
         //Improve it then
-        public void generateJobAirport(string startICAO, int distance, float startLat, float startLon)
+        public void generateJobAirportPeopleTransport(string startICAO, int distance, float startLat, float startLon)
         {
 
             if (debug_Tools.debugMsg)
@@ -83,14 +64,54 @@ namespace someapp.QuickJob
                       MessageBox.Show(calculatedDistance.ToString());
 
                     generateJobNameAirport();
+                    string jobDesc;
+                    int paxCount = 0;
 
-                    job_info job = new job_info
+                    if (distance <= 150)
+                        paxCount = random2.Next(3,7);
+                    if (distance > 150)
+                        paxCount = random2.Next(7, 20);
+                    if (distance > 170)
+                        paxCount = random2.Next(20, 150);
+
+
+
+
+
+                    switch (selectedAirportJobName)
+                    {
+                        case "Commercial Airline Services":
+                            jobDesc = "The Commercial Airline " +
+                                "Services Specialist is responsible for ensuring a smooth " +
+                                "and efficient operation of all commercial airline services. " +
+                                "This includes overseeing ground handling services, passenger and cargo handling, " +
+                                "and flight dispatch operations.";
+                            break;
+                        case "Private Jet Charters":
+                            jobDesc = "The Private Jet Charters Specialist is responsible for managing the end-to-end " +
+                                "operations of private jet charters, including flight planning, aircraft selection, and customer service.";
+                            break;
+                        case "Executive and VIP Transportation":
+                            jobDesc = "The Executive and VIP Transportation Specialist is responsible for managing high-end transportation " +
+                                "services for executives, VIPs, and other high-profile clients. The ideal candidate has strong customer service skills, " +
+                                "is highly organized, and has experience in luxury transportation";   
+                            break;
+                        default:
+                            jobDesc = "No description";
+                            break;
+                    }
+
+
+                    quick_job_classes.job_info job = new quick_job_classes.job_info()
                     {
                         id = RandomString(12),
                         job_name = selectedAirportJobName,
                         job_distance = calculatedDistance,
                         start_ICAO = startICAO,
-                        end_ICAO = columns[1]
+                        end_ICAO = columns[1],
+                        description = jobDesc,
+                        type = "peopleTransport",
+                        weight = paxCount
                     };
  
                     jobs.Add(job);
