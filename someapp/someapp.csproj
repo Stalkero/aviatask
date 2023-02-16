@@ -125,6 +125,9 @@
     </ApplicationDefinition>
     <Compile Include="CreateAccount\account_classes.cs" />
     <Compile Include="Debug\debug_params.cs" />
+    <Compile Include="JobGen\cargo.cs" />
+    <Compile Include="JobGen\people.cs" />
+    <Compile Include="JobGen\utils.cs" />
     <Compile Include="QuickJob\quick_job_classes.cs" />
     <Compile Include="QuickJob\quick_job_utils.cs" />
     <Compile Include="QuickJob\quick_job_window.xaml.cs">

@@ -18,6 +18,7 @@ namespace someapp
         public class debug_tools
         {
             public bool debugMsg = true;
+            public bool jobGenInfo = false;
         }
     }
 }

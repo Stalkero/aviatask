@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,21 +28,17 @@ namespace someapp.QuickJob
     public partial class quick_job_window
     {
 
-        quick_job_utils job_Utils = new quick_job_utils();
+        JobGen.people people_Job_Gen = new JobGen.people();
+        JobGen.cargo cargo_Job_Gen = new JobGen.cargo();
+
+        JobGen.utils jobList = new JobGen.utils();
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
+
 
 
         public quick_job_window(string username)
         {
             InitializeComponent();
-
-
-            var settings = new CefSettings();
-            settings.CefCommandLineArgs.Add("disable-web-security", "1");
-            settings.CefCommandLineArgs.Add("disable-xss-auditor", "1");
-
-
-
 
             string path = $"profiles/{username}";
 
@@ -61,13 +58,32 @@ namespace someapp.QuickJob
                 settings_generation_classes.quick_job_generation quickJobSettings = JsonConvert.DeserializeObject<settings_generation_classes.quick_job_generation>(decryptedTextJobGen);
 
 
+                //Here add new jobs
+
                 for (int i = 0; i < quickJobSettings.AirportPeopleIterations; i++)
-                    job_Utils.generateJobAirportPeopleTransport(pilot.ICAO, int.Parse(quickJobSettings.maxDistance.ToString()), pilot.LatDec, pilot.LongDec);
+                    people_Job_Gen.generateJobAirportPeopleTransport(pilot.ICAO, int.Parse(quickJobSettings.maxDistance.ToString()), pilot.LatDec, pilot.LongDec);
+
+                for (int i = 0; i < quickJobSettings.CargoJobGenIterations; i++)
+                    cargo_Job_Gen.generateJobAirportCargo(pilot.ICAO, int.Parse(quickJobSettings.maxDistance.ToString()), pilot.LatDec, pilot.LongDec,pilot.Type);
+
+                //Each job needs to be added to all jobs list
+
+
+                foreach (var job in people_Job_Gen.jobsPeople)
+                {
+                    jobList.AllJobs.Add(job);
+                }
+
+                foreach (var job in cargo_Job_Gen.jobsCargo)
+                {
+                    jobList.AllJobs.Add(job);
+                }
+
+
 
 
                 int jobID = 0;
-
-                foreach(var job in job_Utils.jobs)
+                foreach (var job in jobList.AllJobs)
                 {
 
                     Wpf.Ui.Controls.Button button = new Wpf.Ui.Controls.Button();
@@ -77,11 +93,13 @@ namespace someapp.QuickJob
                     button.Margin = new Thickness(0, 10, 0, 10);
                     button.VerticalAlignment = VerticalAlignment.Center;
                     button.Click += button_job_Click;
-                    
+
                     panel_Jobs.Children.Add(button);
                     jobID++;
 
                 }
+
+
 
 
             }
@@ -101,21 +119,21 @@ namespace someapp.QuickJob
                 MessageBox.Show("Button " + jobIndex + " was clicked");
 
 
-            textbox_StartIcao.Text = job_Utils.jobs[jobIndex].start_ICAO;
-            textbox_endIcao.Text = job_Utils.jobs[jobIndex].end_ICAO;
-            textbox_jobName.Text = job_Utils.jobs[jobIndex].job_name;
-            textbox_distanceNM.Text = $"{Math.Round((job_Utils.jobs[jobIndex].job_distance / 1852)),2} nm";
-            textbox_distanceKM.Text = $"{Math.Round((job_Utils.jobs[jobIndex].job_distance / 1000),2)} km";
-            textBox_jobDesc.Text = job_Utils.jobs[jobIndex].description;
+            textbox_StartIcao.Text = jobList.AllJobs[jobIndex].start_ICAO;
+            textbox_endIcao.Text = jobList.AllJobs[jobIndex].end_ICAO;
+            textbox_jobName.Text = jobList.AllJobs[jobIndex].job_name;
+            textbox_distanceNM.Text = $"{Math.Round((jobList.AllJobs[jobIndex].job_distance / 1852)),2} nm";
+            textbox_distanceKM.Text = $"{Math.Round((jobList.AllJobs[jobIndex].job_distance / 1000),2)} km";
+            textBox_jobDesc.Text = jobList.AllJobs[jobIndex].description;
 
             string html = "<!doctype html>" +
-            "<html lang=\"en\"><head><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.css\" type=\"text/css\"><style>.map {height: 850px;width: 850px;}</style>" +
+            "<html lang=\"en\"><head><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.css\" type=\"text/css\"><style>.map {height: 800px;width: 940px;}</style>" +
             "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.js\"></script><title>OpenLayers example</title></head><body><div id=\"map\" class=\"map\"></div><script type=\"text/javascript\">" +
             "var map = new ol.Map({target: 'map',layers:[new ol.layer.Tile({source: new ol.source.OSM()})],view: new ol.View({center: ol.proj." +
-            $"fromLonLat([{job_Utils.jobs[jobIndex].startLon}, {job_Utils.jobs[jobIndex].startLat}])" +
+            $"fromLonLat([{jobList.AllJobs[jobIndex].startLon}, {jobList.AllJobs[jobIndex].startLat}])" +
             ",zoom: 5})});" +
-            $"var lonlat = ol.proj.fromLonLat([{job_Utils.jobs[jobIndex].startLon}, {job_Utils.jobs[jobIndex].startLat}]);      " +
-            $"var location2 = ol.proj.fromLonLat([{job_Utils.jobs[jobIndex].endLon}, {job_Utils.jobs[jobIndex].endLat}]);" +
+            $"var lonlat = ol.proj.fromLonLat([{jobList.AllJobs[jobIndex].startLon}, {jobList.AllJobs[jobIndex].startLat}]);      " +
+            $"var location2 = ol.proj.fromLonLat([{jobList.AllJobs[jobIndex].endLon}, {jobList.AllJobs[jobIndex].endLat}]);" +
             "var linie2style = [\r\n\t\t\t\t// linestring\r\n\t\t\t\tnew ol.style.Style({\r\n\t\t\t\t  stroke: new ol.style.Stroke({\r\n\t\t\t\t\tcolor: '#d12710',\r\n\t\t\t\t\twidth: 3\r\n\t\t\t\t  })\r\n\t\t\t\t})\r\n\t\t\t  ];\r\n\t\t\t  \t\t\t\r\n\t\t\tvar linie2 = new ol.layer.Vector({\r\n\t\t\t\t\tsource: new ol.source.Vector({\r\n\t\t\t\t\tfeatures: [new ol.Feature({\r\n\t\t\t\t\t\tgeometry: new ol.geom.LineString([lonlat, location2]),\r\n\t\t\t\t\t\tname: 'Line',\r\n\t\t\t\t\t})]\r\n\t\t\t\t})\r\n\t\t\t});\r\n\t\t\t\r\n\t\t\tlinie2.setStyle(linie2style);\r\n\t\t\tmap.addLayer(linie2);\r\n      \r\n    </script>\r\n  </body>\r\n</html>";
             browser.LoadHtml(html);
 
@@ -123,12 +141,17 @@ namespace someapp.QuickJob
 
 
 
-            if (job_Utils.jobs[jobIndex].type == "peopleTransport")
+            if (jobList.AllJobs[jobIndex].type == "peopleTransport")
             {
-                textbox_weight.Text = $"PAX {job_Utils.jobs[jobIndex].weight}";
+                textbox_weight.Text = $"PAX {jobList.AllJobs[jobIndex].weight}";
             }
 
-            
+            if (jobList.AllJobs[jobIndex].type == "cargoTransport")
+            {
+                textbox_weight.Text = $"{jobList.AllJobs[jobIndex].weight} kg";
+            }
+
+
 
 
         }

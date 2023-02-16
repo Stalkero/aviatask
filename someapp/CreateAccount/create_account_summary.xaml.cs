@@ -67,6 +67,7 @@ namespace someapp.CreateAccount
             settings_generation_classes.quick_job_generation job_Generationn = new settings_generation_classes.quick_job_generation();
             job_Generationn.maxDistance = 150;
             job_Generationn.AirportPeopleIterations = 3;
+            job_Generationn.CargoJobGenIterations = 3;
 
 
 

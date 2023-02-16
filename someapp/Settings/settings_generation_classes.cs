@@ -12,6 +12,7 @@ namespace someapp.Settings
         {
             public double maxDistance { get; set; }
             public int AirportPeopleIterations { get; set; }
+            public int CargoJobGenIterations { get; set; }
         }
     }
 }

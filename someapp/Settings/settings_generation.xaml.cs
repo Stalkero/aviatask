@@ -57,6 +57,7 @@ namespace someapp.Settings
 
                 numberBox_distance.Text = ReadGenerationSettings.maxDistance.ToString();
                 numberBox_AiportPeopleIterations.Text = ReadGenerationSettings.AirportPeopleIterations.ToString();
+                numberBox_cargojob_iterations.Text = ReadGenerationSettings.CargoJobGenIterations.ToString();
 
 
             }
@@ -68,6 +69,7 @@ namespace someapp.Settings
 
             genOptions.maxDistance = double.Parse(numberBox_distance.Text);
             genOptions.AirportPeopleIterations = int.Parse(numberBox_AiportPeopleIterations.Text);
+            genOptions.CargoJobGenIterations = int.Parse(numberBox_cargojob_iterations.Text);
 
             string genOptionsToJson = JsonConvert.SerializeObject(genOptions);
             string encryptedGenOptions = create_account_utils.EncryptText(genOptionsToJson, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");

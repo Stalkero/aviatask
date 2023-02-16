@@ -20,5 +20,7 @@
         <ui:Button x:Name="btn_saveGenOptions" Content="Save" Margin="0,684,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="24" Appearance="Primary" Click="btn_saveGenOptions_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,209,0,0" TextWrapping="Wrap" Text="People transport generation iterations" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="167"/>
         <ui:NumberBox x:Name="numberBox_AiportPeopleIterations" HorizontalAlignment="Left" Margin="186,209,0,0" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,264,0,0" TextWrapping="Wrap" Text="Cargo job generation iterations" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="167"/>
+        <ui:NumberBox x:Name="numberBox_cargojob_iterations" HorizontalAlignment="Left" Margin="186,256,0,0" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
     </Grid>
 </ui:UiWindow>
