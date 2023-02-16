@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:someapp.QuickJob"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
         Title="quick_job_window" Height="1032" Width="1920" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         ExtendsContentIntoTitleBar="True"
         WindowBackdropType="Mica" 
@@ -36,5 +39,6 @@
         <ui:TextBox x:Name="textBox_jobDesc" HorizontalAlignment="Left" Margin="386,307,0,0" TextWrapping="Wrap" Text="Select Job" VerticalAlignment="Top" Width="459" MinWidth="459" Height="136" MinHeight="136"/>
         <TextBlock HorizontalAlignment="Left" Margin="386,459,0,0" TextWrapping="Wrap" Text="Weight" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="459" TextAlignment="Center"/>
         <ui:TextBox x:Name="textbox_weight" HorizontalAlignment="Left" Margin="386,485,0,0" TextWrapping="Wrap" Text="Select job" VerticalAlignment="Top" Width="459" MinWidth="459" TextAlignment="Center" IsReadOnly="True" ClearButtonEnabled="False"/>
+        <wpf:ChromiumWebBrowser x:Name="browser" Margin="913,66,57,66" Background="White" />
     </Grid>
 </ui:UiWindow>

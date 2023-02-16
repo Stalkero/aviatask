@@ -111,7 +111,12 @@ namespace someapp.QuickJob
                         end_ICAO = columns[1],
                         description = jobDesc,
                         type = "peopleTransport",
-                        weight = paxCount
+                        weight = paxCount,
+                        startLat= startLat,
+                        startLon= startLon,
+                        endLat = double.Parse(columns[15]),
+                        endLon = double.Parse(columns[16])
+
                     };
  
                     jobs.Add(job);

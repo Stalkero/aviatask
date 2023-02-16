@@ -19,8 +19,10 @@ namespace someapp.QuickJob
             public int weight { get; set; }
             public string type { get; set; }
             public string description { get; set; }
-
-
+            public double startLat { get; set; }
+            public double startLon { get; set; }
+            public double endLat { get; set; }
+            public double endLon { get; set; }
         }
 
     }

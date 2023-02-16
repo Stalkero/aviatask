@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CefSharp;
+using CefSharp.Wpf;
+using Newtonsoft.Json;
 using someapp.CreateAccount;
 using someapp.Settings;
 using System;
@@ -25,19 +27,6 @@ namespace someapp.QuickJob
     public partial class quick_job_window
     {
 
-        public struct PilotDetails
-        {
-            public string Username { get; set; }
-            public string Password { get; set; }
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public string Country { get; set; }
-            public string Type { get; set; }
-            public string ICAO { get; set; }
-            public float LatDec { get; set; }
-            public float LongDec { get; set; }
-        }
-
         quick_job_utils job_Utils = new quick_job_utils();
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
@@ -45,6 +34,13 @@ namespace someapp.QuickJob
         public quick_job_window(string username)
         {
             InitializeComponent();
+
+
+            var settings = new CefSettings();
+            settings.CefCommandLineArgs.Add("disable-web-security", "1");
+            settings.CefCommandLineArgs.Add("disable-xss-auditor", "1");
+
+
 
 
             string path = $"profiles/{username}";
@@ -111,7 +107,22 @@ namespace someapp.QuickJob
             textbox_distanceNM.Text = $"{Math.Round((job_Utils.jobs[jobIndex].job_distance / 1852)),2} nm";
             textbox_distanceKM.Text = $"{Math.Round((job_Utils.jobs[jobIndex].job_distance / 1000),2)} km";
             textBox_jobDesc.Text = job_Utils.jobs[jobIndex].description;
-            
+
+            string html = "<!doctype html>" +
+            "<html lang=\"en\"><head><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.css\" type=\"text/css\"><style>.map {height: 850px;width: 850px;}</style>" +
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.js\"></script><title>OpenLayers example</title></head><body><div id=\"map\" class=\"map\"></div><script type=\"text/javascript\">" +
+            "var map = new ol.Map({target: 'map',layers:[new ol.layer.Tile({source: new ol.source.OSM()})],view: new ol.View({center: ol.proj." +
+            $"fromLonLat([{job_Utils.jobs[jobIndex].startLon}, {job_Utils.jobs[jobIndex].startLat}])" +
+            ",zoom: 5})});" +
+            $"var lonlat = ol.proj.fromLonLat([{job_Utils.jobs[jobIndex].startLon}, {job_Utils.jobs[jobIndex].startLat}]);      " +
+            $"var location2 = ol.proj.fromLonLat([{job_Utils.jobs[jobIndex].endLon}, {job_Utils.jobs[jobIndex].endLat}]);" +
+            "var linie2style = [\r\n\t\t\t\t// linestring\r\n\t\t\t\tnew ol.style.Style({\r\n\t\t\t\t  stroke: new ol.style.Stroke({\r\n\t\t\t\t\tcolor: '#d12710',\r\n\t\t\t\t\twidth: 3\r\n\t\t\t\t  })\r\n\t\t\t\t})\r\n\t\t\t  ];\r\n\t\t\t  \t\t\t\r\n\t\t\tvar linie2 = new ol.layer.Vector({\r\n\t\t\t\t\tsource: new ol.source.Vector({\r\n\t\t\t\t\tfeatures: [new ol.Feature({\r\n\t\t\t\t\t\tgeometry: new ol.geom.LineString([lonlat, location2]),\r\n\t\t\t\t\t\tname: 'Line',\r\n\t\t\t\t\t})]\r\n\t\t\t\t})\r\n\t\t\t});\r\n\t\t\t\r\n\t\t\tlinie2.setStyle(linie2style);\r\n\t\t\tmap.addLayer(linie2);\r\n      \r\n    </script>\r\n  </body>\r\n</html>";
+            browser.LoadHtml(html);
+
+
+
+
+
             if (job_Utils.jobs[jobIndex].type == "peopleTransport")
             {
                 textbox_weight.Text = $"PAX {job_Utils.jobs[jobIndex].weight}";
