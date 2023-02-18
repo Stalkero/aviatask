@@ -126,10 +126,12 @@
     <Compile Include="CreateAccount\account_classes.cs" />
     <Compile Include="Debug\debug_params.cs" />
     <Compile Include="JobGen\cargo.cs" />
+    <Compile Include="JobGen\classes.cs" />
     <Compile Include="JobGen\people.cs" />
     <Compile Include="JobGen\utils.cs" />
-    <Compile Include="QuickJob\quick_job_classes.cs" />
-    <Compile Include="QuickJob\quick_job_utils.cs" />
+    <Compile Include="QuickJob\quick_job_summary.xaml.cs">
+      <DependentUpon>quick_job_summary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuickJob\quick_job_window.xaml.cs">
       <DependentUpon>quick_job_window.xaml</DependentUpon>
     </Compile>
@@ -184,6 +186,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QuickJob\quick_job_summary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="QuickJob\quick_job_window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

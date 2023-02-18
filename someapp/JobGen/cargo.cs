@@ -16,7 +16,7 @@ namespace someapp.JobGen
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
         public List<string> job_cargo_types = new List<string>();
-        public List<quick_job_classes.job_info> jobsCargo = new List<quick_job_classes.job_info>();
+        public List<JobGen.classes.job_info> jobsCargo = new List<classes.job_info>();
         public string selectedCargoType { get; set; }
 
         Random random = new Random();
@@ -171,11 +171,15 @@ namespace someapp.JobGen
 
                     string jobDesc = $"Transport of selected goods.\n----------------\nTransport of: {selectedCargoType}";
 
-                    int weight = randomm.Next(40, 3000);
+                    int weight = 0;
+                    if (type == "Helicopter")
+                        weight = randomm.Next(40, 3000);
+                    if (type == "Plane")
+                        weight = randomm.Next(40, 5000);
 
 
-                
-                    quick_job_classes.job_info job = new quick_job_classes.job_info()
+                    //quick_job_classes.job_info job = new quick_job_classes.job_info()
+                    JobGen.classes.job_info job = new classes.job_info()
                     {
 
 

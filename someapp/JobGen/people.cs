@@ -19,7 +19,8 @@ namespace someapp.JobGen
 
         public List<string> job_names_people_transport_generate_aiport = new List<string>();
         public string selectedAirportJobName;
-        public List<quick_job_classes.job_info> jobsPeople = new List<quick_job_classes.job_info>();
+        public List <JobGen.classes.job_info> jobsPeople = new List<classes.job_info>();
+        //public List<quick_job_classes.job_info> jobsPeople = new List<quick_job_classes.job_info>();
 
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
@@ -98,7 +99,7 @@ namespace someapp.JobGen
                     }
 
 
-                    quick_job_classes.job_info job = new quick_job_classes.job_info()
+                    JobGen.classes.job_info job = new classes.job_info()
                     {
                         id = $"PT_{utils.RandomString(12)}",
                         job_name = selectedAirportJobName,

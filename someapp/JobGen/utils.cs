@@ -13,7 +13,7 @@ namespace someapp.JobGen
         private static Random randomm = new Random();
 
 
-        public List<quick_job_classes.job_info> AllJobs = new List<quick_job_classes.job_info>();
+        public List<JobGen.classes.job_info> AllJobs = new List<classes.job_info>();
 
 
         static GeoCoordinate GetLocationAtDistance(GeoCoordinate startLocation, double distanceNM, double bearing)
