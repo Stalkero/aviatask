@@ -17,7 +17,7 @@ namespace someapp.QuickJob
     /// <summary>
     /// Interaction logic for quick_job_summary.xaml
     /// </summary>
-    public partial class quick_job_summarys
+    public partial class quick_job_summary
     {
         public quick_job_summary()
         {
