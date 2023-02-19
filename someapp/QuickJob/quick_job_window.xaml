@@ -21,7 +21,7 @@
             ShowMaximize="False"/>
         <ui:TextBox x:Name="textbox_StartIcao" HorizontalAlignment="Left" Margin="386,158,0,0" TextWrapping="Wrap" Text="Select job" VerticalAlignment="Top" Width="212" MinWidth="212" TextAlignment="Center" IsReadOnly="True" ClearButtonEnabled="False"/>
         <ui:TextBox x:Name="textbox_endIcao" HorizontalAlignment="Left" Margin="633,158,0,0" TextWrapping="Wrap" Text="Select Job" VerticalAlignment="Top" Width="212" MinWidth="212" TextAlignment="Center" IsReadOnly="True" ClearButtonEnabled="False"/>
-        <ScrollViewer MinWidth="300" Margin="36,97,1564,42">
+        <ScrollViewer MinWidth="300" Margin="36,97,1564,114">
             <StackPanel x:Name="panel_Jobs">
 
 
@@ -41,6 +41,7 @@
         <ui:TextBox x:Name="textbox_weight" HorizontalAlignment="Left" Margin="386,485,0,0" TextWrapping="Wrap" Text="Select job" VerticalAlignment="Top" Width="459" MinWidth="459" TextAlignment="Center" IsReadOnly="True" ClearButtonEnabled="False"/>
         <wpf:ChromiumWebBrowser x:Name="browser" Margin="913,66,57,66" Background="White" Width="940" Height="940" />
         <TextBlock HorizontalAlignment="Left" Margin="918,31,0,0" TextWrapping="Wrap" Text="Map" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="940" TextAlignment="Center"/>
-        <ui:Button x:Name="btn_acceptjob" Content="Accept Job" Margin="386,536,0,0" VerticalAlignment="Top" Width="459" Appearance="Primary"/>
+        <ui:Button x:Name="btn_acceptjob" Content="Accept Job" Margin="386,536,0,0" VerticalAlignment="Top" Width="459" Appearance="Primary" Click="btn_acceptjob_Click"/>
+        <ui:Button x:Name="btn_GoBack" Content="Go back" Margin="36,953,0,0" VerticalAlignment="Top" Width="320" Appearance="Primary" Click="btn_GoBack_Click" />
     </Grid>
 </ui:UiWindow>

@@ -27,6 +27,11 @@ namespace someapp.QuickJob
     /// </summary>
     public partial class quick_job_window
     {
+        public string PilotUsername { get; set; }
+        public string PilotName { get; set; }
+        public string PilotSurname { get; set; }
+        public string selectedJobID { get; set; }
+        public double selectedJobDistance { get; set; }
 
         JobGen.people people_Job_Gen = new JobGen.people();
         JobGen.cargo cargo_Job_Gen = new JobGen.cargo();
@@ -36,9 +41,12 @@ namespace someapp.QuickJob
 
 
 
-        public quick_job_window(string username)
+        public quick_job_window(string username,string name,string surname)
         {
             InitializeComponent();
+            PilotUsername = username;
+            PilotName = name;
+            PilotSurname = surname;
 
             string path = $"profiles/{username}";
 
@@ -125,6 +133,8 @@ namespace someapp.QuickJob
             textbox_distanceNM.Text = $"{Math.Round((jobList.AllJobs[jobIndex].job_distance / 1852)),2} nm";
             textbox_distanceKM.Text = $"{Math.Round((jobList.AllJobs[jobIndex].job_distance / 1000),2)} km";
             textBox_jobDesc.Text = jobList.AllJobs[jobIndex].description;
+            selectedJobID = jobList.AllJobs[jobIndex].id;
+            selectedJobDistance = jobList.AllJobs[jobIndex].job_distance;
 
             string html = "<!doctype html>" +
             "<html lang=\"en\"><head><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.css\" type=\"text/css\"><style>.map {height: 800px;width: 940px;}</style>" +
@@ -154,6 +164,27 @@ namespace someapp.QuickJob
 
 
 
+        }
+
+        private void btn_acceptjob_Click(object sender, RoutedEventArgs e)
+        {
+            if (textbox_StartIcao.Text != "Select job")
+            {
+                quick_job_summary job_Summary = new quick_job_summary(PilotUsername, textbox_StartIcao.Text, textbox_endIcao.Text,selectedJobID,textbox_jobName.Text,selectedJobDistance,textbox_weight.Text,textBox_jobDesc.Text);
+                job_Summary.Show();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Select job from left");
+
+
+        }
+
+        private void btn_GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.main_menu menu = new MainMenu.main_menu(PilotUsername, PilotName, PilotSurname);
+            menu.Show();
+            this.Close();
         }
     }
 }

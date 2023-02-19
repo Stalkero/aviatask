@@ -172,9 +172,9 @@ namespace someapp.JobGen
                     string jobDesc = $"Transport of selected goods.\n----------------\nTransport of: {selectedCargoType}";
 
                     int weight = 0;
-                    if (type == "Helicopter")
+                    if (type == "Helicopters")
                         weight = randomm.Next(40, 3000);
-                    if (type == "Plane")
+                    if (type == "Planes")
                         weight = randomm.Next(40, 5000);
 
 

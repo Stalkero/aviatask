@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using someapp.CreateAccount;
+using System.Net.NetworkInformation;
 
 namespace someapp
 {
@@ -42,10 +43,10 @@ namespace someapp
 
         public MainWindow()
         {
-            InitializeComponent();
-
-
-
+            if (CheckForInternetConnection())
+                InitializeComponent();
+            else
+                MessageBox.Show("No internet connection. Program requires internet connection");
         }
 
         private void button_login_Click(object sender, RoutedEventArgs e)
@@ -117,7 +118,21 @@ namespace someapp
 
 
 
-
+        public static bool CheckForInternetConnection()
+        {
+            try
+            {
+                using (var ping = new Ping())
+                {
+                    var result = ping.Send("8.8.8.8"); // Use Google's DNS server IP address
+                    return (result.Status == IPStatus.Success);
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
 
