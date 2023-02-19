@@ -42,7 +42,7 @@
             <StackPanel x:Name="ChecklistPanel" Width="441" VerticalAlignment="Center" HorizontalAlignment="Center"></StackPanel>
         </ScrollViewer>
         <TextBlock HorizontalAlignment="Left" Margin="33,564,0,0" TextWrapping="Wrap" Text="Checklist" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="441" TextAlignment="Center"/>
-        <ProgressBar x:Name="Progress_ReadyToFly" HorizontalAlignment="Left" Height="35" Margin="1264,965,0,0" VerticalAlignment="Top" Width="602"/>
+        <ProgressBar x:Name="Progress_ReadyToFly" HorizontalAlignment="Left" Height="35" Margin="1264,965,0,0" VerticalAlignment="Top" Width="602" Maximum="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="1264,1005,0,0" TextWrapping="Wrap" Text="Progress" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="602" TextAlignment="Center"/>
     </Grid>
 </ui:UiWindow>
