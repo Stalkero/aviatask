@@ -72,7 +72,7 @@ namespace someapp.QuickJob
                     people_Job_Gen.generateJobAirportPeopleTransport(pilot.ICAO, int.Parse(quickJobSettings.maxDistance.ToString()), pilot.LatDec, pilot.LongDec);
 
                 for (int i = 0; i < quickJobSettings.CargoJobGenIterations; i++)
-                    cargo_Job_Gen.generateJobAirportCargo(pilot.ICAO, int.Parse(quickJobSettings.maxDistance.ToString()), pilot.LatDec, pilot.LongDec,pilot.Type);
+                    cargo_Job_Gen.generateJobAirportCargo(pilot.ICAO, int.Parse(quickJobSettings.maxDistance.ToString()), pilot.LatDec, pilot.LongDec,pilot.Type,pilot.Username,pilot.Name,pilot.Surname);
 
                 //Each job needs to be added to all jobs list
 

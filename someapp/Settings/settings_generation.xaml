@@ -22,5 +22,9 @@
         <ui:NumberBox x:Name="numberBox_AiportPeopleIterations" HorizontalAlignment="Left" Margin="186,209,0,0" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,264,0,0" TextWrapping="Wrap" Text="Cargo job generation iterations" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="167"/>
         <ui:NumberBox x:Name="numberBox_cargojob_iterations" HorizontalAlignment="Left" Margin="186,256,0,0" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
+        <ui:NumberBox x:Name="numberBox_cargojobhelicopterLoad" HorizontalAlignment="Left" Margin="186,300,0,0" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,300,0,0" TextWrapping="Wrap" Text="Cargo job generation how much cargo helicopter lifts" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="167" RenderTransformOrigin="0.494,2.632"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,346,0,0" TextWrapping="Wrap" Text="Cargo job generation how much cargo plane lifts" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="167" RenderTransformOrigin="0.494,2.632"/>
+        <ui:NumberBox x:Name="numberBox_cargojobPlaneLoad" HorizontalAlignment="Left" Margin="186,346,0,0" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
     </Grid>
 </ui:UiWindow>

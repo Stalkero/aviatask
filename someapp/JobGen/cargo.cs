@@ -1,4 +1,7 @@
-﻿using someapp.QuickJob;
+﻿using Newtonsoft.Json;
+using someapp.CreateAccount;
+using someapp.QuickJob;
+using someapp.Settings;
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
@@ -138,70 +141,101 @@ namespace someapp.JobGen
 
 
 
-        public void generateJobAirportCargo(string startICAO, int distance, float startLat, float startLon, string type)
+        public void generateJobAirportCargo(string startICAO, int distance, float startLat, float startLon, string type, string username, string name, string surname)
         {
+            string path = $"profiles/{username}";
 
-            if (debug_Tools.jobGenInfo)
-                MessageBox.Show("Searching");
-
-            string fileName = "db/airports.csv";
-
-            var startLoc = new GeoCoordinate(startLat, startLon);
-
-            foreach (var line in File.ReadLines(fileName))
+            if (File.Exists(path + "/profile.json") && File.Exists(path + "/quickjob_settings.json"))
             {
-                var columns = line.Split('\t');
+                string quickJobGenFilePath = $"profiles/{username}/quickjob_settings.json";
 
-                var endLoc = new GeoCoordinate(double.Parse(columns[15]), double.Parse(columns[16]));
-                var calculatedDistance = startLoc.GetDistanceTo(endLoc);
+                string encryptedTextJobGen = File.ReadAllText(quickJobGenFilePath);
+                string decryptedTextJobGen = create_account_utils.DecryptText(encryptedTextJobGen, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
+                settings_generation_classes.quick_job_generation quickJobSettings = JsonConvert.DeserializeObject<settings_generation_classes.quick_job_generation>(decryptedTextJobGen);
+                
+                if (debug_Tools.jobGenInfo)
+                    MessageBox.Show("Searching");
 
+                string fileName = "db/airports.csv";
 
-                if (calculatedDistance > 0 && calculatedDistance < distance * 1852 && columns[1] != startICAO)
+                var startLoc = new GeoCoordinate(startLat, startLon);
+
+                foreach (var line in File.ReadLines(fileName))
                 {
-                    if (debug_Tools.jobGenInfo)
-                        MessageBox.Show(calculatedDistance.ToString());
+                    var columns = line.Split('\t');
+
+                    var endLoc = new GeoCoordinate(double.Parse(columns[15]), double.Parse(columns[16]));
+                    var calculatedDistance = startLoc.GetDistanceTo(endLoc);
 
 
 
-
-                    generateCargoType(type);
-
-
-
-                    string jobDesc = $"Transport of selected goods.\n----------------\nTransport of: {selectedCargoType}";
-
-                    int weight = 0;
-                    if (type == "Helicopters")
-                        weight = randomm.Next(40, 3000);
-                    if (type == "Planes")
-                        weight = randomm.Next(40, 5000);
-
-
-                    //quick_job_classes.job_info job = new quick_job_classes.job_info()
-                    JobGen.classes.job_info job = new classes.job_info()
+                    if (calculatedDistance > 0 && calculatedDistance < distance * 1852 && columns[1] != startICAO)
                     {
+                        if (debug_Tools.jobGenInfo)
+                            MessageBox.Show(calculatedDistance.ToString());
+
+                        string jobDesc = $"Transport of selected goods.\n----------------\nTransport of: ";
+                        int weight = 0;
+
+                        if (type == "Helicopters")
+                        {
+                            for (int i = 0; i < quickJobSettings.CargoJobHelicopterLoadCount; i++)
+                            {
+                                generateCargoType(type);
+                                jobDesc += $"\n{selectedCargoType}";
+                            }
+                            weight = randomm.Next(40, 3000);
+                        }                            
+                        if (type == "Planes")
+                        {
+                            for (int i = 0; i < quickJobSettings.CargoJobPlaneLoadCount; i++)
+                            {
+                                generateCargoType(type);
+                                jobDesc += $"\n{selectedCargoType}";
+                            }
+                            weight = randomm.Next(40, 5000);
+                        }
+                            
 
 
-                        id = $"CT_{utils.RandomString(12)}",
-                        job_name = "Cargo transport",
-                        job_distance = calculatedDistance,
-                        start_ICAO = startICAO,
-                        end_ICAO = columns[1],
-                        description = jobDesc,
-                        type = "cargoTransport",
-                        weight = weight,
-                        startLat = startLat,
-                        startLon = startLon,
-                        endLat = double.Parse(columns[15]),
-                        endLon = double.Parse(columns[16])
-                    };
+                        //quick_job_classes.job_info job = new quick_job_classes.job_info()
+                        JobGen.classes.job_info job = new classes.job_info()
+                        {
 
-                    jobsCargo.Add(job);
+
+                            id = $"CT_{utils.RandomString(12)}",
+                            job_name = "Cargo transport",
+                            job_distance = calculatedDistance,
+                            start_ICAO = startICAO,
+                            end_ICAO = columns[1],
+                            description = jobDesc,
+                            type = "cargoTransport",
+                            weight = weight,
+                            startLat = startLat,
+                            startLon = startLon,
+                            endLat = double.Parse(columns[15]),
+                            endLon = double.Parse(columns[16])
+                        };
+
+                        jobsCargo.Add(job);
+                    }
                 }
+                if (debug_Tools.jobGenInfo)
+                    MessageBox.Show("Found");
+
             }
-            if (debug_Tools.jobGenInfo)
-                MessageBox.Show("Found");
+
+            
+
+
+
+
+
+
+
+
+
 
 
 
