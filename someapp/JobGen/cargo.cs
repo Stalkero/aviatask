@@ -197,9 +197,6 @@ namespace someapp.JobGen
                             weight = randomm.Next(40, 5000);
                         }
                             
-
-
-                        //quick_job_classes.job_info job = new quick_job_classes.job_info()
                         JobGen.classes.job_info job = new classes.job_info()
                         {
 
@@ -225,21 +222,6 @@ namespace someapp.JobGen
                     MessageBox.Show("Found");
 
             }
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
