@@ -67,9 +67,9 @@ namespace someapp.MainMenu
 
         private void button_quick_job_Click(object sender, RoutedEventArgs e)
         {
-            QuickJob.quick_job_window quick_Job = new QuickJob.quick_job_window(pilot.Username,pilot.Name,pilot.Surname);
+            QuickJob.selectJob jobSelection = new QuickJob.selectJob(pilot.Username, pilot.Name, pilot.Surname);
             this.Close();
-            quick_Job.Show();
+            jobSelection.Show();
         }
     }
 }

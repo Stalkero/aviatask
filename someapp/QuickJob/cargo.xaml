@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:someapp.QuickJob"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        xmlns:Wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" x:Class="someapp.QuickJob.quick_job_summary"
+        xmlns:Wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" x:Class="someapp.QuickJob.cargo"
         mc:Ignorable="d"
         Title="quick_job_summary" Height="1032" Width="1920" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         ExtendsContentIntoTitleBar="True"

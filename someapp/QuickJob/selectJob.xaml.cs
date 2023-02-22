@@ -25,7 +25,7 @@ namespace someapp.QuickJob
     /// <summary>
     /// Interaction logic for quick_job_window.xaml
     /// </summary>
-    public partial class quick_job_window
+    public partial class selectJob
     {
         public string PilotUsername { get; set; }
         public string PilotName { get; set; }
@@ -41,7 +41,7 @@ namespace someapp.QuickJob
 
 
 
-        public quick_job_window(string username,string name,string surname)
+        public selectJob(string username,string name,string surname)
         {
             InitializeComponent();
             PilotUsername = username;
@@ -130,6 +130,7 @@ namespace someapp.QuickJob
             textbox_StartIcao.Text = jobList.AllJobs[jobIndex].start_ICAO;
             textbox_endIcao.Text = jobList.AllJobs[jobIndex].end_ICAO;
             textbox_jobName.Text = jobList.AllJobs[jobIndex].job_name;
+            textbox_jobID.Text = jobList.AllJobs[jobIndex].id;
             textbox_distanceNM.Text = $"{Math.Round((jobList.AllJobs[jobIndex].job_distance / 1852)),2} nm";
             textbox_distanceKM.Text = $"{Math.Round((jobList.AllJobs[jobIndex].job_distance / 1000),2)} km";
             textBox_jobDesc.Text = jobList.AllJobs[jobIndex].description;
@@ -168,10 +169,16 @@ namespace someapp.QuickJob
 
         private void btn_acceptjob_Click(object sender, RoutedEventArgs e)
         {
-            if (textbox_StartIcao.Text != "Select job")
+            if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("PT"))
             {
-                quick_job_summary job_Summary = new quick_job_summary(PilotUsername, textbox_StartIcao.Text, textbox_endIcao.Text,selectedJobID,textbox_jobName.Text,selectedJobDistance,textbox_weight.Text,textBox_jobDesc.Text);
-                job_Summary.Show();
+                QuickJob.people peopleTranportJob = new QuickJob.people(PilotUsername, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
+                peopleTranportJob.Show();
+                this.Close();
+            }
+            if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("CT"))
+            {
+                QuickJob.cargo cargoTranportJob = new QuickJob.cargo(PilotUsername, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
+                cargoTranportJob.Show();
                 this.Close();
             }
             else
