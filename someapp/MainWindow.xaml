@@ -17,7 +17,7 @@
 
         <ui:TitleBar
             ShowMaximize="False"
-            Title="Pilot tool: Log in"
+            Title="AviaTask: Log in"
             UseSnapLayout="True">
         </ui:TitleBar>
 

@@ -14,7 +14,7 @@
 
         <ui:TitleBar
             ShowMaximize="False"
-            Title="Pilot tool: Main menu"
+            Title="AviaTask: Main menu"
             UseSnapLayout="True">
         </ui:TitleBar>
 
