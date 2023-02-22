@@ -237,7 +237,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="README.md" />
     <None Include="Resources\psd\quickjob_btn.psd" />
   </ItemGroup>
   <ItemGroup>
