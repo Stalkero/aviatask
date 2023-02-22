@@ -175,7 +175,7 @@ namespace someapp.QuickJob
                 peopleTranportJob.Show();
                 this.Close();
             }
-            if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("CT"))
+            else if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("CT"))
             {
                 QuickJob.cargo cargoTranportJob = new QuickJob.cargo(PilotUsername, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
                 cargoTranportJob.Show();

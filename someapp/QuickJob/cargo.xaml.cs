@@ -41,77 +41,113 @@ namespace someapp.QuickJob
 
             textbox_JobStatus.Text = "Verify cargo loading";
 
-            Wpf.Ui.Controls.Button btn_chk_1 = new Wpf.Ui.Controls.Button();
-            btn_chk_1.Content = "1. Verify cargo loading";
-            btn_chk_1.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_1 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "1. Verify cargo loading",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_1.Click += CT_Btn_chk_1_Click;
-            btn_chk_1.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_2 = new Wpf.Ui.Controls.Button();
-            btn_chk_2.Content = "2. Confirm cargo weight and balance";
-            btn_chk_2.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_2 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "2. Confirm cargo weight and balance",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_2.Click += CT_Btn_chk_2_Click;
-            btn_chk_2.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_3 = new Wpf.Ui.Controls.Button();
-            btn_chk_3.Content = "3. Check weather conditions";
-            btn_chk_3.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_3 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "3. Check weather conditions",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_3.Click += CT_Btn_chk_3_Click;
-            btn_chk_3.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_4 = new Wpf.Ui.Controls.Button();
-            btn_chk_4.Content = "4. Get into aircraft";
-            btn_chk_4.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_4 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "4. Get into aircraft",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_4.Click += CT_Btn_chk_4_Click;
-            btn_chk_4.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_5 = new Wpf.Ui.Controls.Button();
-            btn_chk_5.Content = "CT_5. Pre-flight checklist";
-            btn_chk_5.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_5 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "CT_5. Pre-flight checklist",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_5.Click += CT_Btn_chk_5_Click;
-            btn_chk_5.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_6 = new Wpf.Ui.Controls.Button();
-            btn_chk_6.Content = "6. Check flight plan";
-            btn_chk_6.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_6 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "6. Check flight plan",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_6.Click += CT_Btn_chk_6_Click;
-            btn_chk_6.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_7 = new Wpf.Ui.Controls.Button();
-            btn_chk_7.Content = "7. Check weather report";
-            btn_chk_7.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_7 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "7. Check weather report",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_7.Click += CT_Btn_chk_7_Click;
-            btn_chk_7.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_8 = new Wpf.Ui.Controls.Button();
-            btn_chk_8.Content = "8. Engine start and getting ready to fly";
-            btn_chk_8.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_8 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "8. Engine start and getting ready to fly",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_8.Click += CT_Btn_chk_8_Click;
-            btn_chk_8.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_9 = new Wpf.Ui.Controls.Button();
-            btn_chk_9.Content = "9. Ready to fly";
-            btn_chk_9.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_9 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "9. Ready to fly",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_9.Click += CT_Btn_chk_9_Click;
-            btn_chk_9.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_10 = new Wpf.Ui.Controls.Button();
-            btn_chk_10.Content = "10. Flying";
-            btn_chk_10.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_10 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "10. Flying",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_10.Click += CT_Btn_chk_10_Click;
-            btn_chk_10.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_11 = new Wpf.Ui.Controls.Button();
-            btn_chk_11.Content = "11. Getting ready to land";
-            btn_chk_11.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_11 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "11. Getting ready to land",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_11.Click += CT_Btn_chk_11_Click;
-            btn_chk_11.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_12 = new Wpf.Ui.Controls.Button();
-            btn_chk_12.Content = "12. Finishing job";
-            btn_chk_12.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_12 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "12. Finishing job",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_12.Click += CT_Btn_chk_12_Click;
-            btn_chk_12.Margin = new Thickness(0, 5, 0, 5);
 
             ChecklistPanel.Children.Add(btn_chk_1);
             ChecklistPanel.Children.Add(btn_chk_2);

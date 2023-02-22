@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+using Wpf.Ui.Appearance;
 
 namespace someapp.QuickJob
 {
@@ -39,61 +41,98 @@ namespace someapp.QuickJob
             browserLeft.Address = $"https://fshub.io/airport/{startICAO}/overview";
             browserRight.Address = $"https://fshub.io/airport/{endICAO}/overview";
 
-            textbox_JobStatus.Text = "Get into aircraft";
+            textbox_JobStatus.Text = "Check weather conditions";
 
-            Wpf.Ui.Controls.Button btn_chk_1 = new Wpf.Ui.Controls.Button();
-            btn_chk_1.Content = "1. Get into aircraft";
-            btn_chk_1.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_1 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "1. Check weather conditions",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5),
+            };
             btn_chk_1.Click += PT_Btn_chk_1_Click;
-            btn_chk_1.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_2 = new Wpf.Ui.Controls.Button();
-            btn_chk_2.Content = "2. Pre-flight checklist";
-            btn_chk_2.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_2 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "2. Get into aircraft",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_2.Click += PT_Btn_chk_2_Click;
-            btn_chk_2.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_3 = new Wpf.Ui.Controls.Button();
-            btn_chk_3.Content = "3. Check flight plan";
-            btn_chk_3.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_3 = new Wpf.Ui.Controls.Button() 
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "3. Pre-flight checklist",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_3.Click += PT_Btn_chk_3_Click;
-            btn_chk_3.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_4 = new Wpf.Ui.Controls.Button();
-            btn_chk_4.Content = "4. Check weather report";
-            btn_chk_4.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_4 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "4. Check flight plan",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_4.Click += PT_Btn_chk_4_Click;
-            btn_chk_4.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_5 = new Wpf.Ui.Controls.Button();
-            btn_chk_5.Content = "5. Engine start nad getting ready to fly";
-            btn_chk_5.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_5 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "5. Check weather report",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_5.Click += PT_Btn_chk_5_Click;
-            btn_chk_5.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_6 = new Wpf.Ui.Controls.Button();
-            btn_chk_6.Content = "6. Ready to fly";
-            btn_chk_6.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_6 = new Wpf.Ui.Controls.Button() 
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "6. Engine start nad getting ready to fly",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_6.Click += PT_Btn_chk_6_Click;
-            btn_chk_6.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_7 = new Wpf.Ui.Controls.Button();
-            btn_chk_7.Content = "7. Flying";
-            btn_chk_7.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_7 = new Wpf.Ui.Controls.Button() 
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "7. Ready to fly",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_7.Click += PT_Btn_chk_7_Click;
-            btn_chk_7.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_8 = new Wpf.Ui.Controls.Button();
-            btn_chk_8.Content = "8. Getting ready to land";
-            btn_chk_8.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_8 = new Wpf.Ui.Controls.Button() 
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "8. Flying",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_8.Click += PT_Btn_chk_8_Click;
-            btn_chk_8.Margin = new Thickness(0, 5, 0, 5);
 
-            Wpf.Ui.Controls.Button btn_chk_9 = new Wpf.Ui.Controls.Button();
-            btn_chk_9.Content = "9. Finishing job";
-            btn_chk_9.Width = 440;
+            Wpf.Ui.Controls.Button btn_chk_9 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "9. Getting ready to land",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
             btn_chk_9.Click += PT_Btn_chk_9_Click;
-            btn_chk_9.Margin = new Thickness(0, 5, 0, 5);
+
+            Wpf.Ui.Controls.Button btn_chk_10 = new Wpf.Ui.Controls.Button()
+            {
+                Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
+                Content = "10. Finishing job",
+                Width = 440,
+                Margin = new Thickness(0, 5, 0, 5)
+            };
+            btn_chk_10.Click += PT_Btn_chk_10_Click;
+
 
             ChecklistPanel.Children.Add(btn_chk_1);
             ChecklistPanel.Children.Add(btn_chk_2);
@@ -104,6 +143,7 @@ namespace someapp.QuickJob
             ChecklistPanel.Children.Add(btn_chk_7);
             ChecklistPanel.Children.Add(btn_chk_8);
             ChecklistPanel.Children.Add(btn_chk_9);
+            ChecklistPanel.Children.Add(btn_chk_10);
 
 
 
@@ -111,25 +151,28 @@ namespace someapp.QuickJob
 
         private void PT_Btn_chk_1_Click(object sender, RoutedEventArgs e)
         {
-            Button clickedButton = (Button)sender;
-
-            clickedButton.Content += "✓";
-            clickedButton.IsEnabled = false;
-            Progress_ReadyToFly.Value += 10;
-            status = 1;
-            textbox_JobStatus.Text = "Confirm cargo weight and balance";
-
+            if (status == 0)
+            {
+                Button clickedButton = (Button)sender;
+                clickedButton.Content += " ✓";
+                clickedButton.IsEnabled = false;
+                Progress_ReadyToFly.Value += 10;
+                status = 1;
+                textbox_JobStatus.Text = "Get into aircraft";
+            }
+            else
+                MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_2_Click(object sender, RoutedEventArgs e)
         {
             if (status == 1)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 2;
-                textbox_JobStatus.Text = "Check weather conditions";
+                textbox_JobStatus.Text = "Pre-flight checklist";
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -139,11 +182,11 @@ namespace someapp.QuickJob
             if (status == 2)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 3;
-                textbox_JobStatus.Text = "Get into aircraft";
+                textbox_JobStatus.Text = "Check flight plan";
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -153,11 +196,11 @@ namespace someapp.QuickJob
             if (status == 3)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 4;
-                textbox_JobStatus.Text = "Pre-flight checklist";
+                textbox_JobStatus.Text = "Check weather report";
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -167,11 +210,11 @@ namespace someapp.QuickJob
             if (status == 4)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 5;
-                textbox_JobStatus.Text = "Check flight plan";
+                textbox_JobStatus.Text = "Engine start nad getting ready to fly";
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -181,11 +224,11 @@ namespace someapp.QuickJob
             if (status == 5)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 6;
-                textbox_JobStatus.Text = "Check weather report";
+                textbox_JobStatus.Text = "Ready to fly";
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -195,11 +238,11 @@ namespace someapp.QuickJob
             if (status == 6)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 7;
-                textbox_JobStatus.Text = "Engine start nad getting ready to fly";
+                textbox_JobStatus.Text = "Flying";
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -209,11 +252,11 @@ namespace someapp.QuickJob
             if (status == 7)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 8;
-                textbox_JobStatus.Text = "Ready to fly";
+                textbox_JobStatus.Text = "Getting ready to land";
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -223,11 +266,11 @@ namespace someapp.QuickJob
             if (status == 8)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 9;
-                textbox_JobStatus.Text = "Flying";
+                textbox_JobStatus.Text = "Finishing job";
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -237,38 +280,10 @@ namespace someapp.QuickJob
             if (status == 9)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 10;
-                textbox_JobStatus.Text = "Getting ready to land";
-            }
-            else
-                MessageBox.Show("Please comlete previous checklist steps");
-        }
-        private void PT_Btn_chk_11_Click(object sender, RoutedEventArgs e)
-        {
-            if (status == 10)
-            {
-                Button clickedButton = (Button)sender;
-
-                clickedButton.IsEnabled = false;
-                Progress_ReadyToFly.Value += 10;
-                status = 11;
-                textbox_JobStatus.Text = "Finishing job";
-            }
-            else
-                MessageBox.Show("Please comlete previous checklist steps");
-        }
-        private void PT_Btn_chk_12_Click(object sender, RoutedEventArgs e)
-        {
-            if (status == 11)
-            {
-                Button clickedButton = (Button)sender;
-
-                clickedButton.IsEnabled = false;
-                Progress_ReadyToFly.Value += 10;
-                status = 12;
                 textbox_JobStatus.Text = "Job finished";
             }
             else
