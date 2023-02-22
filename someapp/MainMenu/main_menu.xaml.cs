@@ -71,5 +71,10 @@ namespace someapp.MainMenu
             this.Close();
             jobSelection.Show();
         }
+
+        private void button_my_flights_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
