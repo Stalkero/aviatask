@@ -34,11 +34,6 @@ namespace someapp.LogBook
             pName = name;
             pSurname = surname;
 
-            //stackPanel.Children.Add(text1);
-
-            // grid.Children.Add(stackPanel);
-
-
             string path = $"profiles/{username}";
             string logbookFile = path + "/logbook.json";
 
@@ -46,9 +41,6 @@ namespace someapp.LogBook
             {
                 string encryptedLogbookFileText = File.ReadAllText(logbookFile);
                 string decryptedLogBookFileText = create_account_utils.DecryptText(encryptedLogbookFileText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
-
-               // MessageBox.Show(encryptedLogbookFileText);
-               // MessageBox.Show(decryptedLogBookFileText);
 
 
                 List<LogBook.classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.classes.flightHistory>>(decryptedLogBookFileText);

@@ -1,5 +1,9 @@
-﻿using System;
+﻿using CefSharp.DevTools.Overlay;
+using Newtonsoft.Json;
+using someapp.CreateAccount;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,10 +53,34 @@ namespace someapp.MainMenu
             pilot.Username= username;
             pilot.Name= name;
             pilot.Surname= surname;
-            
-
 
             textbox_welcome.Text = $"Welcome, {name} {surname}";
+
+            string path = $"profiles/{username}";
+            string logbookFile = path + "/logbook.json";
+
+            if (Directory.Exists(path) && File.Exists(logbookFile))
+            {
+                string encryptedLogbookFileText = File.ReadAllText(logbookFile);
+                string decryptedLogBookFileText = create_account_utils.DecryptText(encryptedLogbookFileText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+
+                List<LogBook.classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.classes.flightHistory>>(decryptedLogBookFileText);
+
+                if (flights[0].jobID == "FILL")
+                    textbox_account_last_job.Text = "";
+                else
+                {
+                    int lastJobId =  flights.Count -1;
+
+                    textbox_account_last_job.Text = $"Last job: {flights[lastJobId].jobName} to {flights[lastJobId].endICAO}";
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Profile Corrupted. Directory or logbook file missing");
+            }
         }
 
         private void button_my_settings_Click(object sender, RoutedEventArgs e)
