@@ -12,6 +12,11 @@
         WindowBackdropType="Mica" 
         AllowDrop="True"
         Background="{x:Null}">
+    <Window.Resources>
+        <Storyboard x:Key="FlashingStoryboard">
+            <ColorAnimation From="Black" To="White" Duration="0:0:2" RepeatBehavior="Forever" AutoReverse="True" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"/>
+        </Storyboard>
+    </Window.Resources>
     <Grid AllowDrop="True">
         <ui:TitleBar
             Title="Quick job: Summary"

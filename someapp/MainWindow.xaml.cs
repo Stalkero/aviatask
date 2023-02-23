@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using Newtonsoft.Json;
 using someapp.CreateAccount;
 using System.Net.NetworkInformation;
+using System.Windows.Media.Animation;
 
 namespace someapp
 {
@@ -28,7 +29,14 @@ namespace someapp
         public MainWindow()
         {
             if (CheckForInternetConnection())
+            {
                 InitializeComponent();
+
+                Storyboard sb = (Storyboard)FindResource("FadeInStoryboard");
+                sb.Begin(window_Main);
+
+            }
+                
             else
                 MessageBox.Show("No internet connection. Program requires internet connection");
         }

@@ -155,7 +155,8 @@ namespace someapp.QuickJob
             ChecklistPanel.Children.Add(btn_chk_9);
             ChecklistPanel.Children.Add(btn_chk_10);
 
-
+            Storyboard sb = (Storyboard)FindResource("FlashingStoryboard");
+            sb.Begin(textbox_JobStatus);
 
         }
 
@@ -295,7 +296,8 @@ namespace someapp.QuickJob
                 Progress_ReadyToFly.Value += 10;
                 status = 10;
                 textbox_JobStatus.Text = "Job finished";
-
+                Storyboard sb = (Storyboard)FindResource("FlashingStoryboard");
+                sb.Stop(textbox_JobStatus);
                 jobFinished();
             }
             else

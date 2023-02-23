@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using someapp.CreateAccount;
 using System.IO;
+using System.Windows.Media.Animation;
 
 namespace someapp.QuickJob
 {
@@ -23,6 +24,7 @@ namespace someapp.QuickJob
     /// </summary>
     public partial class cargo
     {
+        
         public int status { get; set; }
 
         public string Pilotusername { get; set; }
@@ -169,9 +171,9 @@ namespace someapp.QuickJob
             ChecklistPanel.Children.Add(btn_chk_10);
             ChecklistPanel.Children.Add(btn_chk_11);
             ChecklistPanel.Children.Add(btn_chk_12);
-          
 
 
+            
 
         }
 
@@ -184,6 +186,9 @@ namespace someapp.QuickJob
             Progress_ReadyToFly.Value += 10;
             status = 1;
             textbox_JobStatus.Text = "Confirm cargo weight and balance";
+
+            Storyboard sb = (Storyboard)FindResource("FlashingStoryboard");
+            sb.Begin(textbox_JobStatus);
 
         }
         private void CT_Btn_chk_2_Click(object sender, RoutedEventArgs e)
@@ -294,6 +299,10 @@ namespace someapp.QuickJob
                 Progress_ReadyToFly.Value += 10;
                 status = 9;
                 textbox_JobStatus.Text = "Flying";
+
+                
+                
+
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
@@ -337,6 +346,8 @@ namespace someapp.QuickJob
                 status = 12;
                 textbox_JobStatus.Text = "Job finished";
 
+                Storyboard sb = (Storyboard)FindResource("FlashingStoryboard");
+                sb.Stop(textbox_JobStatus);
                 jobFinished();
             }
             else

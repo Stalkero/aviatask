@@ -11,6 +11,11 @@
         WindowBackdropType="Mica" 
         AllowDrop="True"
         WindowStyle="None" Background="{x:Null}">
+    <Window.Resources>
+        <Storyboard x:Key="FadeInStoryboard">
+            <DoubleAnimation From="0" To="1" Duration="0:0:2" Storyboard.TargetProperty="Opacity"/>
+        </Storyboard>
+    </Window.Resources>
     <Grid 
         x:Name="window_Main"
         AllowDrop="True">
