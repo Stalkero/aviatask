@@ -25,22 +25,6 @@ namespace someapp
     /// </summary>
     public partial class MainWindow
     {
-        public struct PilotDetails
-        {
-            public string Username { get; set; }
-            public string Password { get; set; }
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public string Country { get; set; }
-            public string Type { get; set; }
-            public string ICAO { get; set; }
-        }
-
-
-
-
-
-
         public MainWindow()
         {
             if (CheckForInternetConnection())
@@ -75,7 +59,7 @@ namespace someapp
                     string decryptedText = create_account_utils.DecryptText(encryptedText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
 
-                    PilotDetails pilot = JsonConvert.DeserializeObject<PilotDetails>(decryptedText);
+                    CreateAccount.account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<CreateAccount.account_classes.PilotDetails>(decryptedText);
 
                     if (password == pilot.Password)
                     {
@@ -140,7 +124,7 @@ namespace someapp
                         string decryptedText = create_account_utils.DecryptText(encryptedText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
 
-                        PilotDetails pilot = JsonConvert.DeserializeObject<PilotDetails>(decryptedText);
+                        CreateAccount.account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<CreateAccount.account_classes.PilotDetails>(decryptedText);
 
                         if (password == pilot.Password)
                         {
@@ -186,7 +170,7 @@ namespace someapp
                         string decryptedText = create_account_utils.DecryptText(encryptedText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
 
-                        PilotDetails pilot = JsonConvert.DeserializeObject<PilotDetails>(decryptedText);
+                        CreateAccount.account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<CreateAccount.account_classes.PilotDetails>(decryptedText);
 
                         if (password == pilot.Password)
                         {
