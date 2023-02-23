@@ -15,11 +15,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
-using someapp.CreateAccount;
+using Aviatask.CreateAccount;
 using System.Net.NetworkInformation;
 using System.Windows.Media.Animation;
 
-namespace someapp
+namespace Aviatask
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

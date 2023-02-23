@@ -1,4 +1,4 @@
-﻿using someapp.CreateAccount;
+﻿using Aviatask.CreateAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 
-namespace someapp
+namespace Aviatask
 {
     /// <summary>
     /// Interaction logic for create_account_airport_selection.xaml

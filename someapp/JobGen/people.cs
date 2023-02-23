@@ -1,4 +1,4 @@
-﻿using someapp.QuickJob;
+﻿using Aviatask.QuickJob;
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 
-namespace someapp.JobGen
+namespace Aviatask.JobGen
 {
     internal class people
     {

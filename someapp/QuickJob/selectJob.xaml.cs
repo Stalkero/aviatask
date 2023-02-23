@@ -1,8 +1,8 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
 using Newtonsoft.Json;
-using someapp.CreateAccount;
-using someapp.Settings;
+using Aviatask.CreateAccount;
+using Aviatask.Settings;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace someapp.QuickJob
+namespace Aviatask.QuickJob
 {
     /// <summary>
     /// Interaction logic for quick_job_window.xaml

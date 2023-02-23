@@ -1,4 +1,4 @@
-﻿using someapp.Settings;
+﻿using Aviatask.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace someapp.Settings_window
+namespace Aviatask.Settings_window
 {
     /// <summary>
     /// Interaction logic for settings.xaml

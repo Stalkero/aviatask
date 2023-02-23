@@ -16,10 +16,10 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using Wpf.Ui.Appearance;
 using System.IO;
-using someapp.CreateAccount;
+using Aviatask.CreateAccount;
 using System.Reflection.Emit;
 
-namespace someapp.QuickJob
+namespace Aviatask.QuickJob
 {
     /// <summary>
     /// Interaction logic for quick_job_summary.xaml

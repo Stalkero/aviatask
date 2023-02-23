@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using someapp.CreateAccount;
+using Aviatask.CreateAccount;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace someapp.LogBook
+namespace Aviatask.LogBook
 {
     /// <summary>
     /// Interaction logic for logbook_window.xaml

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace someapp.Settings
+namespace Aviatask.Settings
 {
     internal class settings_generation_classes
     {

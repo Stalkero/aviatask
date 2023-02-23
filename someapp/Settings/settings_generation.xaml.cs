@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using someapp.CreateAccount;
-using someapp.MainMenu;
-using someapp.Settings_window;
+using Aviatask.CreateAccount;
+using Aviatask.MainMenu;
+using Aviatask.Settings_window;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace someapp.Settings
+namespace Aviatask.Settings
 {
     /// <summary>
     /// Interaction logic for settings_generation.xaml

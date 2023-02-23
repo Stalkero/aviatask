@@ -1,4 +1,4 @@
-﻿using someapp.QuickJob;
+﻿using Aviatask.QuickJob;
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace someapp.JobGen
+namespace Aviatask.JobGen
 {
     internal class utils
     {

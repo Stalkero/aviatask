@@ -1,6 +1,6 @@
 ﻿using CefSharp.DevTools.Overlay;
 using Newtonsoft.Json;
-using someapp.CreateAccount;
+using Aviatask.CreateAccount;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace someapp.MainMenu
+namespace Aviatask.MainMenu
 {
     /// <summary>
     /// Interaction logic for main_menu.xaml

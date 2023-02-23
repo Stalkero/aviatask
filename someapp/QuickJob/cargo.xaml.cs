@@ -13,11 +13,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using someapp.CreateAccount;
+using Aviatask.CreateAccount;
 using System.IO;
 using System.Windows.Media.Animation;
 
-namespace someapp.QuickJob
+namespace Aviatask.QuickJob
 {
     /// <summary>
     /// Interaction logic for quick_job_summary.xaml

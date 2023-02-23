@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using someapp.Settings;
+using Aviatask.Settings;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace someapp.CreateAccount
+namespace Aviatask.CreateAccount
 {
     /// <summary>
     /// Interaction logic for create_account_summary.xaml

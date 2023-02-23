@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using someapp.CreateAccount;
-using someapp.QuickJob;
-using someapp.Settings;
+using Aviatask.CreateAccount;
+using Aviatask.QuickJob;
+using Aviatask.Settings;
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 
-namespace someapp.JobGen
+namespace Aviatask.JobGen
 {
     internal class cargo
     {

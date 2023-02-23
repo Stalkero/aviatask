@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace someapp.CreateAccount
+namespace Aviatask.CreateAccount
 {
     internal class create_account_utils
     {
