@@ -21,7 +21,7 @@
             UseSnapLayout="True">
         </ui:TitleBar>
 
-        <ui:TextBox x:Name="textbox_username" HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" MinWidth="221"  TextAlignment="Center" KeyUp="textbox_username_KeyUp" />
+        <ui:TextBox x:Name="textbox_username" HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" MinWidth="221"  TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,47,0,0" TextWrapping="Wrap" Text="Login to pilot account" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="20"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,79,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Foreground="#FFADADAD" Width="194" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,140,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Foreground="#FFADADAD" Width="194" TextAlignment="Center"/>

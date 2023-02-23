@@ -41,9 +41,16 @@ namespace someapp
 
             if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
             {
-                create_account create_Account = new create_account(username);
-                create_Account.Show();
-                this.Close();
+                string path = $"profiles/{username}";
+
+                if (Directory.Exists(path) && File.Exists(path + "/profile.json"))
+                    MessageBox.Show("Profile already exists");
+                else
+                {
+                    create_account create_Account = new create_account(username);
+                    create_Account.Show();
+                    this.Close();
+                }
             }
             else if (textbox_username.Text != "" && passwordbox_password.Password.ToString() != "")
             {
@@ -109,51 +116,18 @@ namespace someapp
                 string username = textbox_username.Text; ;
                 string password = passwordbox_password.Password.ToString();
 
-                if (textbox_username.Text != "" && passwordbox_password.Password.ToString() != "")
+                if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
                 {
                     string path = $"profiles/{username}";
 
-
                     if (Directory.Exists(path) && File.Exists(path + "/profile.json"))
+                        MessageBox.Show("Profile already exists");
+                    else
                     {
-
-                        string profileFilePath = $"profiles/{username}/profile.json";
-                        string profileFileDecrytpedPath = $"profiles/{username}/profileDecrypted.json";
-
-                        string encryptedText = File.ReadAllText(profileFilePath);
-                        string decryptedText = create_account_utils.DecryptText(encryptedText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
-
-
-                        CreateAccount.account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<CreateAccount.account_classes.PilotDetails>(decryptedText);
-
-                        if (password == pilot.Password)
-                        {
-                            MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilot.Username,pilot.Name,pilot.Surname);
-                            main_Menu.Show();
-
-                            this.Close();   
-                        }
+                        create_account create_Account = new create_account(username);
+                        create_Account.Show();
+                        this.Close();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Correct your credentials");
-                }
-            }
-        }
-
-        private void textbox_username_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                string username = textbox_username.Text; ;
-                string password = passwordbox_password.Password.ToString();
-
-                if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
-                {
-                    create_account create_Account = new create_account(username);
-                    create_Account.Show();
-                    this.Close();
                 }
                 else if (textbox_username.Text != "" && passwordbox_password.Password.ToString() != "")
                 {
@@ -162,7 +136,6 @@ namespace someapp
 
                     if (Directory.Exists(path) && File.Exists(path + "/profile.json"))
                     {
-
                         string profileFilePath = $"profiles/{username}/profile.json";
                         string profileFileDecrytpedPath = $"profiles/{username}/profileDecrypted.json";
 
@@ -174,8 +147,16 @@ namespace someapp
 
                         if (password == pilot.Password)
                         {
+                            MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilot.Username, pilot.Username, pilot.Surname);
 
+                            main_Menu.Show();
+                            this.Close();
                         }
+                        if (password != pilot.Password)
+                        {
+                            MessageBox.Show("Incorrect Password");
+                        }
+
                     }
                 }
                 else
@@ -183,7 +164,6 @@ namespace someapp
                     MessageBox.Show("Correct your credentials");
                 }
             }
-
         }
     }
 }
