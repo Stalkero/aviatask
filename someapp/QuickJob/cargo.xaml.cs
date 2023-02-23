@@ -191,7 +191,7 @@ namespace someapp.QuickJob
             if (status == 1)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 2;
@@ -205,7 +205,7 @@ namespace someapp.QuickJob
             if (status == 2)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 3;
@@ -219,7 +219,7 @@ namespace someapp.QuickJob
             if (status == 3)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status= 4;
@@ -233,7 +233,7 @@ namespace someapp.QuickJob
             if (status == 4)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 5;
@@ -247,7 +247,7 @@ namespace someapp.QuickJob
             if (status == 5)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 6;
@@ -261,7 +261,7 @@ namespace someapp.QuickJob
             if (status == 6)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 7;
@@ -275,7 +275,7 @@ namespace someapp.QuickJob
             if (status == 7)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 8;
@@ -289,7 +289,7 @@ namespace someapp.QuickJob
             if (status == 8)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 9;
@@ -303,7 +303,7 @@ namespace someapp.QuickJob
             if (status == 9)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 10;
@@ -317,7 +317,7 @@ namespace someapp.QuickJob
             if (status == 10)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 11;
@@ -331,7 +331,7 @@ namespace someapp.QuickJob
             if (status == 11)
             {
                 Button clickedButton = (Button)sender;
-
+                clickedButton.Content += "✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
                 status = 12;
