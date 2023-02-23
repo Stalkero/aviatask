@@ -18,8 +18,7 @@ using Newtonsoft.Json;
 using Aviatask.CreateAccount;
 using System.Net.NetworkInformation;
 using System.Windows.Media.Animation;
-using System.Windows.UI.Notifications;
-using Microsoft.Toolkit.Uwp.Notifications;
+
 
 namespace Aviatask
 {
