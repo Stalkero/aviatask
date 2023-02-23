@@ -11,14 +11,29 @@
         WindowBackdropType="Mica" 
         AllowDrop="True"
         Background="{x:Null}">
-    <Grid AllowDrop="True">
+    <Grid x:Name="grid_MainGrid" AllowDrop="True">
         <ui:TitleBar
             ShowMaximize="False"
+            ShowMinimize="False"
+            ShowClose="False"
             Title="AviaTask: Logbook"
             UseSnapLayout="True">
         </ui:TitleBar>
-        <ScrollViewer Margin="0,0,0,38">
-            <StackPanel></StackPanel>
+        <StackPanel Margin="130,64,130,100" x:Name="stack_Labels" Orientation="Horizontal" Height="24" VerticalAlignment="Top">
+            <TextBlock Text="Job ID" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock Text="Job name" Background="{x:Null}" Foreground="#FFADADAD" Width="250" TextAlignment="Center" FontSize="19"/>
+            <TextBlock Text="Job type" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock Text="Dep-Arr" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock Text="Distance" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock Text="Weight" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock Text="Date" Background="{x:Null}" Foreground="#FFADADAD" Width="251" TextAlignment="Center" FontSize="16"/>
+            <TextBlock Text="View contract" Background="{x:Null}" Foreground="#FFADADAD" TextAlignment="Center" VerticalAlignment="Center" Width="130" FontSize="19"/>
+        </StackPanel>
+        <ScrollViewer x:Name="scroll_Flights">
+            <StackPanel Orientation="Vertical" x:Name="grid" Margin="130,97,130,87">
+                
+            </StackPanel>
         </ScrollViewer>
+        <ui:Button x:Name="btn_Close" Content="Go back" Appearance="Primary" HorizontalAlignment="Center" Margin="0,967,0,0" VerticalAlignment="Top" FontSize="18" Click="btn_Close_Click"/>
     </Grid>
 </ui:UiWindow>

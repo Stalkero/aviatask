@@ -171,13 +171,13 @@ namespace someapp.QuickJob
         {
             if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("PT"))
             {
-                QuickJob.people peopleTranportJob = new QuickJob.people(PilotUsername, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
+                QuickJob.people peopleTranportJob = new QuickJob.people(PilotUsername,PilotName,PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
                 peopleTranportJob.Show();
                 this.Close();
             }
             else if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("CT"))
             {
-                QuickJob.cargo cargoTranportJob = new QuickJob.cargo(PilotUsername, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
+                QuickJob.cargo cargoTranportJob = new QuickJob.cargo(PilotUsername, PilotName, PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
                 cargoTranportJob.Show();
                 this.Close();
             }

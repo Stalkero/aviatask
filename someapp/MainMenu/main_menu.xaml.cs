@@ -74,6 +74,9 @@ namespace someapp.MainMenu
 
         private void button_my_flights_Click(object sender, RoutedEventArgs e)
         {
+            LogBook.logbook_window logbook = new LogBook.logbook_window(pilot.Username,pilot.Name,pilot.Surname);
+            this.Close();
+            logbook.Show();
 
         }
     }

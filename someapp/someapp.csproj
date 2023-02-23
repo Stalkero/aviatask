@@ -132,6 +132,7 @@
     <Compile Include="JobGen\classes.cs" />
     <Compile Include="JobGen\people.cs" />
     <Compile Include="JobGen\utils.cs" />
+    <Compile Include="LogBook\classes.cs" />
     <Compile Include="LogBook\logbook_window.xaml.cs">
       <DependentUpon>logbook_window.xaml</DependentUpon>
     </Compile>
@@ -316,6 +317,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AviaTaskLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MainMenu\quickjob_btn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

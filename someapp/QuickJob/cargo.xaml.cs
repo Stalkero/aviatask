@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using someapp.CreateAccount;
+using System.IO;
 
 namespace someapp.QuickJob
 {
@@ -23,11 +25,17 @@ namespace someapp.QuickJob
     {
         public int status { get; set; }
 
-        public cargo(string username, string startICAO,string endICAO,string jobID,string jobType,double distance,string weight,string desc)
+        public string Pilotusername { get; set; }
+        public string Pilotname { get; set; }
+        public string Pilotsurname { get; set; }
+
+        public cargo(string username, string name, string surname, string startICAO,string endICAO,string jobID,string jobType,double distance,string weight,string desc)
         {
             InitializeComponent();
 
             status = 0;
+            Pilotusername = username;
+            Pilotsurname = surname;
             textbox_jobID.Text = jobID;
             textbox_jobName.Text = jobType;
             textbox_weight.Text = weight;
@@ -328,9 +336,76 @@ namespace someapp.QuickJob
                 Progress_ReadyToFly.Value += 10;
                 status = 12;
                 textbox_JobStatus.Text = "Job finished";
+
+                jobFinished();
             }
             else
                 MessageBox.Show("Please comlete previous checklist steps");
+        }
+
+        private void jobFinished()
+        {
+            string path = $"profiles/{Pilotusername}";
+            string logbookFile = path + "/logbook.json";
+
+            if (Directory.Exists(path) && File.Exists(logbookFile))
+            {
+                DateTime date = DateTime.Now;
+                string timeToJson = $"{date.Year}/{date.Month}/{date.Day} - {date.Hour}:{date.Minute}:{date.Second}";
+
+                char[] charsToTrim = { ' ', 'n', 'm' };
+                string distanceToJson = textbox_distanceNM.Text.TrimEnd(charsToTrim);
+
+                // MessageBox.Show(distanceToJson);
+
+
+                string encryptedLogbookFileText = File.ReadAllText(logbookFile);
+                MessageBox.Show(encryptedLogbookFileText);
+
+                string decryptedLogBookFile = create_account_utils.DecryptText(encryptedLogbookFileText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+                MessageBox.Show(decryptedLogBookFile);
+
+                List<LogBook.classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.classes.flightHistory>>(decryptedLogBookFile);
+                LogBook.classes.flightHistory flight = new LogBook.classes.flightHistory()
+                {
+                    jobID = textbox_jobID.Text,
+                    jobName = textbox_jobName.Text,
+                    jobType = "CT",
+                    weight = textbox_weight.Text,
+                    time = timeToJson,
+                    startICAO = textbox_StartIcao.Text,
+                    endICAO = textbox_endIcao.Text,
+                    distance = double.Parse(distanceToJson)
+                };
+
+
+
+                if (flights[0].jobID == "FILL")
+                    flights[0] = flight;
+                else
+                    flights.Add(flight);
+
+
+                string flightsToJson = JsonConvert.SerializeObject(flights);
+                MessageBox.Show(flightsToJson);
+                string encryptedFlightsToJson = create_account_utils.EncryptText(flightsToJson, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+                MessageBox.Show(encryptedFlightsToJson);
+                File.WriteAllText(logbookFile, encryptedFlightsToJson);
+
+                MainMenu.main_menu menu = new MainMenu.main_menu(Pilotusername, Pilotname, Pilotsurname);
+
+                menu.Show();
+                this.Close();
+
+
+
+            }
+            else
+            {
+                MessageBox.Show("Profile Corrupted. Directory or logbook file missing");
+            }
+
+
         }
     }
 }

@@ -26,6 +26,7 @@ namespace someapp.CreateAccount
 
         account_classes.PilotDetails pilot = new account_classes.PilotDetails();
         debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
+        List<LogBook.classes.flightHistory> flights = new List<LogBook.classes.flightHistory>();
 
         public create_account_summary(string Username, string Password, string Name, string Surname, string Country, string Type, string ICAO, float Lat, float Lon)
         {
@@ -70,10 +71,32 @@ namespace someapp.CreateAccount
             job_Generationn.CargoJobGenIterations = 3;
 
 
+            LogBook.classes.flightHistory fillMeInFlight = new LogBook.classes.flightHistory();
+
+            fillMeInFlight.jobID = "FILL";
+            fillMeInFlight.jobName = "FILL";
+            fillMeInFlight.jobDescription = "FILL";
+            fillMeInFlight.jobType = "FILL";
+            fillMeInFlight.weight = "FILL";
+            fillMeInFlight.time = "FILL";
+            fillMeInFlight.startICAO = "FILL";
+            fillMeInFlight.endICAO = "FILL";
+            fillMeInFlight.distance = 0;
+
+            flights.Add(fillMeInFlight);
+
+
+
+            
+
+
 
             //Create here some saving mechanism
             string toJsonAccount = JsonConvert.SerializeObject(pilot);
             string toJsonQuickJobGenerationSettings = JsonConvert.SerializeObject(job_Generationn);
+            string toJsonLogbook = JsonConvert.SerializeObject(flights);
+
+            MessageBox.Show(toJsonLogbook);
 
             string path = $"profiles/{pilot.Username}";
 
@@ -82,10 +105,11 @@ namespace someapp.CreateAccount
 
                 string encryptedAccount = create_account_utils.EncryptText(toJsonAccount, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
                 string encryptedQuickJobGenerationSettings = create_account_utils.EncryptText(toJsonQuickJobGenerationSettings, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
-
+                string encryptedLogbook = create_account_utils.EncryptText(toJsonLogbook, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
                 File.WriteAllText(path + "/profile.json", encryptedAccount); 
                 File.WriteAllText(path + "/quickjob_settings.json", encryptedQuickJobGenerationSettings); 
+                File.WriteAllText(path + "/logbook.json", encryptedLogbook); 
 
                 if (debug_Tools.debugMsg)
                     MessageBox.Show(path);
@@ -103,9 +127,11 @@ namespace someapp.CreateAccount
 
                 string encryptedAccount = create_account_utils.EncryptText(toJsonAccount, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
                 string encryptedQuickJobGenerationSettings = create_account_utils.EncryptText(toJsonQuickJobGenerationSettings, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
+                string encryptedLogbook = create_account_utils.EncryptText(toJsonLogbook, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
                 File.WriteAllText(path + "/profile.json", encryptedAccount);
                 File.WriteAllText(path + "/quickjob_settings.json", encryptedQuickJobGenerationSettings);
+                File.WriteAllText(path + "/logbook.json", encryptedLogbook);
 
                 if (debug_Tools.debugMsg)
                     MessageBox.Show(path);

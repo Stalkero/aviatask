@@ -26,7 +26,7 @@
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="/MainMenu/quickjob_btn.png"/>
+                            <ImageBrush ImageSource="/MainMenu/Resources/quickjob_btn.png"/>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Template">
@@ -42,7 +42,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/MainMenu/quickjob_btn_hover.png"/>
+                                    <ImageBrush ImageSource="/MainMenu/Resources/quickjob_btn_hover.png"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -55,7 +55,7 @@
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="/MainMenu/my_company_btn.png"/>
+                            <ImageBrush ImageSource="/MainMenu/Resources/my_company_btn.png"/>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Template">
@@ -71,7 +71,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/MainMenu/my_company_btn_hov.png"/>
+                                    <ImageBrush ImageSource="/MainMenu/Resources/my_company_btn_hov.png"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -84,7 +84,7 @@
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="/MainMenu/my_flights_btn.png"/>
+                            <ImageBrush ImageSource="/MainMenu/Resources/my_flights_btn.png"/>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Template">
@@ -100,7 +100,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/MainMenu/my_flights_btn_hov.png"/>
+                                    <ImageBrush ImageSource="/MainMenu/Resources/my_flights_btn_hov.png"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -113,7 +113,7 @@
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="/MainMenu/my_settings_btn.png"/>
+                            <ImageBrush ImageSource="/MainMenu/Resources/my_settings_btn.png"/>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Template">
@@ -129,7 +129,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/MainMenu/my_settings_btn_hov.png"/>
+                                    <ImageBrush ImageSource="/MainMenu/Resources/my_settings_btn_hov.png"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
