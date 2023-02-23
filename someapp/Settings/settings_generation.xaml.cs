@@ -26,7 +26,6 @@ namespace someapp.Settings
     {
 
         settings_generation_classes.quick_job_generation newJobSettings = new settings_generation_classes.quick_job_generation();
-        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
         string pUsername { get; set; }
         string pName { get; set; }
         string pSurname { get; set; }
@@ -52,8 +51,6 @@ namespace someapp.Settings
 
                 settings_generation_classes.quick_job_generation ReadGenerationSettings = JsonConvert.DeserializeObject<settings_generation_classes.quick_job_generation>(decryptedText);
 
-                if (debug_Tools.debugMsg)
-                    MessageBox.Show(ReadGenerationSettings.maxDistance.ToString());
 
                 numberBox_distance.Text = ReadGenerationSettings.maxDistance.ToString();
                 numberBox_AiportPeopleIterations.Text = ReadGenerationSettings.AirportPeopleIterations.ToString();

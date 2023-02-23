@@ -127,7 +127,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CreateAccount\account_classes.cs" />
-    <Compile Include="Debug\debug_params.cs" />
     <Compile Include="JobGen\cargo.cs" />
     <Compile Include="JobGen\classes.cs" />
     <Compile Include="JobGen\people.cs" />

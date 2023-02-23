@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using static someapp.debug_params;
+
 
 namespace someapp.JobGen
 {
@@ -22,7 +22,6 @@ namespace someapp.JobGen
         public List <JobGen.classes.job_info> jobsPeople = new List<classes.job_info>();
         //public List<quick_job_classes.job_info> jobsPeople = new List<quick_job_classes.job_info>();
 
-        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
 
         private void generateJobNamePeopleTransport()
@@ -38,10 +37,6 @@ namespace someapp.JobGen
 
         public void generateJobAirportPeopleTransport(string startICAO, int distance, float startLat, float startLon)
         {
-
-            if (debug_Tools.jobGenInfo)
-                MessageBox.Show("Searching");
-
             string fileName = "db/airports.csv";
 
             var startLoc = new GeoCoordinate(startLat, startLon);
@@ -57,9 +52,6 @@ namespace someapp.JobGen
 
                 if (calculatedDistance > 0 && calculatedDistance < distance * 1852 && columns[1] != startICAO)
                 {
-                    if (debug_Tools.jobGenInfo)
-                        MessageBox.Show(calculatedDistance.ToString());
-
                     generateJobNamePeopleTransport();
                     string jobDesc;
                     int paxCount = 0;
@@ -118,11 +110,6 @@ namespace someapp.JobGen
                     jobsPeople.Add(job);
                 }
             }
-            if (debug_Tools.jobGenInfo)
-                MessageBox.Show("Found");
-
-
-
 
         }
     }

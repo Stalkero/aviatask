@@ -31,7 +31,6 @@ namespace someapp
         {
             if (texbox_pilotUsername.Text != "" && texbox_pilotName.Text != "" && texbox_pilotPassword.Password.ToString() != "" && texbox_pilotSurname.Text != "" && combo_aircraftType.Text != "" && combo_Country.Text != "")
             {
-                debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
                 account_classes.PilotDetails pilot = new account_classes.PilotDetails();
 
                 pilot.Username = texbox_pilotUsername.Text;
@@ -41,8 +40,6 @@ namespace someapp
                 pilot.Country = combo_Country.Text;
                 pilot.Type = combo_aircraftType.Text;
 
-                if (debug_Tools.debugMsg)
-                    MessageBox.Show($"Username: {pilot.Username} Password: {pilot.Password} Name: {pilot.Name} Surname: {pilot.Surname} Country: {pilot.Country} Type: {pilot.Type}");
 
                 create_account_airport_selection airport_Selection = new create_account_airport_selection(pilot.Username, pilot.Password, pilot.Name,pilot.Surname,pilot.Type,pilot.Country);
 
@@ -68,7 +65,6 @@ namespace someapp
             {
                 if (texbox_pilotUsername.Text != "" && texbox_pilotName.Text != "" && texbox_pilotPassword.Password.ToString() != "" && texbox_pilotSurname.Text != "" && combo_aircraftType.Text != "" && combo_Country.Text != "")
                 {
-                    debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
                     account_classes.PilotDetails pilot = new account_classes.PilotDetails();
 
                     pilot.Username = texbox_pilotUsername.Text;
@@ -77,9 +73,6 @@ namespace someapp
                     pilot.Surname = texbox_pilotSurname.Text;
                     pilot.Country = combo_Country.Text;
                     pilot.Type = combo_aircraftType.Text;
-
-                    if (debug_Tools.debugMsg)
-                        MessageBox.Show($"Username: {pilot.Username} Password: {pilot.Password} Name: {pilot.Name} Surname: {pilot.Surname} Country: {pilot.Country} Type: {pilot.Type}");
 
                     create_account_airport_selection airport_Selection = new create_account_airport_selection(pilot.Username, pilot.Password, pilot.Name, pilot.Surname, pilot.Type, pilot.Country);
 

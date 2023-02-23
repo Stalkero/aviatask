@@ -18,7 +18,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static someapp.debug_params;
 
 namespace someapp.QuickJob
 {
@@ -37,7 +36,6 @@ namespace someapp.QuickJob
         JobGen.cargo cargo_Job_Gen = new JobGen.cargo();
 
         JobGen.utils jobList = new JobGen.utils();
-        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
 
 
@@ -122,9 +120,6 @@ namespace someapp.QuickJob
             int firstUnderscoreIndex = clickedButton.Name.IndexOf("_");
             int secondUnderscoreIndex = clickedButton.Name.IndexOf("_", firstUnderscoreIndex + 1);
             int jobIndex = (int.Parse(clickedButton.Name.Substring(firstUnderscoreIndex + 1, secondUnderscoreIndex - firstUnderscoreIndex - 1))) - 1;
-
-            if (debug_Tools.debugMsg)
-                MessageBox.Show("Button " + jobIndex + " was clicked");
 
 
             textbox_StartIcao.Text = jobList.AllJobs[jobIndex].start_ICAO;

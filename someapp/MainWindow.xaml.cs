@@ -54,25 +54,8 @@ namespace someapp
             string username = textbox_username.Text; ;
             string password = passwordbox_password.Password.ToString();
 
-            //Debug, Check if password is equal to debug credentials
-            debug_params.login_debug login_Debug = new debug_params.login_debug();
-            debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
-            if (login_Debug.loginDisabled)
-            {
-
-
-                
-
-            }
-            else if (username == login_Debug.debug_username && password == login_Debug.debug_password)
-            {
-                MessageBox.Show("Login successful, welcome debugger", "Logged in debug mode");
-                this.Close();
-
-
-            }
-            else if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
+            if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
             {
                 create_account create_Account = new create_account(username);
                 create_Account.Show();
@@ -85,9 +68,6 @@ namespace someapp
 
                 if (Directory.Exists(path) && File.Exists(path +  "/profile.json"))
                 {
-                    if (debug_Tools.debugMsg)
-                        MessageBox.Show($"Profile {username} exists");
-
                     string profileFilePath = $"profiles/{username}/profile.json";
                     string profileFileDecrytpedPath = $"profiles/{username}/profileDecrypted.json";
 
@@ -96,18 +76,19 @@ namespace someapp
 
 
                     PilotDetails pilot = JsonConvert.DeserializeObject<PilotDetails>(decryptedText);
-                    
+
                     if (password == pilot.Password)
                     {
-                        if (debug_Tools.debugMsg)
-                            MessageBox.Show($"Everything is fine. Welcome {pilot.Name} {pilot.Surname} !!");
-
-                        MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilot.Username,pilot.Username,pilot.Surname);
+                        MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilot.Username, pilot.Username, pilot.Surname);
 
                         main_Menu.Show();
                         this.Close();
-
                     }
+                    if (password != pilot.Password)
+                    {
+                        MessageBox.Show("Incorrect Password");
+                    }
+                        
                 }
             }
             else
@@ -144,39 +125,13 @@ namespace someapp
                 string username = textbox_username.Text; ;
                 string password = passwordbox_password.Password.ToString();
 
-                //Debug, Check if password is equal to debug credentials
-                debug_params.login_debug login_Debug = new debug_params.login_debug();
-                debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
-
-                if (login_Debug.loginDisabled)
-                {
-
-
-
-
-                }
-                else if (username == login_Debug.debug_username && password == login_Debug.debug_password)
-                {
-                    MessageBox.Show("Login successful, welcome debugger", "Logged in debug mode");
-                    this.Close();
-
-
-                }
-                else if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
-                {
-                    create_account create_Account = new create_account(username);
-                    create_Account.Show();
-                    this.Close();
-                }
-                else if (textbox_username.Text != "" && passwordbox_password.Password.ToString() != "")
+                if (textbox_username.Text != "" && passwordbox_password.Password.ToString() != "")
                 {
                     string path = $"profiles/{username}";
 
 
                     if (Directory.Exists(path) && File.Exists(path + "/profile.json"))
                     {
-                        if (debug_Tools.debugMsg)
-                            MessageBox.Show($"Profile {username} exists");
 
                         string profileFilePath = $"profiles/{username}/profile.json";
                         string profileFileDecrytpedPath = $"profiles/{username}/profileDecrypted.json";
@@ -189,9 +144,6 @@ namespace someapp
 
                         if (password == pilot.Password)
                         {
-                            if (debug_Tools.debugMsg)
-                                MessageBox.Show($"Everything is fine. Welcome {pilot.Name} {pilot.Surname} !!");
-
                             MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilot.Username,pilot.Name,pilot.Surname);
                             main_Menu.Show();
 
@@ -213,25 +165,7 @@ namespace someapp
                 string username = textbox_username.Text; ;
                 string password = passwordbox_password.Password.ToString();
 
-                //Debug, Check if password is equal to debug credentials
-                debug_params.login_debug login_Debug = new debug_params.login_debug();
-                debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
-
-                if (login_Debug.loginDisabled)
-                {
-
-
-
-
-                }
-                else if (username == login_Debug.debug_username && password == login_Debug.debug_password)
-                {
-                    MessageBox.Show("Login successful, welcome debugger", "Logged in debug mode");
-                    this.Close();
-
-
-                }
-                else if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
+                if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
                 {
                     create_account create_Account = new create_account(username);
                     create_Account.Show();
@@ -244,8 +178,6 @@ namespace someapp
 
                     if (Directory.Exists(path) && File.Exists(path + "/profile.json"))
                     {
-                        if (debug_Tools.debugMsg)
-                            MessageBox.Show($"Profile {username} exists");
 
                         string profileFilePath = $"profiles/{username}/profile.json";
                         string profileFileDecrytpedPath = $"profiles/{username}/profileDecrypted.json";
@@ -258,8 +190,7 @@ namespace someapp
 
                         if (password == pilot.Password)
                         {
-                            if (debug_Tools.debugMsg)
-                                MessageBox.Show($"Everything is fine. Welcome {pilot.Name} {pilot.Surname} !!");
+
                         }
                     }
                 }

@@ -34,14 +34,10 @@ namespace someapp.CreateAccount
 
         public List<Airport> AirportsFromCountry = new List<Airport>();
         public Pilot_info pilot_Info = new Pilot_info();
-        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
         
 
         public void getAirportsFromCountry(string country)
         {
-
-            if (debug_Tools.debugMsg)
-                MessageBox.Show("Searching, hold on");
 
             string fileName = "db/airports.csv";
 
@@ -64,8 +60,6 @@ namespace someapp.CreateAccount
 
 
             }
-            if (debug_Tools.debugMsg)
-                MessageBox.Show("Found");
         }
 
         public static string EncryptText(string plainText, string password)

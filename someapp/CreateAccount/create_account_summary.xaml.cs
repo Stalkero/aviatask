@@ -25,17 +25,11 @@ namespace someapp.CreateAccount
 
 
         account_classes.PilotDetails pilot = new account_classes.PilotDetails();
-        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
         List<LogBook.classes.flightHistory> flights = new List<LogBook.classes.flightHistory>();
 
         public create_account_summary(string Username, string Password, string Name, string Surname, string Country, string Type, string ICAO, float Lat, float Lon)
         {
             InitializeComponent();
-
-            
-
-            if (debug_Tools.debugMsg)
-                MessageBox.Show($"Summary   Username: {Username} Password: {Password} Name: {Name} Surname: {Surname} Country: {Country} Type: {Type} ICAO: {ICAO}");
 
             pilot.Name = Name;
             pilot.Surname = Surname;
@@ -111,9 +105,6 @@ namespace someapp.CreateAccount
                 File.WriteAllText(path + "/quickjob_settings.json", encryptedQuickJobGenerationSettings); 
                 File.WriteAllText(path + "/logbook.json", encryptedLogbook); 
 
-                if (debug_Tools.debugMsg)
-                    MessageBox.Show(path);
-
                 MessageBox.Show("Account Created. You can now login");
                 MainWindow mainWindow = new MainWindow();   
 
@@ -133,8 +124,6 @@ namespace someapp.CreateAccount
                 File.WriteAllText(path + "/quickjob_settings.json", encryptedQuickJobGenerationSettings);
                 File.WriteAllText(path + "/logbook.json", encryptedLogbook);
 
-                if (debug_Tools.debugMsg)
-                    MessageBox.Show(path);
 
                 MessageBox.Show("Account Created. You can now login");
                 MainWindow mainWindow = new MainWindow();

@@ -24,7 +24,6 @@ namespace someapp
     {
         account_classes.PilotDetails pilot = new account_classes.PilotDetails();
         create_account_utils __utils = new create_account_utils();
-        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
         public create_account_airport_selection(string Username,string Password,string Name,string Surname,string Type,string Country)
         {
@@ -44,11 +43,6 @@ namespace someapp
             {
                 combo_selectedICAO.Items.Add(airport.ICAO);
             }
-
-            if(debug_Tools.debugMsg)
-                    MessageBox.Show($"Username: {Username} Password: {Password} Name: {Name} Surname: {Surname} Country: {Country} Type: {Type}");
-
-
         }
 
         public void combo_selectedICAO_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -72,14 +66,6 @@ namespace someapp
 
             create_account_summary summary = new create_account_summary(pilot.Username, pilot.Password, pilot.Name, pilot.Surname, pilot.Country, pilot.Type, pilot.ICAO,pilot.LatDec,pilot.LongDec);
             summary.Show();
-
-            if (debug_Tools.debugMsg)
-            {
-                MessageBox.Show(combo_selectedICAO.Text);
-                MessageBox.Show($"final  Username: {pilot.Username} Password: {pilot.Password} Name: {pilot.Name} Surname: {pilot.Surname} Country: {pilot.Country} Type: {pilot.Type} ICAO: {combo_selectedICAO.Text}");
-            }
-               
-
             this.Close();
 
         }

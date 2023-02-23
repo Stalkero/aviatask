@@ -10,13 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using static someapp.debug_params;
+
 
 namespace someapp.JobGen
 {
     internal class cargo
     {
-        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
 
         public List<string> job_cargo_types = new List<string>();
         public List<JobGen.classes.job_info> jobsCargo = new List<classes.job_info>();
@@ -154,8 +153,6 @@ namespace someapp.JobGen
 
                 settings_generation_classes.quick_job_generation quickJobSettings = JsonConvert.DeserializeObject<settings_generation_classes.quick_job_generation>(decryptedTextJobGen);
                 
-                if (debug_Tools.jobGenInfo)
-                    MessageBox.Show("Searching");
 
                 string fileName = "db/airports.csv";
 
@@ -172,8 +169,6 @@ namespace someapp.JobGen
 
                     if (calculatedDistance > 0 && calculatedDistance < distance * 1852 && columns[1] != startICAO)
                     {
-                        if (debug_Tools.jobGenInfo)
-                            MessageBox.Show(calculatedDistance.ToString());
 
                         string jobDesc = $"Transport of selected goods.\n----------------\nTransport of: ";
                         int weight = 0;
@@ -218,9 +213,6 @@ namespace someapp.JobGen
                         jobsCargo.Add(job);
                     }
                 }
-                if (debug_Tools.jobGenInfo)
-                    MessageBox.Show("Found");
-
             }
         }
     }

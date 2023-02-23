@@ -14,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static someapp.debug_params;
 
 namespace someapp.Settings
 {
@@ -24,7 +23,6 @@ namespace someapp.Settings
     public partial class settings_profile
     {
 
-        debug_params.debug_tools debug_Tools = new debug_params.debug_tools();
         public string pICAO { get; set; }
         public float platDec { get; set; }
         public float plongDec { get; set; }
@@ -85,8 +83,6 @@ namespace someapp.Settings
 
                 File.WriteAllText(path + "/profile.json", encryptedMsg);
 
-                if (debug_Tools.debugMsg)
-                    MessageBox.Show(path);
 
 
 
@@ -105,9 +101,6 @@ namespace someapp.Settings
                 string encryptedMsg = create_account_utils.EncryptText(toJson, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
                 File.WriteAllText(path + "/profile.json", encryptedMsg);
-
-                if (debug_Tools.debugMsg)
-                    MessageBox.Show(path);
 
                 MessageBox.Show("Changes saved");
 
