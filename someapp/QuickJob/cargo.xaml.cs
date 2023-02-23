@@ -356,14 +356,8 @@ namespace someapp.QuickJob
                 char[] charsToTrim = { ' ', 'n', 'm' };
                 string distanceToJson = textbox_distanceNM.Text.TrimEnd(charsToTrim);
 
-                // MessageBox.Show(distanceToJson);
-
-
                 string encryptedLogbookFileText = File.ReadAllText(logbookFile);
-                MessageBox.Show(encryptedLogbookFileText);
-
                 string decryptedLogBookFile = create_account_utils.DecryptText(encryptedLogbookFileText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
-                MessageBox.Show(decryptedLogBookFile);
 
                 List<LogBook.classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.classes.flightHistory>>(decryptedLogBookFile);
                 LogBook.classes.flightHistory flight = new LogBook.classes.flightHistory()
@@ -379,7 +373,6 @@ namespace someapp.QuickJob
                 };
 
 
-
                 if (flights[0].jobID == "FILL")
                     flights[0] = flight;
                 else
@@ -387,17 +380,14 @@ namespace someapp.QuickJob
 
 
                 string flightsToJson = JsonConvert.SerializeObject(flights);
-                MessageBox.Show(flightsToJson);
                 string encryptedFlightsToJson = create_account_utils.EncryptText(flightsToJson, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
-                MessageBox.Show(encryptedFlightsToJson);
+
                 File.WriteAllText(logbookFile, encryptedFlightsToJson);
 
                 MainMenu.main_menu menu = new MainMenu.main_menu(Pilotusername, Pilotname, Pilotsurname);
 
                 menu.Show();
                 this.Close();
-
-
 
             }
             else
