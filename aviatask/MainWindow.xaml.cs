@@ -18,6 +18,8 @@ using Newtonsoft.Json;
 using Aviatask.CreateAccount;
 using System.Net.NetworkInformation;
 using System.Windows.Media.Animation;
+using Windows.UI.Notifications;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace Aviatask
 {
@@ -78,8 +80,10 @@ namespace Aviatask
                     CreateAccount.account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<CreateAccount.account_classes.PilotDetails>(decryptedText);
 
                     if (password == pilot.Password)
-                    {
+                    { 
+
                         MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilot.Username, pilot.Username, pilot.Surname);
+
 
                         main_Menu.Show();
                         this.Close();
@@ -96,6 +100,8 @@ namespace Aviatask
                 MessageBox.Show("Correct your credentials");
             }
         }
+
+
 
 
 

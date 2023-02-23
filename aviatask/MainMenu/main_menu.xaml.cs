@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace Aviatask.MainMenu
 {
@@ -52,6 +53,13 @@ namespace Aviatask.MainMenu
             pilot.Username= username;
             pilot.Name= name;
             pilot.Surname= surname;
+
+            new ToastContentBuilder()
+                           .AddArgument("action", "viewConversation")
+                           .AddArgument("conversationId", 9813)
+                           .AddText("Welcome to AviaTask")
+                           .AddText("Have a great flight!!")
+                           .Show();
 
             textbox_welcome.Text = $"Welcome, {name} {surname}";
 
