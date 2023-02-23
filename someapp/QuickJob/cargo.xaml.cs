@@ -88,7 +88,7 @@ namespace someapp.QuickJob
             Wpf.Ui.Controls.Button btn_chk_5 = new Wpf.Ui.Controls.Button()
             {
                 Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
-                Content = "CT_5. Pre-flight checklist",
+                Content = "5.Pre-flight checklist",
                 Width = 440,
                 Margin = new Thickness(0, 5, 0, 5)
             };
