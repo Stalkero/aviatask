@@ -4,21 +4,20 @@ using Aviatask.QuickJob;
 using Aviatask.Settings;
 using System;
 using System.Collections.Generic;
-using System.Device.Location;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-
+using Geolocation;
 
 namespace Aviatask.JobGen
 {
-    internal class cargo
+    internal class Cargo
     {
 
         public List<string> job_cargo_types = new List<string>();
-        public List<JobGen.classes.job_info> jobsCargo = new List<classes.job_info>();
+        public List<JobGen.Classes.job_info> jobsCargo = new List<Classes.job_info>();
         public string selectedCargoType { get; set; }
 
         Random random = new Random();
@@ -156,18 +155,16 @@ namespace Aviatask.JobGen
 
                 string fileName = "db/airports.csv";
 
-                var startLoc = new GeoCoordinate(startLat, startLon);
+                var startLoc = new Coordinate(startLat, startLon);
 
                 foreach (var line in File.ReadLines(fileName))
                 {
                     var columns = line.Split('\t');
 
-                    var endLoc = new GeoCoordinate(double.Parse(columns[15]), double.Parse(columns[16]));
-                    var calculatedDistance = startLoc.GetDistanceTo(endLoc);
+                    var endLoc = new Coordinate(double.Parse(columns[15]), double.Parse(columns[16]));
+                    var calculatedDistance = GeoCalculator.GetDistance(startLoc, endLoc, 2, DistanceUnit.NauticalMiles);
 
-
-
-                    if (calculatedDistance > 0 && calculatedDistance < distance * 1852 && columns[1] != startICAO)
+                    if (calculatedDistance > 0 && calculatedDistance < distance && columns[1] != startICAO)
                     {
 
                         string jobDesc = $"Transport of selected goods.\n----------------\nTransport of: ";
@@ -192,11 +189,11 @@ namespace Aviatask.JobGen
                             weight = randomm.Next(40, 5000);
                         }
                             
-                        JobGen.classes.job_info job = new classes.job_info()
+                        JobGen.Classes.job_info job = new Classes.job_info()
                         {
 
 
-                            id = $"CT_{utils.RandomString(12)}",
+                            id = $"CT_{Utils.RandomString(12)}",
                             job_name = "Cargo transport",
                             job_distance = calculatedDistance,
                             start_ICAO = startICAO,

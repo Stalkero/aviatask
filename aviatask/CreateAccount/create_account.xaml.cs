@@ -29,12 +29,12 @@ namespace Aviatask
 
         private void button_ConfirmData_Click(object sender, RoutedEventArgs e)
         {
-            if (texbox_pilotUsername.Text != "" && texbox_pilotName.Text != "" && texbox_pilotPassword.Password.ToString() != "" && texbox_pilotSurname.Text != "" && combo_aircraftType.Text != "" && combo_Country.Text != "")
+            if (texbox_pilotUsername.Text != "" && texbox_pilotName.Text != "" && texbox_pilotPassword.Text.ToString() != "" && texbox_pilotSurname.Text != "" && combo_aircraftType.Text != "" && combo_Country.Text != "")
             {
                 account_classes.PilotDetails pilot = new account_classes.PilotDetails();
 
                 pilot.Username = texbox_pilotUsername.Text;
-                pilot.Password = texbox_pilotPassword.Password.ToString();
+                pilot.Password = texbox_pilotPassword.Text;
                 pilot.Name = texbox_pilotName.Text;
                 pilot.Surname = texbox_pilotSurname.Text;
                 pilot.Country = combo_Country.Text;
@@ -63,12 +63,12 @@ namespace Aviatask
         {
             if (e.Key == Key.Enter)
             {
-                if (texbox_pilotUsername.Text != "" && texbox_pilotName.Text != "" && texbox_pilotPassword.Password.ToString() != "" && texbox_pilotSurname.Text != "" && combo_aircraftType.Text != "" && combo_Country.Text != "")
+                if (texbox_pilotUsername.Text != "" && texbox_pilotName.Text != "" && texbox_pilotPassword.Text.ToString() != "" && texbox_pilotSurname.Text != "" && combo_aircraftType.Text != "" && combo_Country.Text != "")
                 {
                     account_classes.PilotDetails pilot = new account_classes.PilotDetails();
 
                     pilot.Username = texbox_pilotUsername.Text;
-                    pilot.Password = texbox_pilotPassword.Password.ToString();
+                    pilot.Password = texbox_pilotPassword.Text;
                     pilot.Name = texbox_pilotName.Text;
                     pilot.Surname = texbox_pilotSurname.Text;
                     pilot.Country = combo_Country.Text;

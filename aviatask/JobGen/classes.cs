@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aviatask.JobGen
 {
-    internal class classes
+    internal class Classes
     {
         public class job_info
         {

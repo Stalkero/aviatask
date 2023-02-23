@@ -1,39 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using Aviatask.CreateAccount;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Media.Animation;
-using Wpf.Ui.Appearance;
-using System.IO;
-using Aviatask.CreateAccount;
-using System.Reflection.Emit;
+using Wpf.Ui.Controls;
 
 namespace Aviatask.QuickJob
 {
     /// <summary>
-    /// Interaction logic for quick_job_summary.xaml
+    /// Interaction logic for People.xaml
     /// </summary>
-    public partial class people
+    public partial class People 
     {
         public int status { get; set; }
         public string Pilotusername { get; set; }
         public string Pilotname { get; set; }
         public string Pilotsurname { get; set; }
 
-        
-
-        public people(string username, string name,string surname, string startICAO,string endICAO,string jobID,string jobType,double distance,string weight,string desc)
+        public People(string username, string name, string surname, string startICAO, string endICAO, string jobID, string jobType, double distance, string weight, string desc)
         {
             InitializeComponent();
 
@@ -46,14 +42,14 @@ namespace Aviatask.QuickJob
             textBox_jobDesc.Text = desc;
             textbox_StartIcao.Text = startICAO;
             textbox_endIcao.Text = endICAO;
-            textbox_distanceNM.Text = $"{Math.Round((distance / 1852)),2} nm";
-            textbox_distanceKM.Text = $"{Math.Round((distance/ 1000), 2)} km";
+            textbox_distanceNM.Text = $"{distance} nm";
+            textbox_distanceKM.Text = $"{Math.Round(distance * 1.852, 2)} km";
             browserLeft.Address = $"https://fshub.io/airport/{startICAO}/overview";
             browserRight.Address = $"https://fshub.io/airport/{endICAO}/overview";
 
             textbox_JobStatus.Text = "Check weather conditions";
 
-            Wpf.Ui.Controls.Button btn_chk_1 = new Wpf.Ui.Controls.Button()
+            Wpf.Ui.Controls.Button btn_chk_1 = new()
             {
                 Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
                 Content = "1. Check weather conditions",
@@ -71,7 +67,7 @@ namespace Aviatask.QuickJob
             };
             btn_chk_2.Click += PT_Btn_chk_2_Click;
 
-            Wpf.Ui.Controls.Button btn_chk_3 = new Wpf.Ui.Controls.Button() 
+            Wpf.Ui.Controls.Button btn_chk_3 = new Wpf.Ui.Controls.Button()
             {
                 Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
                 Content = "3. Pre-flight checklist",
@@ -98,7 +94,7 @@ namespace Aviatask.QuickJob
             };
             btn_chk_5.Click += PT_Btn_chk_5_Click;
 
-            Wpf.Ui.Controls.Button btn_chk_6 = new Wpf.Ui.Controls.Button() 
+            Wpf.Ui.Controls.Button btn_chk_6 = new Wpf.Ui.Controls.Button()
             {
                 Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
                 Content = "6. Engine start nad getting ready to fly",
@@ -107,7 +103,7 @@ namespace Aviatask.QuickJob
             };
             btn_chk_6.Click += PT_Btn_chk_6_Click;
 
-            Wpf.Ui.Controls.Button btn_chk_7 = new Wpf.Ui.Controls.Button() 
+            Wpf.Ui.Controls.Button btn_chk_7 = new Wpf.Ui.Controls.Button()
             {
                 Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
                 Content = "7. Ready to fly",
@@ -116,7 +112,7 @@ namespace Aviatask.QuickJob
             };
             btn_chk_7.Click += PT_Btn_chk_7_Click;
 
-            Wpf.Ui.Controls.Button btn_chk_8 = new Wpf.Ui.Controls.Button() 
+            Wpf.Ui.Controls.Button btn_chk_8 = new Wpf.Ui.Controls.Button()
             {
                 Appearance = Wpf.Ui.Common.ControlAppearance.Primary,
                 Content = "8. Flying",
@@ -164,7 +160,7 @@ namespace Aviatask.QuickJob
         {
             if (status == 0)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -172,13 +168,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Get into aircraft";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_2_Click(object sender, RoutedEventArgs e)
         {
             if (status == 1)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -186,13 +182,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Pre-flight checklist";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_3_Click(object sender, RoutedEventArgs e)
         {
             if (status == 2)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -200,13 +196,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Check flight plan";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_4_Click(object sender, RoutedEventArgs e)
         {
             if (status == 3)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -214,13 +210,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Check weather report";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_5_Click(object sender, RoutedEventArgs e)
         {
             if (status == 4)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -228,13 +224,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Engine start nad getting ready to fly";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_6_Click(object sender, RoutedEventArgs e)
         {
             if (status == 5)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -242,13 +238,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Ready to fly";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_7_Click(object sender, RoutedEventArgs e)
         {
             if (status == 6)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -256,13 +252,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Flying";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_8_Click(object sender, RoutedEventArgs e)
         {
             if (status == 7)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -270,13 +266,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Getting ready to land";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_9_Click(object sender, RoutedEventArgs e)
         {
             if (status == 8)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -284,13 +280,13 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Finishing job";
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
         private void PT_Btn_chk_10_Click(object sender, RoutedEventArgs e)
         {
             if (status == 9)
             {
-                Button clickedButton = (Button)sender;
+                Wpf.Ui.Controls.Button clickedButton = (Wpf.Ui.Controls.Button)sender;
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
@@ -301,11 +297,11 @@ namespace Aviatask.QuickJob
                 jobFinished();
             }
             else
-                MessageBox.Show("Please comlete previous checklist steps");
+                System.Windows.MessageBox.Show("Please comlete previous checklist steps");
         }
 
 
-        private void jobFinished ()
+        private void jobFinished()
         {
             string path = $"profiles/{Pilotusername}";
             string logbookFile = path + "/logbook.json";
@@ -321,8 +317,8 @@ namespace Aviatask.QuickJob
                 string encryptedLogbookFileText = File.ReadAllText(logbookFile);
                 string decryptedLogBookFile = create_account_utils.DecryptText(encryptedLogbookFileText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
-                List<LogBook.classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.classes.flightHistory>>(decryptedLogBookFile);
-                LogBook.classes.flightHistory flight = new LogBook.classes.flightHistory()
+                List<Aviatask.LogBook.Classes.flightHistory> flights = JsonConvert.DeserializeObject<List<Aviatask.LogBook.Classes.flightHistory>>(decryptedLogBookFile);
+                Aviatask.LogBook.Classes.flightHistory flight = new Aviatask.LogBook.Classes.flightHistory()
                 {
                     jobID = textbox_jobID.Text,
                     jobName = textbox_jobName.Text,
@@ -344,16 +340,16 @@ namespace Aviatask.QuickJob
                 string flightsToJson = JsonConvert.SerializeObject(flights);
                 string encryptedFlightsToJson = create_account_utils.EncryptText(flightsToJson, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
-                File.WriteAllText(logbookFile,encryptedFlightsToJson);
+                File.WriteAllText(logbookFile, encryptedFlightsToJson);
 
-                MainMenu.main_menu menu = new MainMenu.main_menu(Pilotusername, Pilotname, Pilotsurname);
+                Aviatask.MainMenu.main_menu menu = new Aviatask.MainMenu.main_menu(Pilotusername, Pilotname, Pilotsurname);
 
                 menu.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Profile Corrupted. Directory or logbook file missing");
+                System.Windows.MessageBox.Show("Profile Corrupted. Directory or logbook file missing");
             }
 
 

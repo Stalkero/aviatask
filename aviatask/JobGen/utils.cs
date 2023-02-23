@@ -1,22 +1,21 @@
 ﻿using Aviatask.QuickJob;
 using System;
 using System.Collections.Generic;
-using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Geolocation;
 
 namespace Aviatask.JobGen
 {
-    internal class utils
+    internal class Utils
     {
         private static Random randomm = new Random();
 
 
-        public List<JobGen.classes.job_info> AllJobs = new List<classes.job_info>();
+        public List<JobGen.Classes.job_info> AllJobs = new List<Classes.job_info>();
 
-
-        static GeoCoordinate GetLocationAtDistance(GeoCoordinate startLocation, double distanceNM, double bearing)
+        static Coordinate GetLocationAtDistance(Coordinate startLocation, double distanceNM, double bearing)
         {
             var distance = distanceNM * 1.852;
             var radius = 6371.0; // Earth's radius in kilometers
@@ -33,7 +32,7 @@ namespace Aviatask.JobGen
             newLatitude = newLatitude * 180.0 / Math.PI;
             newLongitude = newLongitude * 180.0 / Math.PI;
 
-            return new GeoCoordinate(newLatitude, newLongitude);
+            return new Coordinate(newLatitude, newLongitude);
         }
 
         public static string RandomString(int length)

@@ -19,7 +19,6 @@ using Aviatask.CreateAccount;
 using System.Net.NetworkInformation;
 using System.Windows.Media.Animation;
 
-
 namespace Aviatask
 {
     /// <summary>
@@ -33,6 +32,7 @@ namespace Aviatask
             {
                 InitializeComponent();
 
+
                 Storyboard sb = (Storyboard)FindResource("FadeInStoryboard");
                 sb.Begin(window_Main);
 
@@ -44,11 +44,11 @@ namespace Aviatask
 
         private void button_login_Click(object sender, RoutedEventArgs e)
         {
-            string username = textbox_username.Text; ;
-            string password = passwordbox_password.Password.ToString();
+            string username = textbox_username.Text;
+            string password = passwordbox_password.Text;
 
 
-            if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
+            if (passwordbox_password.Text == "" && textbox_username.Text != "")
             {
                 string path = $"profiles/{username}";
 
@@ -61,7 +61,7 @@ namespace Aviatask
                     this.Close();
                 }
             }
-            else if (textbox_username.Text != "" && passwordbox_password.Password.ToString() != "")
+            else if (textbox_username.Text != "" && passwordbox_password.Text != "")
             {
                 string path = $"profiles/{username}";
                 
@@ -122,10 +122,10 @@ namespace Aviatask
         {
             if (e.Key == Key.Enter)
             {
-                string username = textbox_username.Text; ;
-                string password = passwordbox_password.Password.ToString();
+                string username = textbox_username.Text; 
+                string password = passwordbox_password.Text;
 
-                if (passwordbox_password.Password.ToString() == "" && textbox_username.Text != "")
+                if (passwordbox_password.Text == "" && textbox_username.Text != "")
                 {
                     string path = $"profiles/{username}";
 
@@ -138,7 +138,7 @@ namespace Aviatask
                         this.Close();
                     }
                 }
-                else if (textbox_username.Text != "" && passwordbox_password.Password.ToString() != "")
+                else if (textbox_username.Text != "" && passwordbox_password.Text != "")
                 {
                     string path = $"profiles/{username}";
 
@@ -174,5 +174,7 @@ namespace Aviatask
                 }
             }
         }
+
+
     }
 }

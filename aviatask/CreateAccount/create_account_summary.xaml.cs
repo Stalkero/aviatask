@@ -25,7 +25,7 @@ namespace Aviatask.CreateAccount
 
 
         account_classes.PilotDetails pilot = new account_classes.PilotDetails();
-        List<LogBook.classes.flightHistory> flights = new List<LogBook.classes.flightHistory>();
+        List<LogBook.Classes.flightHistory> flights = new List<LogBook.Classes.flightHistory>();
 
         public create_account_summary(string Username, string Password, string Name, string Surname, string Country, string Type, string ICAO, float Lat, float Lon)
         {
@@ -65,7 +65,7 @@ namespace Aviatask.CreateAccount
             job_Generationn.CargoJobGenIterations = 3;
 
 
-            LogBook.classes.flightHistory fillMeInFlight = new LogBook.classes.flightHistory();
+            LogBook.Classes.flightHistory fillMeInFlight = new LogBook.Classes.flightHistory();
 
             fillMeInFlight.jobID = "FILL";
             fillMeInFlight.jobName = "FILL";

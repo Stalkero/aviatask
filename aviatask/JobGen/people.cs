@@ -1,17 +1,13 @@
-﻿using Aviatask.QuickJob;
+﻿using Geolocation;
 using System;
 using System.Collections.Generic;
-using System.Device.Location;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 using System.Windows;
-
 
 namespace Aviatask.JobGen
 {
-    internal class people
+    internal class People
     {
         Random random = new Random();
         Random random2 = new Random();
@@ -19,8 +15,7 @@ namespace Aviatask.JobGen
 
         public List<string> job_names_people_transport_generate_aiport = new List<string>();
         public string selectedAirportJobName;
-        public List <JobGen.classes.job_info> jobsPeople = new List<classes.job_info>();
-        //public List<quick_job_classes.job_info> jobsPeople = new List<quick_job_classes.job_info>();
+        public List <JobGen.Classes.job_info> jobsPeople = new List<Classes.job_info>();
 
 
 
@@ -37,20 +32,19 @@ namespace Aviatask.JobGen
 
         public void generateJobAirportPeopleTransport(string startICAO, int distance, float startLat, float startLon)
         {
+
             string fileName = "db/airports.csv";
 
-            var startLoc = new GeoCoordinate(startLat, startLon);
+            var startLoc = new Coordinate(startLat, startLon);
 
             foreach (var line in File.ReadLines(fileName))
             {
                 var columns = line.Split('\t');
 
-                var endLoc = new GeoCoordinate(double.Parse(columns[15]), double.Parse(columns[16]));
-                var calculatedDistance = startLoc.GetDistanceTo(endLoc);
+                var endLoc = new Coordinate(double.Parse(columns[15]), double.Parse(columns[16]));
+                var calculatedDistance = GeoCalculator.GetDistance(startLoc, endLoc,2,DistanceUnit.NauticalMiles);
 
-
-
-                if (calculatedDistance > 0 && calculatedDistance < distance * 1852 && columns[1] != startICAO)
+                if (calculatedDistance > 0 && calculatedDistance < distance && columns[1] != startICAO)
                 {
                     generateJobNamePeopleTransport();
                     string jobDesc;
@@ -91,9 +85,9 @@ namespace Aviatask.JobGen
                     }
 
 
-                    JobGen.classes.job_info job = new classes.job_info()
+                    JobGen.Classes.job_info job = new Classes.job_info()
                     {
-                        id = $"PT_{utils.RandomString(12)}",
+                        id = $"PT_{Utils.RandomString(12)}",
                         job_name = selectedAirportJobName,
                         job_distance = calculatedDistance,
                         start_ICAO = startICAO,

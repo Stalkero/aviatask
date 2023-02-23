@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aviatask.LogBook
 {
-    internal class classes
+    internal class Classes
     {
         public class flightHistory
         {

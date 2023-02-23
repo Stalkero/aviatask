@@ -1,5 +1,4 @@
-﻿using CefSharp.DevTools.Overlay;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Aviatask.CreateAccount;
 using System;
 using System.Collections.Generic;
@@ -64,7 +63,7 @@ namespace Aviatask.MainMenu
                 string encryptedLogbookFileText = File.ReadAllText(logbookFile);
                 string decryptedLogBookFileText = create_account_utils.DecryptText(encryptedLogbookFileText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
-                List<LogBook.classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.classes.flightHistory>>(decryptedLogBookFileText);
+                List<LogBook.Classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.Classes.flightHistory>>(decryptedLogBookFileText);
 
                 if (flights[0].jobID == "FILL")
                     textbox_account_last_job.Text = "";
@@ -86,7 +85,7 @@ namespace Aviatask.MainMenu
         private void button_my_settings_Click(object sender, RoutedEventArgs e)
         {
             
-            Settings_window.settings settings= new Settings_window.settings(pilot.Username,pilot.Name,pilot.Surname);
+            Settings_window.Settings settings= new Settings_window.Settings(pilot.Username,pilot.Name,pilot.Surname);
             settings.Show();
 
             this.Close();

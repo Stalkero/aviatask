@@ -18,7 +18,7 @@ namespace Aviatask.Settings_window
     /// <summary>
     /// Interaction logic for settings.xaml
     /// </summary>
-    public partial class settings
+    public partial class Settings
     {
         public string pUsername { get; set; }
         public string pName { get; set; }
@@ -26,7 +26,7 @@ namespace Aviatask.Settings_window
 
 
 
-        public settings(string username,string name,string surname)
+        public Settings(string username,string name,string surname)
         {
             InitializeComponent();
             pUsername = username;

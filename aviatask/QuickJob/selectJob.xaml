@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
-        xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core"
         xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
         Title="quick_job_window" Height="1032" Width="1920" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         ExtendsContentIntoTitleBar="True"

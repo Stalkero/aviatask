@@ -65,7 +65,7 @@ namespace Aviatask.Settings
             pilotSave.Username = textbox_Username.Text;
             pilotSave.Name = textbox_Name.Text;
             pilotSave.Surname = textbox_Surname.Text;
-            pilotSave.Password = passwordbox_password.Password.ToString();
+            pilotSave.Password = passwordbox_password.Text;
             pilotSave.Country = combo_Country.Text;
             pilotSave.Type= combo_Type.Text;
             pilotSave.ICAO= pICAO;

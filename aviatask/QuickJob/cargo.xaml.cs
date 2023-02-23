@@ -22,7 +22,7 @@ namespace Aviatask.QuickJob
     /// <summary>
     /// Interaction logic for quick_job_summary.xaml
     /// </summary>
-    public partial class cargo
+    public partial class Cargo
     {
         
         public int status { get; set; }
@@ -31,7 +31,7 @@ namespace Aviatask.QuickJob
         public string Pilotname { get; set; }
         public string Pilotsurname { get; set; }
 
-        public cargo(string username, string name, string surname, string startICAO,string endICAO,string jobID,string jobType,double distance,string weight,string desc)
+        public Cargo(string username, string name, string surname, string startICAO,string endICAO,string jobID,string jobType,double distance,string weight,string desc)
         {
             InitializeComponent();
 
@@ -370,8 +370,8 @@ namespace Aviatask.QuickJob
                 string encryptedLogbookFileText = File.ReadAllText(logbookFile);
                 string decryptedLogBookFile = create_account_utils.DecryptText(encryptedLogbookFileText, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
 
-                List<LogBook.classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.classes.flightHistory>>(decryptedLogBookFile);
-                LogBook.classes.flightHistory flight = new LogBook.classes.flightHistory()
+                List<LogBook.Classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.Classes.flightHistory>>(decryptedLogBookFile);
+                LogBook.Classes.flightHistory flight = new LogBook.Classes.flightHistory()
                 {
                     jobID = textbox_jobID.Text,
                     jobName = textbox_jobName.Text,

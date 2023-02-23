@@ -1,5 +1,4 @@
-﻿using CefSharp;
-using CefSharp.Wpf;
+﻿
 using Newtonsoft.Json;
 using Aviatask.CreateAccount;
 using Aviatask.Settings;
@@ -18,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CefSharp;
 
 namespace Aviatask.QuickJob
 {
@@ -32,10 +32,10 @@ namespace Aviatask.QuickJob
         public string selectedJobID { get; set; }
         public double selectedJobDistance { get; set; }
 
-        JobGen.people people_Job_Gen = new JobGen.people();
-        JobGen.cargo cargo_Job_Gen = new JobGen.cargo();
+        JobGen.People people_Job_Gen = new JobGen.People();
+        JobGen.Cargo cargo_Job_Gen = new JobGen.Cargo();
 
-        JobGen.utils jobList = new JobGen.utils();
+        JobGen.Utils jobList = new JobGen.Utils();
 
 
 
@@ -63,7 +63,6 @@ namespace Aviatask.QuickJob
                 account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<account_classes.PilotDetails>(decryptedTextProfile);
                 settings_generation_classes.quick_job_generation quickJobSettings = JsonConvert.DeserializeObject<settings_generation_classes.quick_job_generation>(decryptedTextJobGen);
 
-
                 //Here add new jobs
 
                 for (int i = 0; i < quickJobSettings.AirportPeopleIterations; i++)
@@ -72,8 +71,8 @@ namespace Aviatask.QuickJob
                 for (int i = 0; i < quickJobSettings.CargoJobGenIterations; i++)
                     cargo_Job_Gen.generateJobAirportCargo(pilot.ICAO, int.Parse(quickJobSettings.maxDistance.ToString()), pilot.LatDec, pilot.LongDec,pilot.Type,pilot.Username,pilot.Name,pilot.Surname);
 
-                //Each job needs to be added to all jobs list
 
+                //Each job needs to be added to all jobs list
 
                 foreach (var job in people_Job_Gen.jobsPeople)
                 {
@@ -85,10 +84,8 @@ namespace Aviatask.QuickJob
                     jobList.AllJobs.Add(job);
                 }
 
-
-
-
                 int jobID = 0;
+
                 foreach (var job in jobList.AllJobs)
                 {
 
@@ -104,9 +101,6 @@ namespace Aviatask.QuickJob
                     jobID++;
 
                 }
-
-
-
 
             }
 
@@ -126,11 +120,14 @@ namespace Aviatask.QuickJob
             textbox_endIcao.Text = jobList.AllJobs[jobIndex].end_ICAO;
             textbox_jobName.Text = jobList.AllJobs[jobIndex].job_name;
             textbox_jobID.Text = jobList.AllJobs[jobIndex].id;
-            textbox_distanceNM.Text = $"{Math.Round((jobList.AllJobs[jobIndex].job_distance / 1852)),2} nm";
-            textbox_distanceKM.Text = $"{Math.Round((jobList.AllJobs[jobIndex].job_distance / 1000),2)} km";
+            textbox_distanceNM.Text = $"{jobList.AllJobs[jobIndex].job_distance} nm";
+            textbox_distanceKM.Text = $"{Math.Round(jobList.AllJobs[jobIndex].job_distance * 1.852, 2)} km";
+
+            
             textBox_jobDesc.Text = jobList.AllJobs[jobIndex].description;
             selectedJobID = jobList.AllJobs[jobIndex].id;
             selectedJobDistance = jobList.AllJobs[jobIndex].job_distance;
+
 
             string html = "<!doctype html>" +
             "<html lang=\"en\"><head><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.css\" type=\"text/css\"><style>.map {height: 800px;width: 940px;}</style>" +
@@ -166,13 +163,13 @@ namespace Aviatask.QuickJob
         {
             if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("PT"))
             {
-                QuickJob.people peopleTranportJob = new QuickJob.people(PilotUsername,PilotName,PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
+                QuickJob.People peopleTranportJob = new QuickJob.People(PilotUsername,PilotName,PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
                 peopleTranportJob.Show();
                 this.Close();
             }
             else if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("CT"))
             {
-                QuickJob.cargo cargoTranportJob = new QuickJob.cargo(PilotUsername, PilotName, PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
+                QuickJob.Cargo cargoTranportJob = new QuickJob.Cargo(PilotUsername, PilotName, PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
                 cargoTranportJob.Show();
                 this.Close();
             }

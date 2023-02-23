@@ -1,12 +1,13 @@
 ﻿<ui:UiWindow
+        x:Class="Aviatask.QuickJob.Cargo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aviatask.QuickJob"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        xmlns:Wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" x:Class="Aviatask.QuickJob.cargo"
         mc:Ignorable="d"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         Title="quick_job_summary" Height="1032" Width="1920" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         ExtendsContentIntoTitleBar="True"
         WindowBackdropType="Mica" 
@@ -35,11 +36,11 @@
         <ui:TextBox x:Name="textBox_jobDesc" HorizontalAlignment="Left" Margin="33,346,0,0" TextWrapping="Wrap" Text="Select Job" VerticalAlignment="Top" Width="441" MinWidth="441" Height="136" MinHeight="136" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="33,487,0,0" TextWrapping="Wrap" Text="Weight" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="441" TextAlignment="Center"/>
         <ui:TextBox x:Name="textbox_weight" HorizontalAlignment="Left" Margin="33,508,0,0" TextWrapping="Wrap" Text="Select job" VerticalAlignment="Top" Width="441" MinWidth="441" TextAlignment="Center" IsReadOnly="True" ClearButtonEnabled="False"/>
-        <Wpf:ChromiumWebBrowser x:Name="browserLeft" Margin="561,65,709,73" Background="White" MinWidth="650" MinHeight="900" />
+        <wpf:ChromiumWebBrowser x:Name="browserLeft" Margin="561,65,709,73" Background="White" MinWidth="650" MinHeight="900" />
         <TextBlock HorizontalAlignment="Left" Margin="33,137,0,0" TextWrapping="Wrap" Text="Job ID" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="441" TextAlignment="Center"/>
         <ui:TextBox x:Name="textbox_jobID" HorizontalAlignment="Left" Margin="33,163,0,0" TextWrapping="Wrap" Text="Select Job" VerticalAlignment="Top" Width="441" MinWidth="441" TextAlignment="Center" IsReadOnly="True"  ClearButtonEnabled="False"/>
         <TextBlock HorizontalAlignment="Left" Margin="561,44,0,0" TextWrapping="Wrap" Text="Departure Airport Info" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="650" TextAlignment="Center" RenderTransformOrigin="1.296,1.457"/>
-        <Wpf:ChromiumWebBrowser x:Name="browserRight" Margin="1216,65,54,67" Background="White" MinWidth="650" MinHeight="900" />
+        <wpf:ChromiumWebBrowser x:Name="browserRight" Margin="1216,65,54,67" Background="White" MinWidth="650" MinHeight="900" />
         <TextBlock HorizontalAlignment="Left" Margin="1216,44,0,0" TextWrapping="Wrap" Text="Arrival Airport Info" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="650" TextAlignment="Center" RenderTransformOrigin="1.296,1.457"/>
         <TextBlock HorizontalAlignment="Left" Margin="561,972,0,0" TextWrapping="Wrap" Text="Current status" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="16" Width="260" TextAlignment="Center"/>
         <ui:TextBox x:Name="textbox_JobStatus" HorizontalAlignment="Left" Margin="826,965,0,0" TextWrapping="Wrap" Text="Job status" VerticalAlignment="Top" TextAlignment="Center" MinWidth="418" Width="418"/>
