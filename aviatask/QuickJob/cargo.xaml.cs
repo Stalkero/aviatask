@@ -44,8 +44,8 @@ namespace Aviatask.QuickJob
             textBox_jobDesc.Text = desc;
             textbox_StartIcao.Text = startICAO;
             textbox_endIcao.Text = endICAO;
-            textbox_distanceNM.Text = $"{Math.Round((distance / 1852)),2} nm";
-            textbox_distanceKM.Text = $"{Math.Round((distance/ 1000), 2)} km";
+            textbox_distanceNM.Text = $"{distance} nm";
+            textbox_distanceKM.Text = $"{Math.Round(distance * 1.852, 2)} km";
             browserLeft.Address = $"https://fshub.io/airport/{startICAO}/overview";
             browserRight.Address = $"https://fshub.io/airport/{endICAO}/overview";
 

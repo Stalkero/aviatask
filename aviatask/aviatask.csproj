@@ -35,6 +35,7 @@
     <ApplicationIcon>AviaTaskLogo.ico</ApplicationIcon>
     <PlatformTarget>x64</PlatformTarget>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RootNamespace>Aviatask</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutputPath>bin\x64\Debug\</OutputPath>

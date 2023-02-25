@@ -54,15 +54,6 @@ namespace Aviatask.MainMenu
             pilot.Name= name;
             pilot.Surname= surname;
 
-            new ToastContentBuilder()
-                           .AddArgument("action", "viewConversation")
-                           .AddArgument("conversationId", 9813)
-                           .AddText("Welcome to AviaTask")
-                           .AddText("Have a great flight!!")
-                           .Show();
-
-            textbox_welcome.Text = $"Welcome, {name} {surname}";
-
             string path = $"profiles/{username}";
             string logbookFile = path + "/logbook.json";
 
