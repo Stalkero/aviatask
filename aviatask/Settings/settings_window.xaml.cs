@@ -37,8 +37,8 @@ namespace Aviatask.Settings_window
         private void btn_close_settings_Click(object sender, RoutedEventArgs e)
         {
 
-            MainMenu.main_menu main_Menu = new MainMenu.main_menu(pUsername, pName,pSurname);
-            main_Menu.Show();
+           // MainMenu.main_menu main_Menu = new MainMenu.main_menu(pUsername, pName,pSurname);
+           // main_Menu.Show();
             this.Close();
 
 

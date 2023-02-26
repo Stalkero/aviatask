@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Aviatask.CreateAccount;
+﻿using Aviatask.CreateAccount;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,20 +13,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Aviatask.LogBook
 {
     /// <summary>
-    /// Interaction logic for logbook_window.xaml
+    /// Interaction logic for Logbook_page.xaml
     /// </summary>
-    public partial class logbook_window
+    public partial class Logbook
     {
         public string pUsername { get; set; }
         public string pName { get; set; }
         public string pSurname { get; set; }
 
-        public logbook_window(string username, string name, string surname)
+        public Logbook(string username, string name, string surname)
         {
             InitializeComponent();
 
@@ -45,7 +46,7 @@ namespace Aviatask.LogBook
 
                 List<LogBook.Classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.Classes.flightHistory>>(decryptedLogBookFileText);
 
-               // MessageBox.Show("Fine");
+                // MessageBox.Show("Fine");
 
                 if (flights[0].jobID == "FILL")
                 {
@@ -66,13 +67,13 @@ namespace Aviatask.LogBook
                 {
                     int stackpanelid = 0;
 
-                    foreach(var flight in flights)
+                    foreach (var flight in flights)
                     {
                         StackPanel flightStackPanel = new StackPanel()
                         {
                             Name = $"stack_flight_{stackpanelid}",
                             Orientation = Orientation.Horizontal,
-                            Margin = new Thickness(0,0,0,15)
+                            Margin = new Thickness(0, 0, 0, 15)
                         };
 
 
@@ -83,8 +84,8 @@ namespace Aviatask.LogBook
                             MinWidth = 200,
                             Width = 200,
                             FontSize = 16,
-                            TextAlignment= TextAlignment.Center,
-                            Foreground = new SolidColorBrush(Color.FromRgb(173,173,173))
+                            TextAlignment = TextAlignment.Center,
+                            Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
                         };
 
                         TextBlock text_JobName = new TextBlock()
@@ -129,8 +130,8 @@ namespace Aviatask.LogBook
 
                         TextBlock text_startEndIcao = new TextBlock()
                         {
-                            Width= 200,
-                            MinWidth= 200,
+                            Width = 200,
+                            MinWidth = 200,
                             TextAlignment = TextAlignment.Center,
                             FontSize = 16,
                             Text = $"{flight.startICAO}/{flight.endICAO}",
@@ -140,7 +141,7 @@ namespace Aviatask.LogBook
                         TextBlock text_distance = new TextBlock()
                         {
                             Width = 200,
-                            MinWidth= 200,
+                            MinWidth = 200,
                             Text = flight.distance.ToString(),
                             TextAlignment = TextAlignment.Center,
                             FontSize = 16,
@@ -196,10 +197,12 @@ namespace Aviatask.LogBook
 
         private void btn_Close_Click(object sender, RoutedEventArgs e)
         {
-            MainMenu.main_menu main_Menu = new MainMenu.main_menu(pUsername, pName, pSurname);
-            main_Menu.Show();
+            NavigationService.GoBack();
 
-            this.Close();
+            // MainMenu.main_menu main_Menu = new MainMenu.main_menu(pUsername, pName, pSurname);
+            // main_Menu.Show();
+
+           // this.Close();
         }
     }
 }

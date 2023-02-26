@@ -89,8 +89,8 @@ namespace Aviatask.Settings
                 MessageBox.Show("Changes saved");
                 
 
-                MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilotSave.Username,pilotSave.Name,pilotSave.Surname);
-                main_Menu.Show();
+               // MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilotSave.Username,pilotSave.Name,pilotSave.Surname);
+               // main_Menu.Show();
 
                 this.Close();
             }
@@ -104,8 +104,8 @@ namespace Aviatask.Settings
 
                 MessageBox.Show("Changes saved");
 
-                MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilotSave.Username, pilotSave.Name, pilotSave.Surname);
-                main_Menu.Show();
+                //MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilotSave.Username, pilotSave.Name, pilotSave.Surname);
+                //main_Menu.Show();
 
                 this.Close();
 

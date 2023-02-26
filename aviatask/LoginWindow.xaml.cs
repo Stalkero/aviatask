@@ -26,9 +26,9 @@ namespace Aviatask
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class LoginWindow
     {
-        public MainWindow()
+        public LoginWindow()
         {
             if (CheckForInternetConnection())
             {
@@ -80,12 +80,10 @@ namespace Aviatask
                     CreateAccount.account_classes.PilotDetails pilot = JsonConvert.DeserializeObject<CreateAccount.account_classes.PilotDetails>(decryptedText);
 
                     if (password == pilot.Password)
-                    { 
+                    {
+                        window_AviaTask_main _Main = new window_AviaTask_main(pilot.Username, pilot.Username, pilot.Surname);
+                        _Main.Show();
 
-                        MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilot.Username, pilot.Username, pilot.Surname);
-
-
-                        main_Menu.Show();
                         this.Close();
                     }
                     if (password != pilot.Password)
@@ -162,9 +160,9 @@ namespace Aviatask
 
                         if (password == pilot.Password)
                         {
-                            MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilot.Username, pilot.Username, pilot.Surname);
+                            window_AviaTask_main _Main = new window_AviaTask_main(pilot.Username, pilot.Username, pilot.Surname);
+                            _Main.Show();
 
-                            main_Menu.Show();
                             this.Close();
                         }
                         if (password != pilot.Password)
@@ -181,6 +179,12 @@ namespace Aviatask
             }
         }
 
-
+        private void UiWindow_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+        }
     }
 }

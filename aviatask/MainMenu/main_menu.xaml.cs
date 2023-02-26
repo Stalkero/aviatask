@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Aviatask.CreateAccount;
+﻿using Aviatask.CreateAccount;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,13 +13,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.Devices.Enumeration;
 
 namespace Aviatask.MainMenu
 {
     /// <summary>
-    /// Interaction logic for main_menu.xaml
+    /// Interaction logic for main_menu_page.xaml
     /// </summary>
     public partial class main_menu 
     {
@@ -45,14 +46,15 @@ namespace Aviatask.MainMenu
         }
 
         PilotDetails pilot = new PilotDetails();
-
-        public main_menu(string username,string name, string surname)
+        public main_menu(string username, string name, string surname)
         {
             InitializeComponent();
 
-            pilot.Username= username;
-            pilot.Name= name;
-            pilot.Surname= surname;
+
+
+            pilot.Username = username;
+            pilot.Name = name;
+            pilot.Surname = surname;
 
             string path = $"profiles/{username}";
             string logbookFile = path + "/logbook.json";
@@ -68,7 +70,7 @@ namespace Aviatask.MainMenu
                     textbox_account_last_job.Text = "";
                 else
                 {
-                    int lastJobId =  flights.Count -1;
+                    int lastJobId = flights.Count - 1;
 
                     textbox_account_last_job.Text = $"Last job: {flights[lastJobId].jobName} to {flights[lastJobId].endICAO}";
                 }
@@ -83,26 +85,23 @@ namespace Aviatask.MainMenu
 
         private void button_my_settings_Click(object sender, RoutedEventArgs e)
         {
-            
-            Settings_window.Settings settings= new Settings_window.Settings(pilot.Username,pilot.Name,pilot.Surname);
+
+            Settings_window.Settings settings = new Settings_window.Settings(pilot.Username, pilot.Name, pilot.Surname);
             settings.Show();
 
-            this.Close();
 
         }
 
         private void button_quick_job_Click(object sender, RoutedEventArgs e)
         {
-            QuickJob.selectJob jobSelection = new QuickJob.selectJob(pilot.Username, pilot.Name, pilot.Surname);
-            this.Close();
-            jobSelection.Show();
+
+            NavigationService.Content = new QuickJob.SelectJob(pilot.Username, pilot.Name, pilot.Surname);
+
         }
 
         private void button_my_flights_Click(object sender, RoutedEventArgs e)
         {
-            LogBook.logbook_window logbook = new LogBook.logbook_window(pilot.Username,pilot.Name,pilot.Surname);
-            this.Close();
-            logbook.Show();
+            NavigationService.Content = new LogBook.Logbook(pilot.Username, pilot.Name, pilot.Surname);
 
         }
     }

@@ -77,8 +77,8 @@ namespace Aviatask.Settings
 
             File.WriteAllText(profileFilePath,encryptedGenOptions);
 
-            main_menu menu = new main_menu(pUsername,pName,pSurname);
-            menu.Show();
+            //main_menu menu = new main_menu(pUsername,pName,pSurname);
+            //menu.Show();
             this.Close();
 
         }

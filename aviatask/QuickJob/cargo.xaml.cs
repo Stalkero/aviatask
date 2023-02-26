@@ -1,39 +1,39 @@
-﻿using Newtonsoft.Json;
+﻿using Aviatask.CreateAccount;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Aviatask.CreateAccount;
-using System.IO;
 using System.Windows.Media.Animation;
-using Microsoft.Toolkit.Uwp.Notifications;
-using System.Threading;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Aviatask.QuickJob
 {
     /// <summary>
-    /// Interaction logic for quick_job_summary.xaml
+    /// Interaction logic for Cargo_page.xaml
     /// </summary>
     public partial class Cargo
     {
-        
+
         public int status { get; set; }
 
         public string Pilotusername { get; set; }
         public string Pilotname { get; set; }
         public string Pilotsurname { get; set; }
 
-        public Cargo(string username, string name, string surname, string startICAO,string endICAO,string jobID,string jobType,double distance,string weight,string desc)
+        public Cargo(string username, string name, string surname, string startICAO, string endICAO, string jobID, string jobType, double distance, string weight, string desc)
         {
             InitializeComponent();
 
@@ -662,10 +662,7 @@ namespace Aviatask.QuickJob
 
                 File.WriteAllText(logbookFile, encryptedFlightsToJson);
 
-                MainMenu.main_menu menu = new MainMenu.main_menu(Pilotusername, Pilotname, Pilotsurname);
-
-                menu.Show();
-                this.Close();
+                NavigationService.GoBack();
 
             }
             else
@@ -676,6 +673,4 @@ namespace Aviatask.QuickJob
 
         }
     }
-
-    //
 }

@@ -1,4 +1,5 @@
 ﻿using Aviatask.CreateAccount;
+using Microsoft.Toolkit.Uwp.Notifications;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Wpf.Ui.Controls;
-using Microsoft.Toolkit.Uwp.Notifications;
-using Windows.UI.Notifications;
-using CefSharp.DevTools.CSS;
 
 namespace Aviatask.QuickJob
 {
@@ -32,6 +30,7 @@ namespace Aviatask.QuickJob
         public string Pilotusername { get; set; }
         public string Pilotname { get; set; }
         public string Pilotsurname { get; set; }
+
 
         public People(string username, string name, string surname, string startICAO, string endICAO, string jobID, string jobType, double distance, string weight, string desc)
         {
@@ -576,10 +575,7 @@ namespace Aviatask.QuickJob
 
                 File.WriteAllText(logbookFile, encryptedFlightsToJson);
 
-                Aviatask.MainMenu.main_menu menu = new Aviatask.MainMenu.main_menu(Pilotusername, Pilotname, Pilotsurname);
-
-                menu.Show();
-                this.Close();
+                NavigationService.GoBack();
             }
             else
             {

@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aviatask"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" x:Class="Aviatask.MainWindow"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" x:Class="Aviatask.LoginWindow"
         mc:Ignorable="d"
         ui:Title="Pilot Tool: Log in" Height="326" Width="454" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         ExtendsContentIntoTitleBar="True"
         WindowBackdropType="Mica" 
         AllowDrop="True"
-        WindowStyle="None" Background="{x:Null}">
+        WindowStyle="None" Background="{x:Null}"
+    StateChanged="UiWindow_StateChanged">
     <Window.Resources>
         <Storyboard x:Key="FadeInStoryboard">
             <DoubleAnimation From="0" To="1" Duration="0:0:2" Storyboard.TargetProperty="Opacity"/>

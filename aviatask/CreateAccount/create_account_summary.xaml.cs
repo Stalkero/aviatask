@@ -106,9 +106,9 @@ namespace Aviatask.CreateAccount
                 File.WriteAllText(path + "/logbook.json", encryptedLogbook); 
 
                 MessageBox.Show("Account Created. You can now login");
-                MainWindow mainWindow = new MainWindow();   
+                //MainWindow mainWindow = new MainWindow();   
 
-                mainWindow.Show();
+                //mainWindow.Show();
                 this.Close();
 
             }
@@ -126,9 +126,9 @@ namespace Aviatask.CreateAccount
 
 
                 MessageBox.Show("Account Created. You can now login");
-                MainWindow mainWindow = new MainWindow();
+                //MainWindow mainWindow = new MainWindow();
 
-                mainWindow.Show();
+                //mainWindow.Show();
                 this.Close();
             }
         }
