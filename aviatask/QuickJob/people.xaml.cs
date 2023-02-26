@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,9 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wpf.Ui.Controls;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.UI.Notifications;
+using CefSharp.DevTools.CSS;
 
 namespace Aviatask.QuickJob
 {
@@ -156,6 +160,204 @@ namespace Aviatask.QuickJob
 
         }
 
+        public void ThreadedChecklist_1()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_1", "Getting into aircraft", "pt_chk_1");
+                toastContent1.AddText("Please wait while you're getting into aircraft");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Getting into aircraft";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Got into aircraft";
+            });
+        }
+        public void ThreadedChecklist_2()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_2", "Pre-flight checklist", "pt_chk_2");
+                toastContent1.AddText("Please wait while you're proceeding with pre-flight checklist");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Pre-flight checklist";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Pre-flight checklist done";
+            });
+        }
+
+        public void ThreadedChecklist_3()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_3", "Pre-flight checklist", "pt_chk_3");
+                toastContent1.AddText("Please wait while you're proceeding with your flight plan");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Flight plan check";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Flight plan checked";
+            });
+        }
+
+        public void ThreadedChecklist_4()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_4", "Checking weather report", "pt_chk_4");
+                toastContent1.AddText("Please wait while you're checking weather report");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Weather report check";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Weather report checked";
+            });
+        }
+        public void ThreadedChecklist_5()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_5", "Starting engine and getting ready to fly", "pt_chk_5");
+                toastContent1.AddText("Please wait while you're starting engine and getting ready to fly");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Engine start and gettting ready to fly";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Engine start and gettting ready to fly done";
+            });
+        }
+
+        public void ThreadedChecklist_6()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_6", "Ready to fly", "pt_chk_6");
+                toastContent1.AddText("Wait 8 secs and you are ready to fly");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Ready to fly";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Ready to fly";
+            });
+        }
+        public void ThreadedChecklist_7()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_7", "Flying", "pt_chk_7");
+                toastContent1.AddText("You are airbone now");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Flying";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Flying have a safe flight";
+            });
+        }
+        public void ThreadedChecklist_8()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_8", "Getting ready to land", "pt_chk_8");
+                toastContent1.AddText("Prepare yourself for landing");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Getting ready to land";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Getting ready to land";
+            });
+        }
+
+        public void ThreadedChecklist_9()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_9", "Finishing job", "pt_chk_9");
+                toastContent1.AddText("Landed, now finish your job");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Finishing job";
+            });
+
+            Thread.Sleep(8000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                textbox_JobStatus.Text = "Getting ready to land";
+            });
+        }
+        public void ThreadedChecklist_10()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ToastContentBuilder toastContent1 = new ToastContentBuilder();
+
+                toastContent1.SetToastDuration(0);
+                toastContent1.AddHeader("people_Checklist_10", "Job finished", "pt_chk_10");
+                toastContent1.AddText("Job finished, adding flight to your logbook");
+                toastContent1.Show();
+                textbox_JobStatus.Text = "Job finished";
+            });
+
+        }
         private void PT_Btn_chk_1_Click(object sender, RoutedEventArgs e)
         {
             if (status == 0)
@@ -164,8 +366,12 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_1));
+                thread.Start();
+
                 status = 1;
-                textbox_JobStatus.Text = "Get into aircraft";
+
             }
             else
                 System.Windows.MessageBox.Show("Please comlete previous checklist steps");
@@ -178,8 +384,11 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_2));
+                thread.Start();
+
                 status = 2;
-                textbox_JobStatus.Text = "Pre-flight checklist";
             }
             else
                 System.Windows.MessageBox.Show("Please comlete previous checklist steps");
@@ -192,6 +401,11 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_3));
+                thread.Start();
+
+
                 status = 3;
                 textbox_JobStatus.Text = "Check flight plan";
             }
@@ -206,8 +420,11 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_4));
+                thread.Start();
+
                 status = 4;
-                textbox_JobStatus.Text = "Check weather report";
             }
             else
                 System.Windows.MessageBox.Show("Please comlete previous checklist steps");
@@ -220,8 +437,11 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_5));
+                thread.Start();
+
                 status = 5;
-                textbox_JobStatus.Text = "Engine start nad getting ready to fly";
             }
             else
                 System.Windows.MessageBox.Show("Please comlete previous checklist steps");
@@ -234,8 +454,11 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_6));
+                thread.Start();
+
                 status = 6;
-                textbox_JobStatus.Text = "Ready to fly";
             }
             else
                 System.Windows.MessageBox.Show("Please comlete previous checklist steps");
@@ -248,8 +471,12 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_7));
+                thread.Start();
+
+
                 status = 7;
-                textbox_JobStatus.Text = "Flying";
             }
             else
                 System.Windows.MessageBox.Show("Please comlete previous checklist steps");
@@ -262,8 +489,11 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_8));
+                thread.Start();
+
                 status = 8;
-                textbox_JobStatus.Text = "Getting ready to land";
             }
             else
                 System.Windows.MessageBox.Show("Please comlete previous checklist steps");
@@ -276,8 +506,11 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_9));
+                thread.Start();
+
                 status = 9;
-                textbox_JobStatus.Text = "Finishing job";
             }
             else
                 System.Windows.MessageBox.Show("Please comlete previous checklist steps");
@@ -290,8 +523,12 @@ namespace Aviatask.QuickJob
                 clickedButton.Content += " ✓";
                 clickedButton.IsEnabled = false;
                 Progress_ReadyToFly.Value += 10;
+
+
+                Thread thread = new Thread(new ThreadStart(ThreadedChecklist_10));
+                thread.Start();
+
                 status = 10;
-                textbox_JobStatus.Text = "Job finished";
                 Storyboard sb = (Storyboard)FindResource("FlashingStoryboard");
                 sb.Stop(textbox_JobStatus);
                 jobFinished();
