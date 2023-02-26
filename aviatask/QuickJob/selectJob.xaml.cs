@@ -162,15 +162,11 @@ namespace Aviatask.QuickJob
         {
             if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("PT"))
             {
-               // QuickJob.People peopleTranportJob = new QuickJob.People(PilotUsername, PilotName, PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
-                //peopleTranportJob.Show();
-                //this.Close();
+                NavigationService.Content = new QuickJob.People(PilotUsername, PilotName, PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
             }
             else if (textbox_StartIcao.Text != "Select job" && textbox_jobID.Text.StartsWith("CT"))
             {
-                QuickJob.Cargo cargoTranportJob = new QuickJob.Cargo(PilotUsername, PilotName, PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
-               // cargoTranportJob.Show();
-                //this.Close();
+                NavigationService.Content = new QuickJob.Cargo(PilotUsername, PilotName, PilotSurname, textbox_StartIcao.Text, textbox_endIcao.Text, selectedJobID, textbox_jobName.Text, selectedJobDistance, textbox_weight.Text, textBox_jobDesc.Text);
             }
             else
                 MessageBox.Show("Select job from left");
