@@ -200,7 +200,6 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Pre-flight checklist done";
             });
         }
-
         public void ThreadedChecklist_3()
         {
             Application.Current.Dispatcher.Invoke(() =>
@@ -221,7 +220,6 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Flight plan checked";
             });
         }
-
         public void ThreadedChecklist_4()
         {
             Application.Current.Dispatcher.Invoke(() =>
@@ -262,7 +260,6 @@ namespace Aviatask.QuickJob
                 textbox_JobStatus.Text = "Engine start and gettting ready to fly done";
             });
         }
-
         public void ThreadedChecklist_6()
         {
             Application.Current.Dispatcher.Invoke(() =>
