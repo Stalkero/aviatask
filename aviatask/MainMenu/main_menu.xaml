@@ -8,126 +8,137 @@
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       d:DesignHeight="987" d:DesignWidth="1920"
       Title="main_menu_page"
-      AllowDrop="True">
+      AllowDrop="True"
+           Unloaded="UiPage_Unloaded">
     <Grid>
+        <StackPanel Margin="47,0,47,-254" Height="678">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="button_quick_job" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="330" Width="900" FontSize="24" BorderBrush="{x:Null}" Click="button_quick_job_Click" Margin="0,2,2,2">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/MainMenu/Resources/quickjob_btn.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/MainMenu/Resources/quickjob_btn_hover.png"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="button_my_company" HorizontalAlignment="Left" VerticalAlignment="Top" Height="330" Width="900" FontSize="24" BorderBrush="{x:Null}" Margin="2,2,0,5">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/MainMenu/Resources/my_company_btn.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/MainMenu/Resources/my_company_btn_hov.png"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="button_my_settings" HorizontalAlignment="Left" VerticalAlignment="Top" Height="315" Width="900" FontSize="24" BorderBrush="{x:Null}" Click="button_my_settings_Click" Margin="0,2,2,0">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/MainMenu/Resources/my_settings_btn.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/MainMenu/Resources/my_settings_btn_hov.png"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="button_my_flights" HorizontalAlignment="Left" VerticalAlignment="Top" Height="315" Width="900" FontSize="24" BorderBrush="{x:Null}" Click="button_my_flights_Click" Margin="2,2,0,0">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/MainMenu/Resources/my_flights_btn.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/MainMenu/Resources/my_flights_btn_hov.png"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
         <TextBlock x:Name="textbox_welcome" HorizontalAlignment="Left" Margin="72,16,0,0" TextWrapping="Wrap" Text="Welcome, name surname" VerticalAlignment="Top" FontSize="20" Foreground="#FFADADAD"/>
         <TextBlock x:Name="textbox_account_last_job" HorizontalAlignment="Left" Margin="1254,16,0,0" TextWrapping="Wrap" Text="Your last job: JOB" VerticalAlignment="Top" FontSize="20" Foreground="#FFADADAD" Width="576" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,54,0,0" TextWrapping="Wrap" Text="Where we are going today" VerticalAlignment="Top" FontSize="48" Foreground="#FFADADAD"/>
-        <Button x:Name="button_quick_job" Content="" HorizontalAlignment="Left" Margin="72,170,0,0" VerticalAlignment="Top" Height="400" Width="400" FontSize="24" BorderBrush="{x:Null}" Click="button_quick_job_Click">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="/MainMenu/Resources/quickjob_btn.png"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/MainMenu/Resources/quickjob_btn_hover.png"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
-        <Button x:Name="button_my_company" HorizontalAlignment="Left" Margin="1430,170,0,0" VerticalAlignment="Top" Height="400" Width="400" FontSize="24" BorderBrush="{x:Null}">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="/MainMenu/Resources/my_company_btn.png"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/MainMenu/Resources/my_company_btn_hov.png"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
-        <Button x:Name="button_my_flights" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="400" Width="400" FontSize="24" BorderBrush="{x:Null}" Click="button_my_flights_Click">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="/MainMenu/Resources/my_flights_btn.png"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/MainMenu/Resources/my_flights_btn_hov.png"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
-        <Button x:Name="button_my_settings" HorizontalAlignment="Center" Margin="0,662,0,0" VerticalAlignment="Top" Height="202" Width="870" FontSize="24" BorderBrush="{x:Null}" Click="button_my_settings_Click">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="/MainMenu/Resources/my_settings_btn.png"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/MainMenu/Resources/my_settings_btn_hov.png"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+        <TextBlock x:Name="txt_Clock" HorizontalAlignment="Center" Height="90" TextWrapping="Wrap" Text="24:59:59" VerticalAlignment="Top" Width="644" Foreground="#FFADADAD" TextAlignment="Center" FontSize="60" Margin="0,94,0,0"/>
+        <TextBlock x:Name="txt_Date" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" Text="2023/12/30" VerticalAlignment="Top" Width="227" Foreground="#FFADADAD" TextAlignment="Center" FontSize="35" Margin="0,162,0,0"/>
+
     </Grid>
 </ui:UiPage>

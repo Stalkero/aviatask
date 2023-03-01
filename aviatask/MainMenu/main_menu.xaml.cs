@@ -1,10 +1,12 @@
 ﻿using Aviatask.CreateAccount;
+using Microsoft.Toolkit.Uwp.Notifications;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Windows.Devices.Enumeration;
+using Windows.UI.Core;
 
 namespace Aviatask.MainMenu
 {
@@ -24,6 +27,8 @@ namespace Aviatask.MainMenu
     /// </summary>
     public partial class main_menu 
     {
+        bool closing = false;
+
         public struct PilotDetails
         {
             public string Username { get; set; }
@@ -45,10 +50,38 @@ namespace Aviatask.MainMenu
 
         }
 
+        public void ThreadedClock()
+        {
+            while(!closing)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    DateTime date = DateTime.Now;
+                    txt_Date.Text = $"{date.Year}/{date.Month}/{date.Day}";
+
+                    txt_Clock.Text = $"{date.Hour}:{date.Minute}:{date.Second}";
+                });
+
+                Thread.Sleep(500);
+
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    DateTime date = DateTime.Now;
+
+                    txt_Clock.Text = $"{date.Hour} {date.Minute} {date.Second}";
+                });
+
+            }
+        }
+
+
         PilotDetails pilot = new PilotDetails();
         public main_menu(string username, string name, string surname)
         {
             InitializeComponent();
+
+            Thread thread = new Thread(new ThreadStart(ThreadedClock));
+            thread.Start();
 
 
 
@@ -103,6 +136,11 @@ namespace Aviatask.MainMenu
         {
             NavigationService.Content = new LogBook.Logbook(pilot.Username, pilot.Name, pilot.Surname);
 
+        }
+
+        private void UiPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            closing = true;
         }
     }
 }
