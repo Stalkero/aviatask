@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
-using Aviatask.CreateAccount;
+﻿using Aviatask.CreateAccount;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,22 +14,64 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Aviatask.Settings
 {
     /// <summary>
-    /// Interaction logic for settings_profile.xaml
+    /// Interaction logic for profile.xaml
     /// </summary>
-    public partial class settings_profile
+    public partial class Profile : Page
     {
-
         public string pICAO { get; set; }
         public float platDec { get; set; }
         public float plongDec { get; set; }
 
+        public static int tablet_size { get; set; }
+        public static bool SettingsClose { get; set; }
+        public void ThreadedUIUpdates()
+        {
+            while (!SettingsClose)
+            {
 
-        public settings_profile(string username)
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+
+                    if (tablet_size == 0)
+                    {
+                        txt_PilotSettings_Label.FontSize = 48;
+                        txt_PilotSettings_Label.Margin = new Thickness(0, 28, 0, 0);
+
+                        button_Save.FontSize = 22;
+
+
+                        this.Width = 1920;
+                        this.Height = 1016;
+
+                        stack_PilotSettings.Margin = new Thickness(0, 0, 0, 0);
+                    }
+                    if (tablet_size == 1)
+                    {
+                        txt_PilotSettings_Label.FontSize = 40;
+                        txt_PilotSettings_Label.Margin = new Thickness(0, -100,0, 0);
+
+                        button_Save.FontSize = 13.75;
+
+                        this.Width = 1600;
+                        this.Height = 848;
+
+                        stack_PilotSettings.Margin = new Thickness(0, 0, 0, 200);
+                        button_Save.Margin = new Thickness(0, 0, 0, 100);
+                    }
+                });
+
+
+            }
+        }
+
+
+        public Profile(string username)
         {
             InitializeComponent();
 
@@ -48,7 +91,7 @@ namespace Aviatask.Settings
                 textbox_Name.Text = pilot.Name;
                 textbox_Surname.Text = pilot.Surname;
                 combo_Country.Text = pilot.Country;
-                passwordbox_password.Text = pilot.Password;
+                passwordbox_password.Text = pilot.Password.ToString() ;
                 combo_Type.Text = pilot.Type;
                 pICAO = pilot.ICAO;
                 platDec = pilot.LatDec;
@@ -67,8 +110,8 @@ namespace Aviatask.Settings
             pilotSave.Surname = textbox_Surname.Text;
             pilotSave.Password = passwordbox_password.Text;
             pilotSave.Country = combo_Country.Text;
-            pilotSave.Type= combo_Type.Text;
-            pilotSave.ICAO= pICAO;
+            pilotSave.Type = combo_Type.Text;
+            pilotSave.ICAO = pICAO;
             pilotSave.LatDec = platDec;
             pilotSave.LongDec = plongDec;
 
@@ -82,17 +125,10 @@ namespace Aviatask.Settings
 
 
                 File.WriteAllText(path + "/profile.json", encryptedMsg);
-
-
-
-
                 MessageBox.Show("Changes saved");
-                
 
-               // MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilotSave.Username,pilotSave.Name,pilotSave.Surname);
-               // main_Menu.Show();
-
-                this.Close();
+                SettingsClose = true;
+                NavigationService.GoBack();
             }
             else
             {
@@ -104,13 +140,17 @@ namespace Aviatask.Settings
 
                 MessageBox.Show("Changes saved");
 
-                //MainMenu.main_menu main_Menu = new MainMenu.main_menu(pilotSave.Username, pilotSave.Name, pilotSave.Surname);
-                //main_Menu.Show();
-
-                this.Close();
+                SettingsClose = true;
+                NavigationService.GoBack();
 
 
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Thread UIupdates = new Thread(new ThreadStart(ThreadedUIUpdates));
+            UIupdates.Start();
         }
     }
 }

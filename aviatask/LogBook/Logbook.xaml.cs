@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,9 +24,60 @@ namespace Aviatask.LogBook
     /// </summary>
     public partial class Logbook
     {
+        public static bool LogBookClose { get; set; }
+
+        public static int tablet_size { get; set; }
+
         public string pUsername { get; set; }
         public string pName { get; set; }
         public string pSurname { get; set; }
+
+        public void ThreadedUIUpdates()
+        {
+            while (!LogBookClose)
+            {
+
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+
+
+                    
+
+                    if (tablet_size == 0)
+                    {
+
+                        this.Width = 1920;
+                        this.Height = 1016;
+
+
+
+
+
+                        
+
+                        
+
+
+
+
+                    }
+                    if (tablet_size == 1)
+                    {
+
+                        this.Width = 1600;
+                        this.Height = 848;
+
+                        MessageBox.Show("Logbook only works on 1920x1080 windows");
+                        LogBookClose = true;
+                        NavigationService.GoBack();
+                        MainMenu.main_menu.MainMenuClose = false;
+                    }
+                });
+
+
+            }
+        }
+
 
         public Logbook(string username, string name, string surname)
         {
@@ -46,135 +98,148 @@ namespace Aviatask.LogBook
 
                 List<LogBook.Classes.flightHistory> flights = JsonConvert.DeserializeObject<List<LogBook.Classes.flightHistory>>(decryptedLogBookFileText);
 
-                // MessageBox.Show("Fine");
-
-                if (flights[0].jobID == "FILL")
+                if (tablet_size != 0)
                 {
-                    grid_MainGrid.Children.Remove(stack_Labels);
-                    grid_MainGrid.Children.Remove(scroll_Flights);
-
-                    TextBlock text = new TextBlock()
-                    {
-                        Text = "No flights yet",
-                        FontSize = 40,
-                        VerticalAlignment = VerticalAlignment.Center,
-                        HorizontalAlignment = HorizontalAlignment.Center
-                    };
-
-                    grid_MainGrid.Children.Add(text);
+                    MessageBox.Show("Logbook only works on 1920x1080 windows");
+                    LogBookClose = true;
+                    MainMenu.main_menu.MainMenuClose = false;
+                    
                 }
                 else
                 {
-                    int stackpanelid = 0;
-
-                    foreach (var flight in flights)
+                    if (flights[0].jobID == "FILL")
                     {
-                        StackPanel flightStackPanel = new StackPanel()
+                        grid_MainGrid.Children.Remove(stack_Labels);
+                        grid_MainGrid.Children.Remove(scroll_Flights);
+
+                        TextBlock text = new TextBlock()
                         {
-                            Name = $"stack_flight_{stackpanelid}",
-                            Orientation = Orientation.Horizontal,
-                            Margin = new Thickness(0, 0, 0, 15)
+                            Text = "No flights yet",
+                            FontSize = 40,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            HorizontalAlignment = HorizontalAlignment.Center
                         };
 
+                        grid_MainGrid.Children.Add(text);
+                    }
+                    else
+                    {
+                        int stackpanelid = 0;
 
-
-                        TextBlock text_JobID = new TextBlock()
+                        foreach (var flight in flights)
                         {
-                            Text = flight.jobID,
-                            MinWidth = 200,
-                            Width = 200,
-                            FontSize = 16,
-                            TextAlignment = TextAlignment.Center,
-                            Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
-                        };
-
-                        TextBlock text_JobName = new TextBlock()
-                        {
-                            Text = flight.jobName,
-                            Width = 250,
-                            MinWidth = 250,
-                            FontSize = 16,
-                            TextAlignment = TextAlignment.Center,
-                            Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
-                        };
-
-                        TextBlock text_JobType = new TextBlock()
-                        {
-                            Text = flight.jobType,
-                            Width = 200,
-                            MinWidth = 200,
-                            TextAlignment = TextAlignment.Center,
-                            FontSize = 16,
-                            Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
-                        };
-
-                        TextBlock text_JobWeight = new TextBlock()
-                        {
-                            Text = flight.weight,
-                            Width = 200,
-                            MinWidth = 200,
-                            FontSize = 16,
-                            TextAlignment = TextAlignment.Center,
-                            Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
-                        };
-
-                        TextBlock text_JobTime = new TextBlock()
-                        {
-                            Text = flight.time,
-                            Width = 250,
-                            MinWidth = 250,
-                            FontSize = 16,
-                            TextAlignment = TextAlignment.Center,
-                            Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
-                        };
-
-                        TextBlock text_startEndIcao = new TextBlock()
-                        {
-                            Width = 200,
-                            MinWidth = 200,
-                            TextAlignment = TextAlignment.Center,
-                            FontSize = 16,
-                            Text = $"{flight.startICAO}/{flight.endICAO}",
-                            Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
-                        };
-
-                        TextBlock text_distance = new TextBlock()
-                        {
-                            Width = 200,
-                            MinWidth = 200,
-                            Text = flight.distance.ToString(),
-                            TextAlignment = TextAlignment.Center,
-                            FontSize = 16,
-                            Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
-                        };
-
-                        Wpf.Ui.Controls.Button viewJobBtn = new Wpf.Ui.Controls.Button()
-                        {
-                            Content = "View contract",
-                            MinWidth = 130,
-                            FontSize = 16,
-                            Name = $"btn_viewJob_{stackpanelid}",
-                        };
-                        viewJobBtn.Click += ViewJobBtn_Click;
-
-                        flightStackPanel.Children.Add(text_JobID);
-                        flightStackPanel.Children.Add(text_JobName);
-                        flightStackPanel.Children.Add(text_JobType);
-                        flightStackPanel.Children.Add(text_startEndIcao);
-                        flightStackPanel.Children.Add(text_distance);
-                        flightStackPanel.Children.Add(text_JobWeight);
-                        flightStackPanel.Children.Add(text_JobTime);
-                        flightStackPanel.Children.Add(viewJobBtn);
+                            StackPanel flightStackPanel = new StackPanel()
+                            {
+                                Name = $"stack_flight_{stackpanelid}",
+                                Orientation = Orientation.Horizontal,
+                                Margin = new Thickness(0, 0, 0, 15)
+                            };
 
 
+                            TextBlock text_JobID = new TextBlock()
+                            {
+                                Name = "text_JobID",
+                                Text = flight.jobID,
+                                MinWidth = 200,
+                                Width = 200,
+                                FontSize = 16,
+                                TextAlignment = TextAlignment.Center,
+                                Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
+                            };
 
+                            TextBlock text_JobName = new TextBlock()
+                            {
+                                Name = "text_JobName",
+                                Text = flight.jobName,
+                                Width = 250,
+                                MinWidth = 250,
+                                FontSize = 16,
+                                TextAlignment = TextAlignment.Center,
+                                Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
+                            };
 
+                            TextBlock text_JobType = new TextBlock()
+                            {
+                                Name = "text_JobType",
+                                Text = flight.jobType,
+                                Width = 200,
+                                MinWidth = 200,
+                                TextAlignment = TextAlignment.Center,
+                                FontSize = 16,
+                                Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
+                            };
 
+                            TextBlock text_JobWeight = new TextBlock()
+                            {
+                                Name = "text_JobWeight",
+                                Text = flight.weight,
+                                Width = 200,
+                                MinWidth = 200,
+                                FontSize = 16,
+                                TextAlignment = TextAlignment.Center,
+                                Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
+                            };
 
-                        grid.Children.Add(flightStackPanel);
-                        stackpanelid++;
+                            TextBlock text_JobTime = new TextBlock()
+                            {
+                                Name = "text_JobTime",
+                                Text = flight.time,
+                                Width = 250,
+                                MinWidth = 250,
+                                FontSize = 16,
+                                TextAlignment = TextAlignment.Center,
+                                Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
+                            };
+
+                            TextBlock text_startEndIcao = new TextBlock()
+                            {
+                                Name = "text_Dep",
+                                Width = 200,
+                                MinWidth = 200,
+                                TextAlignment = TextAlignment.Center,
+                                FontSize = 16,
+                                Text = $"{flight.startICAO}/{flight.endICAO}",
+                                Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
+                            };
+
+                            TextBlock text_distance = new TextBlock()
+                            {
+                                Name = "text_Distance",
+                                Width = 200,
+                                MinWidth = 200,
+                                Text = flight.distance.ToString(),
+                                TextAlignment = TextAlignment.Center,
+                                FontSize = 16,
+                                Foreground = new SolidColorBrush(Color.FromRgb(173, 173, 173))
+                            };
+
+                            Wpf.Ui.Controls.Button viewJobBtn = new Wpf.Ui.Controls.Button()
+                            {
+                                Content = "View contract",
+                                MinWidth = 130,
+                                FontSize = 16,
+                                Name = $"btn_viewJob_{stackpanelid}",
+                            };
+                            viewJobBtn.Click += ViewJobBtn_Click;
+
+                            flightStackPanel.Children.Add(text_JobID);
+                            flightStackPanel.Children.Add(text_JobName);
+                            flightStackPanel.Children.Add(text_JobType);
+                            flightStackPanel.Children.Add(text_startEndIcao);
+                            flightStackPanel.Children.Add(text_distance);
+                            flightStackPanel.Children.Add(text_JobWeight);
+                            flightStackPanel.Children.Add(text_JobTime);
+                            flightStackPanel.Children.Add(viewJobBtn);
+
+                            stack_Flights.Children.Add(flightStackPanel);
+                            stackpanelid++;
+                        }
                     }
                 }
+
+                // MessageBox.Show("Fine");
+
+                
 
 
             }
@@ -182,8 +247,6 @@ namespace Aviatask.LogBook
             {
                 MessageBox.Show("Profile Corrupted. Directory or logbook file missing");
             }
-
-
 
 
 
@@ -197,12 +260,15 @@ namespace Aviatask.LogBook
 
         private void btn_Close_Click(object sender, RoutedEventArgs e)
         {
+            MainMenu.main_menu.MainMenuClose = false;
+            LogBookClose = true;
             NavigationService.GoBack();
+        }
 
-            // MainMenu.main_menu main_Menu = new MainMenu.main_menu(pUsername, pName, pSurname);
-            // main_Menu.Show();
-
-           // this.Close();
+        private void UiPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Thread UIupdates = new Thread(new ThreadStart(ThreadedUIUpdates));
+            UIupdates.Start();
         }
     }
 }

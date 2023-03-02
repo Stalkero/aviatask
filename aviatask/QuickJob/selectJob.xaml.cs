@@ -45,6 +45,7 @@ namespace Aviatask.QuickJob
             PilotName = name;
             PilotSurname = surname;
 
+
             string path = $"profiles/{username}";
 
             if (File.Exists(path + "/profile.json") && File.Exists(path + "/quickjob_settings.json"))
@@ -176,6 +177,7 @@ namespace Aviatask.QuickJob
 
         private void btn_GoBack_Click(object sender, RoutedEventArgs e)
         {
+            MainMenu.main_menu.MainMenuClose = false;
             NavigationService.GoBack();
         }
     }

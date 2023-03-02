@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:Aviatask.MainMenu"
       mc:Ignorable="d" 
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-      d:DesignHeight="987" d:DesignWidth="1920"
+      d:DesignHeight="1016" d:DesignWidth="1920"
       Title="main_menu_page"
       AllowDrop="True"
-           Unloaded="UiPage_Unloaded">
+           Loaded="UiPage_Loaded">
     <Grid>
-        <StackPanel Margin="47,0,47,-254" Height="678">
+        <StackPanel x:Name="stack_apps" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,80,0,0">
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="button_quick_job" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="330" Width="900" FontSize="24" BorderBrush="{x:Null}" Click="button_quick_job_Click" Margin="0,2,2,2">
+                <Button x:Name="button_quick_job" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="300" Width="300" FontSize="24" BorderBrush="{x:Null}" Click="button_quick_job_Click" Margin="0,2,2,2">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background">
@@ -42,7 +42,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="button_my_company" HorizontalAlignment="Left" VerticalAlignment="Top" Height="330" Width="900" FontSize="24" BorderBrush="{x:Null}" Margin="2,2,0,5">
+                <Button x:Name="button_my_company" HorizontalAlignment="Left" VerticalAlignment="Top" Height="300" Width="300" FontSize="24" BorderBrush="{x:Null}" Margin="2,2,0,5">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background">
@@ -74,7 +74,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="button_my_settings" HorizontalAlignment="Left" VerticalAlignment="Top" Height="315" Width="900" FontSize="24" BorderBrush="{x:Null}" Click="button_my_settings_Click" Margin="0,2,2,0">
+                <Button x:Name="button_my_settings" HorizontalAlignment="Left" VerticalAlignment="Top" Height="300" Width="300" FontSize="24" BorderBrush="{x:Null}" Click="button_my_settings_Click" Margin="0,2,2,0">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background">
@@ -103,7 +103,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="button_my_flights" HorizontalAlignment="Left" VerticalAlignment="Top" Height="315" Width="900" FontSize="24" BorderBrush="{x:Null}" Click="button_my_flights_Click" Margin="2,2,0,0">
+                <Button x:Name="button_my_flights" HorizontalAlignment="Left" VerticalAlignment="Top" Height="300" Width="300" FontSize="24" BorderBrush="{x:Null}" Click="button_my_flights_Click" Margin="2,2,0,0">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background">
@@ -135,10 +135,10 @@
             </StackPanel>
 
         </StackPanel>
-        <TextBlock x:Name="textbox_welcome" HorizontalAlignment="Left" Margin="72,16,0,0" TextWrapping="Wrap" Text="Welcome, name surname" VerticalAlignment="Top" FontSize="20" Foreground="#FFADADAD"/>
-        <TextBlock x:Name="textbox_account_last_job" HorizontalAlignment="Left" Margin="1254,16,0,0" TextWrapping="Wrap" Text="Your last job: JOB" VerticalAlignment="Top" FontSize="20" Foreground="#FFADADAD" Width="576" TextAlignment="Center"/>
-        <TextBlock x:Name="txt_Clock" HorizontalAlignment="Center" Height="90" TextWrapping="Wrap" Text="24:59:59" VerticalAlignment="Top" Width="644" Foreground="#FFADADAD" TextAlignment="Center" FontSize="60" Margin="0,94,0,0"/>
-        <TextBlock x:Name="txt_Date" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" Text="2023/12/30" VerticalAlignment="Top" Width="227" Foreground="#FFADADAD" TextAlignment="Center" FontSize="35" Margin="0,162,0,0"/>
+        <TextBlock x:Name="textbox_welcome" HorizontalAlignment="Left" Margin="72,0,0,0" TextWrapping="Wrap" Text="Welcome, name surname" VerticalAlignment="Top" FontSize="20" Foreground="#FFADADAD"/>
+        <TextBlock x:Name="textbox_account_last_job" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Your last job: JOB" VerticalAlignment="Top" FontSize="20" Foreground="#FFADADAD" Width="576" TextAlignment="Center" Margin="0,0,72,0"/>
+        <TextBlock x:Name="txt_Clock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="24:59:59" VerticalAlignment="Top" Width="644" Foreground="#FFADADAD" TextAlignment="Center" FontSize="60" Margin="0,100,0,0"/>
+        <TextBlock x:Name="txt_Date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="2023/12/30" VerticalAlignment="Top" Width="228" Foreground="#FFADADAD" TextAlignment="Center" FontSize="35" Margin="0,162,0,0"/>
 
     </Grid>
 </ui:UiPage>

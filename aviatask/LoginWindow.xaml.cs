@@ -82,8 +82,8 @@ namespace Aviatask
                     if (password == pilot.Password)
                     {
                         window_AviaTask_main _Main = new window_AviaTask_main(pilot.Username, pilot.Username, pilot.Surname);
-                        _Main.Show();
 
+                        _Main.Show();
                         this.Close();
                     }
                     if (password != pilot.Password)
@@ -161,8 +161,9 @@ namespace Aviatask
                         if (password == pilot.Password)
                         {
                             window_AviaTask_main _Main = new window_AviaTask_main(pilot.Username, pilot.Username, pilot.Surname);
-                            _Main.Show();
 
+
+                            _Main.Show();
                             this.Close();
                         }
                         if (password != pilot.Password)

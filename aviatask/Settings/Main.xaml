@@ -1,0 +1,29 @@
+﻿<Page x:Class="Aviatask.Settings.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Aviatask.Settings"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" 
+      d:DesignHeight="1016" d:DesignWidth="1920"
+      Loaded="Page_Loaded"
+      Title="main">
+
+    <Grid>
+        <TextBlock x:Name="txt_SettingsLabel" TextWrapping="Wrap" Text="Pilot profile: Settings" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="48" TextAlignment="Center" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            
+            <StackPanel x:Name="stack_settings" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ui:Button x:Name="btn_pilot_data" Content="Pilot Data" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="300" Click="btn_pilot_data_Click" Margin="10,0,10,0"/>
+                <ui:Button x:Name="btn_generation_options" Content="Generation Options" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="300" Click="btn_generation_options_Click" Margin="10,0,10,0"/>
+                <ui:Button x:Name="btn_other" Content="Other Options" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="300" Margin="10,0,10,0"/>
+            </StackPanel>
+            
+        </StackPanel>
+        <ui:Button x:Name="btn_close_settings" Content="Close Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="300" Height="96" Click="btn_close_settings_Click" Appearance="Primary"/>
+        
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,45 @@
+﻿<Page x:Class="Aviatask.Settings.Generation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Aviatask.Settings"
+      xmlns:ui ="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" 
+       d:DesignHeight="1016" d:DesignWidth="1920"
+      Title="Generation"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <TextBlock x:Name="txt_SettingsGen_Label" HorizontalAlignment="Center" Margin="0,28,0,0" TextWrapping="Wrap" Text="Generation options" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="48" TextAlignment="Center"/>
+        <StackPanel x:Name="stack_Settings_Container" Orientation="Horizontal" Margin="0,90,0,0">
+            <StackPanel x:Name="Stack_QuickJob_settings" Orientation="Vertical">
+                <TextBlock x:Name="txt_QuickJob_Settings_Label" TextWrapping="Wrap" Text="Quick job" VerticalAlignment="Center" Foreground="#FFADADAD" FontSize="18" TextAlignment="Center" Margin="0,0,0,16"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Max distance from home ICAO" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="168" Margin="0,8,0,0"/>
+                    <ui:NumberBox x:Name="numberBox_distance" TextWrapping="Wrap" Text="100"  VerticalAlignment="Top" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="1000"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="nm" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="20" Margin="0,8,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="People transport generation iterations" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="168"/>
+                    <ui:NumberBox x:Name="numberBox_AiportPeopleIterations" HorizontalAlignment="Left" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Cargo job generation iterations" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="168"/>
+                    <ui:NumberBox x:Name="numberBox_cargojob_iterations" TextWrapping="Wrap" Text="3" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Cargo job generation how much cargo helicopter lifts" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="168" />
+                    <ui:NumberBox x:Name="numberBox_cargojobhelicopterLoad" HorizontalAlignment="Left" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Cargo job generation how much cargo plane lifts" VerticalAlignment="Top" Foreground="#FFADADAD" FontSize="12" Width="168" RenderTransformOrigin="0.494,2.632"/>
+                    <ui:NumberBox x:Name="numberBox_cargojobPlaneLoad" HorizontalAlignment="Left" TextWrapping="Wrap" Text="3"  VerticalAlignment="Top" Width="163" MinWidth="163" FontSize="12" TextAlignment="Center" Min="1" Max="9" IntegersOnly="True"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <ui:Button x:Name="btn_saveGenOptions" Content="Save" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="24" Appearance="Primary" Click="btn_saveGenOptions_Click"/>
+    </Grid>
+        
+</Page>

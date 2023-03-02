@@ -6,27 +6,28 @@
       xmlns:local="clr-namespace:Aviatask.LogBook"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
-      d:DesignHeight="987" d:DesignWidth="1920"
+      d:DesignHeight="1016" d:DesignWidth="1920"
       Title="Logbook_page"
       AllowDrop="True"
-      Background="{x:Null}">
+      Background="{x:Null}"
+           Loaded="UiPage_Loaded">
 
     <Grid x:Name="grid_MainGrid" AllowDrop="True">
         <StackPanel Margin="130,0,130,100" x:Name="stack_Labels" Orientation="Horizontal" Height="24" VerticalAlignment="Top">
-            <TextBlock Text="Job ID" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock Text="Job name" Background="{x:Null}" Foreground="#FFADADAD" Width="250" TextAlignment="Center" FontSize="19"/>
-            <TextBlock Text="Job type" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock Text="Dep-Arr" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock Text="Distance" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock Text="Weight" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock Text="Date" Background="{x:Null}" Foreground="#FFADADAD" Width="251" TextAlignment="Center" FontSize="16"/>
-            <TextBlock Text="View contract" Background="{x:Null}" Foreground="#FFADADAD" TextAlignment="Center" VerticalAlignment="Center" Width="130" FontSize="19"/>
+            <TextBlock x:Name="txt_JobID"  Text="Job ID" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock x:Name="txt_Job" Text="Job name" Background="{x:Null}" Foreground="#FFADADAD" Width="250" TextAlignment="Center" FontSize="19"/>
+            <TextBlock x:Name="txt_type" Text="Job type" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock x:Name="txt_dep" Text="Dep-Arr" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock x:Name="txt_distance" Text="Distance" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock x:Name="txt_weight" Text="Weight" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+            <TextBlock x:Name="txt_date" Text="Date" Background="{x:Null}" Foreground="#FFADADAD" Width="251" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="btn_viewRep" Text="View contract" Background="{x:Null}" Foreground="#FFADADAD" TextAlignment="Center" VerticalAlignment="Center" Width="130" FontSize="19"/>
         </StackPanel>
         <ScrollViewer x:Name="scroll_Flights">
-            <StackPanel Orientation="Vertical" x:Name="grid" Margin="130,40,130,87">
+            <StackPanel x:Name="stack_Flights" Orientation="Vertical" Margin="130,40,130,87">
 
             </StackPanel>
         </ScrollViewer>
-        <ui:Button x:Name="btn_Close" Content="Go back" Appearance="Primary" HorizontalAlignment="Center" Margin="0,941,0,0" VerticalAlignment="Top" FontSize="18" Click="btn_Close_Click"/>
+        <ui:Button x:Name="btn_Close" Content="Go back" Appearance="Primary" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Click="btn_Close_Click"/>
     </Grid>
 </ui:UiPage>

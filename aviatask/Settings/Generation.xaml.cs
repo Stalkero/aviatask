@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using Aviatask.CreateAccount;
-using Aviatask.MainMenu;
-using Aviatask.Settings_window;
+﻿using Aviatask.CreateAccount;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,30 +14,78 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Aviatask.Settings
 {
     /// <summary>
-    /// Interaction logic for settings_generation.xaml
+    /// Interaction logic for Generation.xaml
     /// </summary>
-    public partial class settings_generation
+    public partial class Generation : Page
     {
+        public static int tablet_size { get; set; }
+        public static bool SettingsClose { get; set; }
 
         settings_generation_classes.quick_job_generation newJobSettings = new settings_generation_classes.quick_job_generation();
         string pUsername { get; set; }
         string pName { get; set; }
         string pSurname { get; set; }
 
-        public settings_generation(string username,string name,string surname)
+        public void ThreadedUIUpdates()
+        {
+            while (!SettingsClose)
+            {
+
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+
+                    if (tablet_size == 0)
+                    {
+                        txt_SettingsGen_Label.FontSize = 48;
+                        txt_SettingsGen_Label.Margin = new Thickness(0,0,0,0);
+
+                        txt_QuickJob_Settings_Label.FontSize = 18;
+
+                        stack_Settings_Container.Margin = new Thickness(0,90,0,0);
+
+                        btn_saveGenOptions.FontSize = 24;
+                        btn_saveGenOptions.Margin = new Thickness (0,0,0,0);
+
+
+                        this.Width = 1920;
+                        this.Height = 1016;
+                    }
+                    if (tablet_size == 1)
+                    {
+                        txt_SettingsGen_Label.FontSize = 40;
+                        txt_SettingsGen_Label.Margin = new Thickness(0, -100, 0, 0);
+                        txt_QuickJob_Settings_Label.FontSize = 15;
+
+                        stack_Settings_Container.Margin = new Thickness(0, -30, 0, 0);
+
+                        btn_saveGenOptions.FontSize = 20;
+                        btn_saveGenOptions.Margin = new Thickness(0, 0, 0, 100);
+
+                        this.Width = 1600;
+                        this.Height = 848;
+                    }
+                });
+
+
+            }
+        }
+
+
+        public Generation(string username, string name, string surname)
         {
             InitializeComponent();
 
 
             string path = $"profiles/{username}";
-            pUsername= username ;
-            pName = name ;
-            pSurname= surname ;
+            pUsername = username;
+            pName = name;
+            pSurname = surname;
 
 
             if (Directory.Exists(path) && File.Exists(path + "/quickjob_settings.json"))
@@ -75,11 +122,18 @@ namespace Aviatask.Settings
             string encryptedGenOptions = create_account_utils.EncryptText(genOptionsToJson, "5up3r4dv4nc3dC0mpl3xP455w0rdCr34t3dBy5t4lk3r0Th4tS4y5FuckUJKs0Much");
             string profileFilePath = $"profiles/{pUsername}/quickjob_settings.json";
 
-            File.WriteAllText(profileFilePath,encryptedGenOptions);
+            File.WriteAllText(profileFilePath, encryptedGenOptions);
 
-            //main_menu menu = new main_menu(pUsername,pName,pSurname);
-            //menu.Show();
-            this.Close();
+            SettingsClose = true;
+            Settings.Main.SettingsClose = false;
+            NavigationService.GoBack();
+            
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Thread UIupdates = new Thread(new ThreadStart(ThreadedUIUpdates));
+            UIupdates.Start();
 
         }
     }
