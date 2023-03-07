@@ -10,8 +10,8 @@
         mc:Ignorable="d"
         Title="window_AviaTask_main" Height="1032" Width="1920"  WindowStyle="None"
         
-        Background="{x:Null}"
-             WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True">
+        Background="Black"
+             WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="CanResizeWithGrip">
     <Border CornerRadius="25" Background="Black">
         <Grid
         x:Name="gridd" 

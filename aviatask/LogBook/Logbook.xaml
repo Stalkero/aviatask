@@ -10,24 +10,32 @@
       Title="Logbook_page"
       AllowDrop="True"
       Background="{x:Null}"
-           Loaded="UiPage_Loaded">
-
+           Loaded="UiPage_Loaded"
+           SizeChanged="UiPage_SizeChanged">
+    <Page.Resources>
+        <Storyboard x:Key="FadeInAnimation">
+            <DoubleAnimation From="0" To="1" Duration="0:0:1" Storyboard.TargetProperty="Opacity"/>
+        </Storyboard>
+    </Page.Resources>
     <Grid x:Name="grid_MainGrid" AllowDrop="True">
-        <StackPanel Margin="130,0,130,100" x:Name="stack_Labels" Orientation="Horizontal" Height="24" VerticalAlignment="Top">
-            <TextBlock x:Name="txt_JobID"  Text="Job ID" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock x:Name="txt_Job" Text="Job name" Background="{x:Null}" Foreground="#FFADADAD" Width="250" TextAlignment="Center" FontSize="19"/>
-            <TextBlock x:Name="txt_type" Text="Job type" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock x:Name="txt_dep" Text="Dep-Arr" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock x:Name="txt_distance" Text="Distance" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock x:Name="txt_weight" Text="Weight" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
-            <TextBlock x:Name="txt_date" Text="Date" Background="{x:Null}" Foreground="#FFADADAD" Width="251" TextAlignment="Center" FontSize="16"/>
-            <TextBlock x:Name="btn_viewRep" Text="View contract" Background="{x:Null}" Foreground="#FFADADAD" TextAlignment="Center" VerticalAlignment="Center" Width="130" FontSize="19"/>
-        </StackPanel>
-        <ScrollViewer x:Name="scroll_Flights">
-            <StackPanel x:Name="stack_Flights" Orientation="Vertical" Margin="130,40,130,87">
-
+        <StackPanel x:Name="stack_Main">
+            <StackPanel Margin="130,0,130,100" x:Name="stack_Labels" Orientation="Horizontal" Height="24" VerticalAlignment="Top">
+                <TextBlock x:Name="txt_JobID"  Text="Job ID" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+                <TextBlock x:Name="txt_Job" Text="Job name" Background="{x:Null}" Foreground="#FFADADAD" Width="250" TextAlignment="Center" FontSize="19"/>
+                <TextBlock x:Name="txt_type" Text="Job type" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+                <TextBlock x:Name="txt_dep" Text="Dep-Arr" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+                <TextBlock x:Name="txt_distance" Text="Distance" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+                <TextBlock x:Name="txt_weight" Text="Weight" Background="{x:Null}" Foreground="#FFADADAD" Width="200" TextAlignment="Center" FontSize="19"/>
+                <TextBlock x:Name="txt_date" Text="Date" Background="{x:Null}" Foreground="#FFADADAD" Width="251" TextAlignment="Center" FontSize="16"/>
+                <TextBlock x:Name="btn_viewRep" Text="View contract" Background="{x:Null}" Foreground="#FFADADAD" TextAlignment="Center" VerticalAlignment="Center" Width="130" FontSize="19"/>
             </StackPanel>
-        </ScrollViewer>
-        <ui:Button x:Name="btn_Close" Content="Go back" Appearance="Primary" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Click="btn_Close_Click"/>
+            <ScrollViewer x:Name="scroll_Flights" Margin="0,0,0,10" Height="900">
+                <StackPanel x:Name="stack_Flights" Orientation="Vertical" Margin="130,40,130,87">
+                </StackPanel>
+            </ScrollViewer>
+            <ui:Button x:Name="btn_Close" Content="Go back" Appearance="Primary" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Click="btn_Close_Click"/>
+        </StackPanel>
+
+
     </Grid>
 </ui:UiPage>

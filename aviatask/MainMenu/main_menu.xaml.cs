@@ -210,16 +210,9 @@ namespace Aviatask.MainMenu
 
         private void button_my_flights_Click(object sender, RoutedEventArgs e)
         {
-            if (tablet_size != 0)
-                MessageBox.Show("Logbook is only support on 1920x1080 windows");
-            else
-            {
-                MainMenuClose = true;
-                LogBook.Logbook.LogBookClose = false;
-                NavigationService.Content = new LogBook.Logbook(pilot.Username, pilot.Name, pilot.Surname);
-            }
-                
-
+            MainMenuClose = true;
+            LogBook.Logbook.LogBookClose = false;
+            NavigationService.Content = new LogBook.Logbook(pilot.Username, pilot.Name, pilot.Surname);
         }
 
         private void UiPage_Loaded(object sender, RoutedEventArgs e)
