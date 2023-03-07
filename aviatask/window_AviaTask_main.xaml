@@ -11,15 +11,17 @@
         Title="window_AviaTask_main" Height="1032" Width="1920"  WindowStyle="None"
         
         Background="{x:Null}"
-             WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-
-    <Grid
+             WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True">
+    <Border CornerRadius="25" Background="Black">
+        <Grid
         x:Name="gridd" 
         Height="1032"
         Width="1920">
-        <Button x:Name="Btn_shutdown" Width="25" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_Shutdown_Click" Foreground="{x:Null}" Background="Red" Padding="11,5,10,6"/>
-        <Button x:Name="Btn_Size_Plus" Width="25" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="{x:Null}" Margin="0,0,25,0" Background="White" Click="Btn_Size_Plus_Click"/>
-        <Button x:Name="Btn_Size_Minus" Width="25" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="{x:Null}" Margin="0,0,50,0" Background="#14FFFFFF" Click="Btn_Size_Minus_Click"/>
-        <Frame x:Name="main_frame" Margin="0,16,0,0" Height="1016"/>
-    </Grid>
+            <Button x:Name="Btn_shutdown" Width="25" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_Shutdown_Click" Foreground="{x:Null}" Background="Red" Padding="11,5,10,6"/>
+            <Button x:Name="Btn_Size_Plus" Width="25" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="{x:Null}" Margin="0,0,25,0" Background="White" Click="Btn_Size_Plus_Click"/>
+            <Button x:Name="Btn_Size_Minus" Width="25" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="{x:Null}" Margin="0,0,50,0" Background="#14FFFFFF" Click="Btn_Size_Minus_Click"/>
+            <Frame x:Name="main_frame" Margin="0,16,0,0" Height="1016"/>
+        </Grid>
+    </Border>
+    
 </Window>
