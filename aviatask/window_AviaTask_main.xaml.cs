@@ -23,6 +23,7 @@ namespace Aviatask
     public partial class window_AviaTask_main : Window
     {
         public int size = 0;
+        public static int update = 0;
 
         public window_AviaTask_main(string username, string name, string surname)
         {
@@ -37,7 +38,7 @@ namespace Aviatask
             Settings.Generation.tablet_size = size;
             Settings.Profile.tablet_size = size;
             LogBook.Logbook.tablet_size = size;
-
+            QuickJob.People.SelectJob.tablet_size = size;
 
         }
 
@@ -53,6 +54,7 @@ namespace Aviatask
             Settings.Generation.SettingsClose = true;
             Settings.Profile.SettingsClose = true;
             LogBook.Logbook.LogBookClose = true;
+            QuickJob.People.SelectJob.SelectJobClose = true;
             this.Close();
         }
 
@@ -65,6 +67,9 @@ namespace Aviatask
             Settings.Generation.tablet_size = size;
             Settings.Profile.tablet_size = size;
             LogBook.Logbook.tablet_size = size;
+            QuickJob.People.SelectJob.tablet_size = size;
+            update = 1;
+
 
             switch (size)
             {
@@ -98,6 +103,8 @@ namespace Aviatask
             Settings.Generation.tablet_size = size;
             Settings.Profile.tablet_size = size;
             LogBook.Logbook.tablet_size = size;
+            QuickJob.People.SelectJob.tablet_size = size;
+            update = 1;
 
             switch (size)
             {//Aspect ratio close to 1.889

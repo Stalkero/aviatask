@@ -19,12 +19,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Aviatask.QuickJob
+namespace Aviatask.QuickJob.People
 {
     /// <summary>
     /// Interaction logic for People.xaml
     /// </summary>
-    public partial class People 
+    public partial class Job
     {
         public int status { get; set; }
         public string Pilotusername { get; set; }
@@ -32,7 +32,7 @@ namespace Aviatask.QuickJob
         public string Pilotsurname { get; set; }
 
 
-        public People(string username, string name, string surname, string startICAO, string endICAO, string jobID, string jobType, double distance, string weight, string desc)
+        public Job(string username, string name, string surname, string startICAO, string endICAO, string jobID, string jobType, double distance, string weight, string desc)
         {
             InitializeComponent();
 

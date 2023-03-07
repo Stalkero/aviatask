@@ -204,7 +204,7 @@ namespace Aviatask.MainMenu
         private void button_quick_job_Click(object sender, RoutedEventArgs e)
         {
             MainMenuClose = true;
-            NavigationService.Content = new QuickJob.SelectJob(pilot.Username, pilot.Name, pilot.Surname);
+            NavigationService.Content = new QuickJob.People.SelectJob(pilot.Username, pilot.Name, pilot.Surname);
 
         }
 
